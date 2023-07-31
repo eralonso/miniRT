@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 16:52:56 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:21:39 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int		ft_isunsignedchar(char *str, unsigned char *ret);
 int		ft_isrgb(char *str, t_rgba *ret);
 double	ft_strtod(const char *str);
 int		ft_isvector(char *str, t_vector ret);
+int		ft_validate_double(char *str);
 
 #endif
