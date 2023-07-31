@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:47:20 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 12:59:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:39:44 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_isrgb(char *str, t_rgba *ret)
 	if (!str)
 		return (ft_log_error(ISRGB_MISS_STR));
 	str_arr = ft_split(str, ',');
-	if (!str_arr && ft_matrixlen(str_arr) != 3)
+	if (!str_arr || ft_matrixlen(str_arr) != 3)
 		return (ft_log_error(ISRGB_SIZE));
 	i = 0;
 	while (i < 3 && ft_isunsignedchar(str_arr[i], &ui_arr[i]))

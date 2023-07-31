@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:27:43 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 16:40:45 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:39:27 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_isvector(char *str, t_vector ret)
 	if (!str)
 		return (ft_log_error(ISVECTOR_MISS_STR));
 	str_arr = ft_split(str, ',');
-	if (!str_arr && ft_matrixlen(str_arr) != 3)
+	if (!str_arr || ft_matrixlen(str_arr) != 3)
 		return (ft_log_error(ISVECTOR_SIZE));
 	i = 0;
 	while (i < 3 && ft_isdouble(str_arr[i], &ui_arr[i]))
