@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_class.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 11:34:42 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:00:11 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_minirt_data	*ft_init_minirt_data(t_minirt_data *minirt)
 		if (node && node->content)
 		{
 			mrtt = ft_cast_line_object(node);
+			printf("mrtt = %i\n", mrtt);
 			if (mrtt == MRT_SPHERE || mrtt == MRT_PLANE || mrtt == MRT_CYLINDER)
 				ft_lstadd_front(&minirt->figures, node);
 			else if (ft_save_object(minirt, node, mrtt) == 0)
