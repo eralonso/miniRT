@@ -6,12 +6,13 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:45:42 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/01 12:43:19 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:45:06 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
 #include "../common.h"
+#include <math.h>
 
 static char	*ft_purge_chars(char *str, const char *set)
 {
@@ -59,7 +60,7 @@ int	ft_validate_double(char *str)
 				return (1);
 			else if (*str == '.')
 				state = 4;
-			else if (*str == 'e' || *str == 'E')
+			else if ((*str == 'e' || *str == 'E') && str[1] != '\0')
 				state = 5;
 			else
 				return (0);
@@ -70,7 +71,7 @@ int	ft_validate_double(char *str)
 			str = ft_purge_chars(str, "0123456789");
 			if (!*str)
 				return (1);
-			else if (*str == 'e' || *str == 'E')
+			else if ((*str == 'e' || *str == 'E') && str[1] != '\0')
 				state = 5;
 			else
 				return (0);
@@ -96,97 +97,97 @@ int	ft_validate_double(char *str)
 	return (-state);
 }
 
-int	ft_validate_double(char *str)
-{
-	int		state;
-	char	*aux;
+// int	ft_validate_double(char *str)
+// {
+// 	int		state;
+// 	char	*aux;
 
-	state = 0;
-	while (*str) // Cambio -> Antes: while (str) | Después: while (*str).
-	{
-		if (state == 0)
-		{
-			str = ft_purge_chars(str, " ");
-			if (!*str) // Cambio -> Comprobar que no hay solo espacios.
-				return (0);
-			state = 1;
-		}
-		else if (state == 1)
-		{
-			aux = str;
-			str = ft_purge_chars(str, "+-");
-			if (str - aux > 1 || !*str) // Cambio -> Comprobar que el número no sea simplemente un signo ("   +", "-", ...).
-				return (0);
-			state = 2;
-		}
-		else if (state == 2)
-		{
-			str = ft_purge_chars(str, "0123456789");
-			// if (!*str)
-			// 	return (1);
-			// else if (*str == '.')
-			// {
-			// 	str++;
-			// 	state = 3;
-			// }
-			// else if (*str == 'e' || *str == 'E')
-			// {
-			// 	str++;
-			// 	state = 4;
-			// }
-			// else
-			// 	return (0);
-			// Cambio -> Ya que si el carácter no es ni '.', ni 'e' o 'E', salimos de la función, podemos hacer la iteración de la string después de los condicionales.
-			if (!*str)
-				return (1);
-			else if (*str == '.')
-				state = 3;
-			else if (*str == 'e' || *str == 'E')
-				state = 4;
-			else
-				return (0);
-			str++;
-		}
-		else if (state == 3)
-		{
-			str = ft_purge_chars(str, "0123456789");
-			// if (!*str)
-			// 	return (1);
-			// else if (*str == 'e' || *str == 'E')
-			// {
-			// 	str++;
-			// 	state = 4;
-			// }
-			// else
-			// 	return (0);
-			// Cambio -> Lo mismo que el caso anterior, itermaos después de los condicionales.
-			if (!*str)
-				return (1);
-			else if (*str == 'e' || *str == 'E')
-				state = 4;
-			else
-				return (0);
-			str++;
-		}
-		else if (state == 4)
-		{
-			aux = str;
-			str = ft_purge_chars(str, "+-");
-			if (str - aux > 1 || !*str) // Cambio -> Comprobar que después de la e/E no haya simplemente un símbolo ("-1e+", "3.1415926535e-").
-				return (0);
-			state = 5;
-		}
-		else if (state == 5)
-		{
-			aux = str;
-			str = ft_purge_chars(str, "0123456789");
-			return ((str > aux));
-		}
-		else
-			return (0);
-	}
-	return (0);
-}
+// 	state = 0;
+// 	while (*str) // Cambio -> Antes: while (str) | Después: while (*str).
+// 	{
+// 		if (state == 0)
+// 		{
+// 			str = ft_purge_chars(str, " ");
+// 			if (!*str) // Cambio -> Comprobar que no hay solo espacios.
+// 				return (0);
+// 			state = 1;
+// 		}
+// 		else if (state == 1)
+// 		{
+// 			aux = str;
+// 			str = ft_purge_chars(str, "+-");
+// 			if (str - aux > 1 || !*str) // Cambio -> Comprobar que el número no sea simplemente un signo ("   +", "-", ...).
+// 				return (0);
+// 			state = 2;
+// 		}
+// 		else if (state == 2)
+// 		{
+// 			str = ft_purge_chars(str, "0123456789");
+// 			// if (!*str)
+// 			// 	return (1);
+// 			// else if (*str == '.')
+// 			// {
+// 			// 	str++;
+// 			// 	state = 3;
+// 			// }
+// 			// else if (*str == 'e' || *str == 'E')
+// 			// {
+// 			// 	str++;
+// 			// 	state = 4;
+// 			// }
+// 			// else
+// 			// 	return (0);
+// 			// Cambio -> Ya que si el carácter no es ni '.', ni 'e' o 'E', salimos de la función, podemos hacer la iteración de la string después de los condicionales.
+// 			if (!*str)
+// 				return (1);
+// 			else if (*str == '.')
+// 				state = 3;
+// 			else if (*str == 'e' || *str == 'E')
+// 				state = 4;
+// 			else
+// 				return (0);
+// 			str++;
+// 		}
+// 		else if (state == 3)
+// 		{
+// 			str = ft_purge_chars(str, "0123456789");
+// 			// if (!*str)
+// 			// 	return (1);
+// 			// else if (*str == 'e' || *str == 'E')
+// 			// {
+// 			// 	str++;
+// 			// 	state = 4;
+// 			// }
+// 			// else
+// 			// 	return (0);
+// 			// Cambio -> Lo mismo que el caso anterior, itermaos después de los condicionales.
+// 			if (!*str)
+// 				return (1);
+// 			else if (*str == 'e' || *str == 'E')
+// 				state = 4;
+// 			else
+// 				return (0);
+// 			str++;
+// 		}
+// 		else if (state == 4)
+// 		{
+// 			aux = str;
+// 			str = ft_purge_chars(str, "+-");
+// 			if (str - aux > 1 || !*str) // Cambio -> Comprobar que después de la e/E no haya simplemente un símbolo ("-1e+", "3.1415926535e-").
+// 				return (0);
+// 			state = 5;
+// 		}
+// 		else if (state == 5)
+// 		{
+// 			aux = str;
+// 			str = ft_purge_chars(str, "0123456789");
+// 			return ((str > aux));
+// 		}
+// 		else
+// 			return (0);
+// 	}
+// 	return (0);
+// }
 
 // static int	ft_check_dots(char *str)
 // {
@@ -229,12 +230,11 @@ int	ft_validate_double(char *str)
 int	ft_isdouble(char *str, double *ret)
 {
 	int		i;
-	double	value;
 	// int		exp_phase;
 
-	value = ft_strtod(str);
+	*ret = ft_strtod(str);
 	i = 0;
-	if (value == INFINITY || value == NAN)
+	if (*ret == INFINITY || *ret == NAN)
 		return (0);
 	if (!ft_validate_double(str))
 		return (0);
@@ -250,7 +250,5 @@ int	ft_isdouble(char *str, double *ret)
 	// 		return (0);
 	// 	i++;
 	// }
-	if (ret)
-		*ret = value;
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 12:16:31 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:54:39 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,16 @@ int	main(int argc, char const *argv[])
 	minirt_dispose(&minirt);
 	return (0);
 }
+
+// int	main(int ac, char **av)
+// {
+// 	double	num;
+
+// 	num = 0;
+// 	if (ac == 2)
+// 		printf("%d %30.28G\n", \
+// 					ft_isdouble(av[1], &num), num);
+// 	else
+// 		printf("use argment\n");
+// 	return (0);
+// }
