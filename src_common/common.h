@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:37:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 11:43:06 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:06:14 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "minirt_class/miniRT_data.h"
 # include "graph_ctx/graph_decl.h"
 # include "utils/utils.h"
+# include "geometry/geometry.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
