@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/01 15:17:07 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/01 18:29:01 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_isunsignedchar.c\
 					utils/ft_isvector.c\
 					utils/ft_strtod.c\
+					geometry/vector_class.c\
+					geometry/matrix_class.c\
 					geometry/ft_addition.c\
 					geometry/ft_distance_sq.c\
 					geometry/ft_distance.c\
@@ -36,7 +38,8 @@ SRCC_R			:= ft_read_map.c\
 					geometry/ft_scale_vector.c\
 					geometry/ft_substraction.c\
 					geometry/ft_dot_product.c\
-					geometry/ft_cross_product.c
+					geometry/ft_cross_product.c\
+					geometry/matrix_product.c
 
 SRC_R			:= main.c
 

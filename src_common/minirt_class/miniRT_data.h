@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 17:06:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:37:14 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 		"Missed arguments at parse\n"
 
 typedef double	t_vector[3];
+
+typedef double	*t_matrix[3];
 
 typedef struct s_rgba
 {

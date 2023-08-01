@@ -1,37 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cross_product.c                                 :+:      :+:    :+:   */
+/*   vector_class.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 15:08:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 19:29:20 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/08/01 18:17:59 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/08/01 18:18:01 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "geometry.h"
 
-double	*ft_cross_product(t_vector res, t_vector a, t_vector b)
+double	*ft_vector_create(t_vector v)
 {
-	int			i;
-	int			j;
-	int			k;
-	t_vector	aux;
+	int		i;
+	double	*nv;
 
+	nv = malloc(3 * sizeof(double));
+	if (!nv)
+		return (nv);
 	i = 0;
 	while (i < 3)
 	{
-		j = (i + 1) % 3;
-		k = (i + 2) % 3;
-		aux[i] = (a[j] * b[k]) - (a[k] * b[j]);
+		nv[i] = v[i];
 		i++;
 	}
+	return (nv);
+}
+
+double	*ft_vector_unitary(int axis)
+{
+	int		i;
+	double	*nv;
+
+	nv = malloc(3 * sizeof(double));
+	if (!nv)
+		return (nv);
 	i = 0;
 	while (i < 3)
 	{
-		res[i] = aux[i];
+		if (i == axis)
+			nv[i] = 1.0;
+		else
+			nv[i] = 0.0;
 		i++;
 	}
-	return (res);
+	return (nv);
+}
+
+double	*ft_vector_dispose(t_vector v)
+{
+	if (!v)
+		return (NULL);
+	free(v);
+	return (NULL);
 }

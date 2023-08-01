@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cross_product.c                                 :+:      :+:    :+:   */
+/*   ft_matrix_add.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 15:08:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 19:29:20 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/08/01 16:41:42 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/08/01 16:43:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 
-double	*ft_cross_product(t_vector res, t_vector a, t_vector b)
+double	**ft_matrix_add(t_matrix res, t_matrix a, t_matrix b)
 {
-	int			i;
-	int			j;
-	int			k;
-	t_vector	aux;
+	int	i;
 
 	i = 0;
 	while (i < 3)
 	{
-		j = (i + 1) % 3;
-		k = (i + 2) % 3;
-		aux[i] = (a[j] * b[k]) - (a[k] * b[j]);
-		i++;
-	}
-	i = 0;
-	while (i < 3)
-	{
-		res[i] = aux[i];
+		ft_addition(res[i], a[i], b[i]);
 		i++;
 	}
 	return (res);
