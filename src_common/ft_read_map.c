@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:28:05 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/26 12:02:28 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:10:28 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static t_list	*ft_read_map_lines(int fd)
 	t_list	*new_node;
 
 	line = get_next_line(fd);
+	if (line && line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
 	list = NULL;
 	while (line)
 	{
@@ -32,6 +34,8 @@ static t_list	*ft_read_map_lines(int fd)
 		}
 		ft_lstadd_front(&list, new_node);
 		line = get_next_line(fd);
+		if (line && line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
 	}
 	return (list);
 }
