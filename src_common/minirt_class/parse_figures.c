@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:28:00 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:06:47 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		return (ft_log_error(ERR_SPHERE_MALLOC_FAILED));
+	sphere->ft = FT_SPHERE;
+	sphere->print = &print_sphere;
 	if (ft_matrixlen(str_arr) != SPHERE_COMPONENTS_NUMBER)
 	{
 		free(sphere);
@@ -47,6 +49,8 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		return (ft_log_error(ERR_PLANE_MALLOC_FAILED));
+	plane->ft = FT_PLANE;
+	plane->print = &print_plane;
 	if (ft_matrixlen(str_arr) != PLANE_COMPONENTS_NUMBER)
 		return (ft_log_error(ERR_PLANE_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], plane->point)
@@ -70,6 +74,8 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
 		return (ft_log_error(ERR_CYLINDER_MALLOC_FAILED));
+	cylinder->ft = FT_CYLINDER;
+	cylinder->print = &print_cylinder;
 	if (ft_matrixlen(str_arr) != CYLINDER_COMPONENTS_NUMBER)
 		return (ft_log_error(ERR_CYLINDER_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], cylinder->point)

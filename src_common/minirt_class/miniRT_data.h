@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 16:37:14 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:03:18 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,35 +85,41 @@ typedef struct s_light
 	size_t		count;
 }	t_light;
 
-typedef struct s_sphere
-{
-	t_vector	point;
-	double		diameter;
-	t_rgba		color;
-}	t_sphere;
-
-typedef struct s_plane
-{
-	t_vector	point;
-	t_vector	orientation;
-	t_rgba		color;
-}	t_plane;
-
-typedef struct s_cylinder
-{
-	t_vector	point;
-	t_vector	orientation;
-	double		diameter;
-	double		height;
-	t_rgba		color;
-}	t_cylinder;
-
 typedef enum e_figure_type
 {
 	FT_SPHERE,
 	FT_PLANE,
 	FT_CYLINDER
 }	t_figure_type;
+
+typedef struct s_sphere
+{
+	void			(*print)(void *sphere);
+	t_figure_type	ft;
+	t_vector		point;
+	double			diameter;
+	t_rgba			color;
+}	t_sphere;
+
+typedef struct s_plane
+{
+	void			(*print)(void *plane);
+	t_figure_type	ft;
+	t_vector		point;
+	t_vector		orientation;
+	t_rgba			color;
+}	t_plane;
+
+typedef struct s_cylinder
+{
+	void			(*print)(void *cylinder);
+	t_figure_type	ft;
+	t_vector		point;
+	t_vector		orientation;
+	double			diameter;
+	double			height;
+	t_rgba			color;
+}	t_cylinder;
 
 typedef enum e_minirt_type
 {
@@ -126,13 +132,6 @@ typedef enum e_minirt_type
 	MRT_PLANE,
 	MRT_CYLINDER,
 }	t_minirt_type;
-
-typedef struct s_figure
-{
-	t_figure_type	ft;
-	size_t			count;
-	void			*data;
-}	t_figure;
 
 typedef struct s_minirt_data
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:37:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 12:06:14 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:59:06 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ int				ft_draw(t_minirt_data *minirt);
 int				ft_handle_no_event(void *data);
 int				ft_close(void *param);
 int				ft_key_input(int keycode, void *param);
+void			print_sphere(void *sphere);
+void			print_plane(void *plane);
+void			print_cylinder(void *cylinder);
 
 #endif

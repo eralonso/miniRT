@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:45:42 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/02 12:11:04 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:28:36 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ int	ft_isdouble(char *str, double *ret)
 
 	*ret = ft_strtod(str);
 	if (*ret == INFINITY || *ret == NAN)
-		return (0);
+		return (ft_log_error(ISDOUBLE_NIR));
 	state = 1;
 	aux = str;
 	while (*str && state > 0)
 		if (state > 0 && state < 7)
 			aux = do_state(aux, str, &state, sets[state - 1]);
+	if (!state)
+		ft_log_error(ISDOUBLE_NAN);
 	return (-state);
 }

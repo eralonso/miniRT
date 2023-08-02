@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/02 12:46:06 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/02 17:08:24 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ LIBFT_D 		:= ${addprefix $(LIBFT_PATH), libft.d}
 MLX_A 			:= ${addprefix $(MLX_PATH), libmlx.a}
 MLX_H 			:= ${addprefix $(MLX_PATH), libmlx.h}
 LIBS_FLAGS		:= -lm -Lmlx -lmlx -framework OpenGL -framework AppKit -I ${LIBFT_H} -I ${MLX_H}
-LIBFT_D_CONT	:= $(@shell cat ${LIBFT_D} 2> /dev/null)
+LIBFT_D_CONT	:= $(shell cat ${LIBFT_D} 2> /dev/null)
 
 folder_create 	= $(shell mkdir -p $(1))
 
