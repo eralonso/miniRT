@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_obj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:50:28 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/27 18:52:34 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:40:59 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_parse_light(t_list *node, char **str_arr)
 	}
 	if (!ft_isvector(str_arr[1], light->point)
 		|| !ft_isdouble(str_arr[2], &light->brightness)
-		|| !ft_isrgb(str_arr[2], &light->color))
+		|| !ft_isrgb(str_arr[3], &light->color))
 	{
 		free(light);
 		return (0);

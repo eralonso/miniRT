@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/31 12:00:11 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:05:37 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_minirt_data	*minirt_constructor(char *filename)
 {
 	t_minirt_data	*minirt;
 
-	minirt = malloc(sizeof(t_minirt_data));
+	minirt = ft_calloc(sizeof(t_minirt_data), 1);
 	if (minirt)
 	{
 		minirt->exit_cmd = 0;
@@ -91,7 +91,6 @@ t_minirt_data	*ft_init_minirt_data(t_minirt_data *minirt)
 		if (node && node->content)
 		{
 			mrtt = ft_cast_line_object(node);
-			printf("mrtt = %i\n", mrtt);
 			if (mrtt == MRT_SPHERE || mrtt == MRT_PLANE || mrtt == MRT_CYLINDER)
 				ft_lstadd_front(&minirt->figures, node);
 			else if (ft_save_object(minirt, node, mrtt) == 0)
