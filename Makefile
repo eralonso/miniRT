@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/01 18:29:01 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/02 17:15:27 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ LIBFT_D 		:= ${addprefix $(LIBFT_PATH), libft.d}
 MLX_A 			:= ${addprefix $(MLX_PATH), libmlx.a}
 MLX_H 			:= ${addprefix $(MLX_PATH), libmlx.h}
 LIBS_FLAGS		:= -lm -Lmlx -lmlx -framework OpenGL -framework AppKit -I ${LIBFT_H} -I ${MLX_H}
-LIBFT_D_CONT	:= $(@shell cat ${LIBFT_D} 2> /dev/null)
+LIBFT_D_CONT	:= $(shell cat ${LIBFT_D} 2> /dev/null)
 
 folder_create 	= $(shell mkdir -p $(1))
 
@@ -90,18 +90,18 @@ all : $(NAME)
 bonus : $(NAMEB)
 
 -include $(DEPS)
-$(NAME) : ${OBJC} ${OBJ} ${LIBFT_A} ${MLX_A}
+$(NAME) : ${OBJC} ${OBJ} ${LIBFT_A} ${MLX_A} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
 		${OBJ} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS} -o $@
 
 -include $(DEPSB)
-$(NAMEB): ${OBJC} ${OBJB} ${LIBFT_A} ${MLX_A}
+$(NAMEB): ${OBJC} ${OBJB} ${LIBFT_A} ${MLX_A} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
 		${OBJB} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS} -o $@
 
-${LIBFT_A} : ${LIBFT_D_CONT}
+${LIBFT_A} : ${LIBFT_D_CONT} libft/Makefile
 	@echo "Making " $@ " if necessary.."
 	@make -C libft
 
