@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:12:20 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:44:30 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "miniRT.h"
 
+void print_line(void *line)
+{
+	printf("%s", line);
+}
+
 int	main(int argc, char const *argv[])
 {
-	t_minirt_data	*minirt;
+	//t_minirt_data	*minirt;
 	// t_matrix		m;
 	// double			**_m;
 	// t_vector		a;
@@ -25,9 +30,10 @@ int	main(int argc, char const *argv[])
 
 	// if (argc == 2)
 	// 	printf("%d %30.28G\n", \
-	// 				ft_isdouble((char *)argv[1], &num), num);
+	// 				ft_validate_double((char *)argv[1]), ft_strtod(argv[1]));
 	// else
 	// 	printf("use argment\n");
+
 	// a[0] = 1.0;
 	// a[1] = 0.0;
 	// a[2] = 0.0;
@@ -69,11 +75,16 @@ int	main(int argc, char const *argv[])
 	// m[2] = ft_vector_dispose(m[2]);
 	// _m = ft_matrix_dispose(_m);
 	// return (0);
-	minirt = minirt_constructor(ft_take_argument(argc, argv));
-	if (minirt)
-		mlx_loop(minirt->gr_ctx->inst);
+	// minirt = minirt_constructor(ft_take_argument(argc, argv));
+	// if (minirt)
+	// 	mlx_loop(minirt->gr_ctx->inst);
 	// ft_putstr_fd ("exit main\n", 1);
 	// minirt_dispose(&minirt);
+	char	*filename = ft_take_argument(argc, argv);
+	t_list	*list = ft_read_map(filename);
+	list = ft_lstreverse(&list);
+	ft_lstiter(list, print_line);
+	ft_lstclear(&list, free);
 	return (0);
 }
 

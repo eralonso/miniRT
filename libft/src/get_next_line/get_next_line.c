@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:22:42 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 13:32:27 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:00:46 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,6 @@ void	free_x(void **p)
 		free(*p);
 		*p = NULL;
 	}
-}
-
-static int	ft_get_next_chunk(int fd, char **cnk, size_t cnk_s, size_t buf_s)
-{
-	t_get_next_chunk	s;
-
-	s.r_r = 1;
-	s.tot_r = 0;
-	s.nl_pos = NULL;
-	if (buf_s > cnk_s)
-		cnk_s = buf_s;
-	*cnk = (char *)malloc(cnk_s + 1);
-	if (! *cnk)
-		return (FAIL_MEM_ALLOC_READ_RET);
-	while (s.r_r > 0 && cnk_s - s.tot_r >= buf_s && ! s.nl_pos)
-	{
-		s.r_r = read(fd, *cnk + s.tot_r, buf_s);
-		(*cnk)[s.tot_r + buf_s] = 0;
-		s.nl_pos = ft_strnl(*cnk + s.tot_r);
-		if (s.r_r > 0)
-			s.tot_r += s.r_r;
-		if (s.r_r < 0 || s.tot_r == 0)
-		{
-			free_x((void **)cnk);
-			s.tot_r = s.r_r;
-		}
-	}
-	return (s.tot_r);
 }
 
 static char	*ft_extract_line_from_buf(char **buffer, size_t	buf_size)
@@ -74,19 +46,17 @@ static char	*ft_read_n_extract(int fd, char **buffer, int *read_ret, \
 	size_t *buf_size)
 {
 	char	*new_buf;
-	char	*new_chunk;
+	char	chunk[BUFFER_SIZE];
 	char	*line;
 
-	*read_ret = ft_get_next_chunk(fd, &new_chunk, MIN_CHUNK_SIZE, BUFFER_SIZE);
-	if (! *buffer && ! new_chunk)
+	if (! buffer || !read_ret)
 		return (NULL);
-	if (new_chunk)
-	{
-		new_buf = ft_strjoin_x(*buffer, new_chunk, buf_size, *read_ret);
-		free_x ((void **)buffer);
-		free_x ((void **)&new_chunk);
-		*buffer = new_buf;
-	}
+	*read_ret = read(fd, chunk, BUFFER_SIZE);
+	if (! *buffer && *read_ret < 1)
+		return (NULL);
+	new_buf = ft_strjoin_x(*buffer, chunk, buf_size, *read_ret);
+	free_x ((void **)buffer);
+	*buffer = new_buf;
 	if (*read_ret >= 0)
 	{
 		line = ft_extract_line_from_buf(buffer, *buf_size);
