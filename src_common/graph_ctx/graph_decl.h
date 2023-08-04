@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph_decl.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:38:31 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/25 13:39:18 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:35:54 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,21 @@ enum e_keycodes
 	KC_RETURN = 0x24
 };
 
+typedef struct s_img
+{
+	void	*image;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		img_size[2];
+}	t_img;
+
 typedef struct s_graphics
 {
 	void	*inst;
 	void	*wnd;
+	t_img	img;
 	int		wnd_size[2];
 }	t_graphics;
 

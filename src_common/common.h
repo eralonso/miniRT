@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:37:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 18:59:06 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:24:47 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int				ft_key_input(int keycode, void *param);
 void			print_sphere(void *sphere);
 void			print_plane(void *plane);
 void			print_cylinder(void *cylinder);
+void			ft_pixel_put(t_img *img, int x, int y, t_rgba rgba);
+void			ft_print_line(t_vector a, t_vector b, t_rgba color, t_img *img);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/04 13:16:08 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/04 17:27:04 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCC_R			:= ft_read_map.c\
 					minirt_class/parse_figures.c\
 					minirt_class/parse_scene_obj.c\
 					graph_ctx/graph_ctx.c \
+					graph_ctx/graph_ctx_utils.c \
 					utils/ft_matrix_len.c\
 					utils/ft_isdouble.c\
 					utils/ft_isrgb.c\
@@ -91,6 +92,7 @@ all : $(NAME)
 bonus : $(NAMEB)
 
 -include $(DEPS)
+-include $(DEPSC)
 $(NAME) : ${OBJC} ${OBJ} ${LIBFT_A} ${MLX_A} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
