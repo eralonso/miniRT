@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isvector.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:27:43 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:59:00 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:51:52 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
 #include "../common.h"
 
-int	ft_isvector(char *str, t_vector ret)
+int	ft_isvector(char *str, t_vector vect)
 {
 	char	**str_arr;
 	double	ui_arr[3];
@@ -29,12 +29,12 @@ int	ft_isvector(char *str, t_vector ret)
 		i++;
 	if (i != 3)
 		return (ft_delete_str_arr(str_arr), 0);
-	if (ret)
+	if (vect)
 	{
 		i = 0;
 		while (i < 3)
 		{
-			ret[i] = ui_arr[i];
+			vect[i] = ui_arr[i];
 			i++;
 		}
 	}

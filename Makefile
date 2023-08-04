@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/02 17:15:27 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/04 13:16:08 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_isunsignedchar.c\
 					utils/ft_isvector.c\
 					utils/ft_strtod.c\
+					utils/ft_isorientation.c\
 					geometry/vector_class.c\
 					geometry/matrix_class.c\
 					geometry/ft_addition.c\

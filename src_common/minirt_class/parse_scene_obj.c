@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_obj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:50:28 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 18:46:46 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/04 13:18:05 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_parse_camera(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_CAMERA_COMPONENTS_NUMBER));
 	}
 	if (!ft_isvector(str_arr[1], camera->point)
-		|| !ft_isvector(str_arr[2], camera->orientation)
+		|| !ft_isorientation(str_arr[2], camera->orientation)
 		|| !ft_isdouble(str_arr[3], &camera->fov))
 	{
 		free(camera);
