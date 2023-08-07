@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 19:03:18 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/07 10:18:24 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ typedef enum e_figure_type
 	FT_PLANE,
 	FT_CYLINDER
 }	t_figure_type;
+
+typedef struct line_s
+{
+	t_vector	point;
+	t_vector	orientation;
+}	t_line;
 
 typedef struct s_sphere
 {
