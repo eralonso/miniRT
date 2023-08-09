@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/07 10:18:24 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:59:21 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ typedef struct s_minirt_data
 }	t_minirt_data;
 
 typedef int		(*t_object_parser)(t_list *, char **);
+typedef void	(*t_print)(void *);
 
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);
