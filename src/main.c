@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/04 17:32:12 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:54:46 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ void	print_cylinder(void *figure)
 
 void	print_figures(t_list **figures)
 {
-	t_list	*tmp;
+	t_list			*tmp;
+	static t_print	print[3] = {print_sphere, print_plane, print_cylinder};
 
 	tmp = *figures;
 	while (tmp)
 	{
-		((t_sphere *)(tmp->content))->print(tmp->content);
+		print[((t_sphere *)(tmp->content))->ft](tmp->content);
 		printf("\n");
 		tmp = tmp->next;
 	}

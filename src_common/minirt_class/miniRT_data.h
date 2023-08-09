@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 19:03:18 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:59:21 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,12 @@ typedef enum e_figure_type
 	FT_CYLINDER
 }	t_figure_type;
 
+typedef struct line_s
+{
+	t_vector	point;
+	t_vector	orientation;
+}	t_line;
+
 typedef struct s_sphere
 {
 	void			(*print)(void *sphere);
@@ -146,6 +152,7 @@ typedef struct s_minirt_data
 }	t_minirt_data;
 
 typedef int		(*t_object_parser)(t_list *, char **);
+typedef void	(*t_print)(void *);
 
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);

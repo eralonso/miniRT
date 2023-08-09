@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/04 17:27:04 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/04 18:10:18 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_isvector.c\
 					utils/ft_strtod.c\
 					utils/ft_isorientation.c\
+					utils/ft_isfov.c\
+					utils/ft_islight_ratio.c\
 					geometry/vector_class.c\
 					geometry/matrix_class.c\
 					geometry/ft_addition.c\
