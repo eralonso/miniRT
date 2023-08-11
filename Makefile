@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/04 18:10:18 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/11 13:26:21 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCC_R			:= ft_read_map.c\
 					geometry/ft_substraction.c\
 					geometry/ft_dot_product.c\
 					geometry/ft_cross_product.c\
+					geometry/ft_copy_vector.c\
 					geometry/matrix_product.c
 
 SRC_R			:= main.c

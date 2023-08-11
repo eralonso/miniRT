@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:44:35 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/07/25 11:57:39 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/09 16:05:58 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_key_input(int keycode, void *param)
 		minirt->exit_cmd = 1;
 		return (0);
 	}
-	// ft_update_pos(keycode, minirt);
-	// return (ft_draw(minirt));
 	return (0);
 }
+	// ft_update_pos(keycode, minirt);
+	// return (ft_draw(minirt));

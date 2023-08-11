@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_scale_vector.c                                  :+:      :+:    :+:   */
+/*   ft_copy_vector.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 11:46:20 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/11 11:28:06 by eralonso         ###   ########.fr       */
+/*   Created: 2023/08/11 11:27:22 by eralonso          #+#    #+#             */
+/*   Updated: 2023/08/11 11:29:07 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "geometry.h"
+#include <math.h>
+#include "../../common.h"
 
-double	*ft_scale_vector(t_vector res, t_vector a, double s)
+double	*ft_copy_vector(t_vector dst, t_vector src)
 {
-	int	i;
-
-	i = 0;
-	while (i < 3)
-	{
-		res[i] = s * a[i];
-		i++ ;
-	}
-	return (res);
+	dst[0] = src[0];
+	dst[1] = src[1];
+	dst[2] = src[2];
+	return (dst);
 }

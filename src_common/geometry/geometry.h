@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 19:22:20 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:30:07 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ double		**ft_matrix_transpose(t_matrix m);
 double		**ft_matrix_dispose(t_matrix m);
 double		*ft_matrix_x_vector(t_matrix m, t_vector v);
 double		**ft_matrix_x_matrix(t_matrix a, t_matrix b);
+double		*ft_copy_vector(t_vector dst, t_vector src)
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_class_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:45:15 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 13:00:33 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/09 16:03:27 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ double	**ft_matrix_align_z(double	*theta, double *psi, t_vector direc)
 	xy_rot_axis = ft_vector_create(axis);
 	if (!axis || !xy_rot_axis)
 	{
-
 		axis = ft_vector_dispose(axis);
 		xy_rot_axis = ft_vector_dispose(xy_rot_axis);
 		return (NULL);

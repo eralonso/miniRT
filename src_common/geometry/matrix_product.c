@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_product.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:21:29 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/01 19:22:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/09 16:05:07 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	*ft_matrix_x_vector(t_matrix m, t_vector v)
 	return (nv);
 }
 
-static double	ft_row_x_column(t_matrix a, t_matrix b, int i , int j)
+static double	ft_row_x_column(t_matrix a, t_matrix b, int i, int j)
 {
 	int		k;
 	double	ret;
