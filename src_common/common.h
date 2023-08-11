@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:37:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/11 11:29:24 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:27:24 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stddef.h>
+
 # define DISP_WIDTH		2600
 # define DISP_HEIGHT	1360
+
+// Position of width and height in arrays
+# define H 0
+# define W 1
 
 char			*ft_take_argument(int argc, char const *argv[]);
 t_list			*ft_read_map(char *filename);
