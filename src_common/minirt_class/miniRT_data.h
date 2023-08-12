@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/09 16:01:41 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:00:51 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ typedef struct s_camera
 	t_vector	point;
 	t_vector	orientation;
 	double		fov;
+	double		focal_dis;
+	t_vector	horizontal;
+	t_vector	vertical;
 	size_t		count;
 }	t_camera;
 

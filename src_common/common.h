@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:37:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/11 19:27:24 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:08:26 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <stdio.h>
 # include <stddef.h>
 
-# define DISP_WIDTH		2600
-# define DISP_HEIGHT	1360
+# define DISP_WIDTH		2000
+# define DISP_HEIGHT	1090
 
 // Position of width and height in arrays
 # define H 0

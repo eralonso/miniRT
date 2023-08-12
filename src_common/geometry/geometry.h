@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/11 19:27:41 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:05:18 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ double		**ft_matrix_dispose(t_matrix m);
 double		*ft_matrix_x_vector(t_matrix m, t_vector v);
 double		**ft_matrix_x_matrix(t_matrix a, t_matrix b);
 double		*ft_copy_vector(t_vector dst, t_vector src);
+void		camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
+						t_img *img, int size[2]);
+t_rgba		raytrace(t_minirt_data *minirt, t_line ray);
 
 #endif

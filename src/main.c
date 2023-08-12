@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/09 16:02:42 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:05:57 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	print_minirt(t_minirt_data *minirt)
 int	main(int argc, char const *argv[])
 {
 	t_minirt_data	*minirt;
+	static int		size[2] = {DISP_HEIGHT, DISP_WIDTH};
 	// t_matrix		m;
 	// double			**_m;
 	// t_vector		a;
@@ -180,22 +181,23 @@ int	main(int argc, char const *argv[])
 	minirt = minirt_constructor(ft_take_argument(argc, argv));
 	if (minirt)
 	{
-		t_rgba color;
+		// t_rgba color;
 
-		color.r = 0xFF;
-		color.g = 0x0;
-		color.b = 0x0;
-		color.a = 0x0;
-		t_vector src = {0, 0, 0};
-		t_vector dst = {100, 100, 0};
+		// color.r = 0xFF;
+		// color.g = 0x0;
+		// color.b = 0x0;
+		// color.a = 0x0;
+		// t_vector src = {0, 0, 0};
+		// t_vector dst = {100, 100, 0};
 
-		for (int i = 0; i < 50; i++)
-		{
-			ft_print_line(src, dst, color, &minirt->gr_ctx->img);
-			dst[0] += 1.0;
-		}
+		// for (int i = 0; i < 50; i++)
+		// {
+		// 	ft_print_line(src, dst, color, &minirt->gr_ctx->img);
+		// 	dst[0] += 1.0;
+		// }
+		// mlx_put_image_to_window(minirt->gr_ctx->inst, minirt->gr_ctx->wnd, minirt->gr_ctx->img.image, 0, 0);
+		camera_rays_v2(minirt, &minirt->camera, &minirt->gr_ctx->img, size);
 		mlx_put_image_to_window(minirt->gr_ctx->inst, minirt->gr_ctx->wnd, minirt->gr_ctx->img.image, 0, 0);
-		print_minirt(minirt);
 		mlx_loop(minirt->gr_ctx->inst);
 	}
 	ft_putstr_fd ("exit main\n", 1);
