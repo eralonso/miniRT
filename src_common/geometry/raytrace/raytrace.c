@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/12 17:07:09 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/13 14:56:33 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,22 @@
 
 t_rgba	raytrace(t_minirt_data *minirt, t_line ray)
 {
-	t_rgba	color;
+	t_rgba				color;
+	t_vector			hit;
+	t_list				*figures;
+	static t_intersect	intersect[3] = {inter_sphere_line, inter_plane_line, inter_cyl_line};
 
-	(void)minirt;
-	(void)ray;
-	color.r = 255;
-	color.g = 0;
-	color.b = 0;
+	figures = minirt->figures;
+	color.r = 100;
+	color.g = 100;
+	color.b = 100;
 	color.a = 0;
+	while (figures)
+	{
+		if (((t_sphere *)(figures->content))->ft == FT_SPHERE && \
+			intersect[((t_sphere *)(figures->content))->ft](&hit, &ray, figures->content))
+			color = ((t_sphere *)(figures->content))->color;
+		figures = figures->next;
+	}
 	return (color);
 }
