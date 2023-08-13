@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:38:13 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:13:19 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ typedef struct s_minirt_data
 
 typedef int		(*t_object_parser)(t_list *, char **);
 typedef void	(*t_print)(void *);
-typedef int		(*t_intersect)(t_vector *, t_line *, void *);
+typedef int		(*t_intersect)(t_vector , t_line , void *);
 
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);

@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:38:31 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:16:26 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ double		*ft_copy_vector(t_vector dst, t_vector src);
 void		camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 						t_img *img, int size[2]);
 t_rgba		raytrace(t_minirt_data *minirt, t_line ray);
-int			inter_sphere_line(t_vector *ret, t_line *line, void *sphere);
-int			inter_cyl_line(t_vector *ret, t_line *line, void *cyl);
-int			inter_plane_line(t_vector *res, t_line *line, void *plane);
+int			inter_sphere_line(t_vector ret, t_line line, void *sphere);
+int			inter_cyl_line(t_vector ret, t_line line, void *cyl);
+int			inter_plane_line(t_vector res, t_line line, void *plane);
 
 #endif

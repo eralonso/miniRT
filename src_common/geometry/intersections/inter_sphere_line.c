@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:41:46 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:04:43 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,49 @@
 #include <math.h>
 // dependency: Vector3, Line, Plane
 
-int inter_sphere_line(t_vector *ret, t_line *line, void *figure)
+int inter_sphere_line(t_vector ret, t_line line, void *figure)
 {
-    // from line = p + t * v
-    t_sphere    *sphere = (t_sphere *)figure;
-    t_vector    *line_o = &line->point;            // (x1, y1, z1)
-    t_vector    *u = &line->orientation; //normalize(); // (Vx, Vy, Vz)
-    t_vector	*center = &sphere->point;          // (a, b, c)
+	const t_sphere	*sphere = (t_sphere *)figure;
+	const double	radius = sphere->diameter / 2.0;
+	t_vector		rel_origin;
+	double			coefs[2];
+	double			disc;
 
-    double radius = sphere->diameter / 2.0;        		// radius
-
-	t_vector rel_origin;
-    ft_substraction(rel_origin, *line_o, *center);
-
-	//double a_coef = u.dot(u); //shold be one id u is unitary
-	double b_h_coef = ft_dot_product(*u, rel_origin);
-	double c_coef = ft_dot_product(rel_origin, rel_origin) - radius * radius;
-	//double disc = (b_h_coef * b_h_coef - a_coef * c_coef);
-	double disc = (b_h_coef * b_h_coef - c_coef);
-
-    // if denominator=0, no intersect
-    if(disc < 0)
-        return (0); // return NaN point
-
-	// find the closest distance
-	//double d = (- b_h_coef - sqrt(disc)) / (a_coef);
- 	double d = (- b_h_coef - sqrt(disc));
-    // find cloeset intersection point by substituting d to line eq
-    ft_scale_vector(*ret, \
-        ft_addition(*ret, *line_o, ft_scale_vector(*ret, *u, d)), \
-        1.0);
-    return (1);
+	ft_substraction(rel_origin, line.point, (double *)sphere->point);
+	coefs[0] = ft_dot_product(line.orientation, rel_origin);
+	coefs[1] = ft_dot_product(rel_origin, rel_origin) - radius * radius;
+	disc = (coefs[0] * coefs[0] - coefs[1]);
+	if (disc < 0)
+		return (0);
+	ft_addition(ret, line.point, ft_scale_vector(ret, \
+		line.orientation, -coefs[0] - sqrt(disc)));
+	ft_normalize(ret, ret);
+	return (1);
 }
+
+// int inter_sphere_line(t_vector ret, t_line line, void *figure)
+// {
+// 	// from line = p + t * v
+// 	const t_sphere	*sphere = (t_sphere *)figure;
+// 	const double	radius = sphere->diameter / 2.0;        		// radius
+// 	t_vector		rel_origin;
+
+// 	ft_substraction(rel_origin, line.point, sphere->point);
+// 	// double a_coef = u.dot(u); //shold be one id u is unitary
+// 	double b_h_coef = ft_dot_product(line.orientation, rel_origin);
+// 	double c_coef = ft_dot_product(rel_origin, rel_origin) - radius * radius;
+// 	//double disc = (b_h_coef * b_h_coef - a_coef * c_coef);
+// 	double disc = (b_h_coef * b_h_coef - c_coef);
+
+// 	// if denominator=0, no intersect
+// 	if (disc < 0)
+// 		return (0); // return NaN point
+
+// 	// find the closest distance
+// 	// double d = (- b_h_coef - sqrt(disc)) / (a_coef);
+// 	double d = (- b_h_coef - sqrt(disc));
+// 	// find cloeset intersection point by substituting d to line eq
+// 	ft_scale_vector(ret, ft_addition(ret, line.point, \
+// 		ft_scale_vector(ret, line.orientation, d)), 1.0);
+// 	return (1);
+// }
