@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/12 16:49:10 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/13 14:34:11 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,10 @@ SRCC_R			:= ft_read_map.c\
 					geometry/ft_copy_vector.c\
 					geometry/matrix_product.c\
 					geometry/camera/camera_rays_v2.c\
-					geometry/raytrace/raytrace.c
+					geometry/raytrace/raytrace.c\
+					geometry/intersections/inter_sphere_line.c\
+					geometry/intersections/inter_plane_line.c\
+					geometry/intersections/inter_cyl_line.c
 
 SRC_R			:= main.c
 
