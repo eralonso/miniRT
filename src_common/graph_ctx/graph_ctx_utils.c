@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 17:09:47 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/04 17:31:28 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/13 13:31:44 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_pixel_put(t_img *img, int x, int y, t_rgba color)
 	idx = 3 * (img->endian != 0);
 	add = 1 - (2 * (img->endian != 0));
 	vec[0] = x;
-	vec[0] = y;
+	vec[1] = y;
 	if (!ft_valid_point(vec, img))
 		return ;
 	pixel = &img->addr[(y * img->size_line) + (x * img->bpp)];
