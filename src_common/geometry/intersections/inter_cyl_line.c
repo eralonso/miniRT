@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/14 17:17:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:43:53 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	inter_cyl_line(t_vector ret, t_line line, void *figure)
 	if (!ft_coef_calc(coef, line, cyl))
 		return (0);
 	d = ft_quadrat_eq(coef);
-	if (d == NAN)
+	if (d == INFINITY)
 		return (0);
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, d));
@@ -69,10 +69,11 @@ int	inter_cyl_line(t_vector ret, t_line line, void *figure)
 		ft_copy_vector(ret, line_int);
 		return (1);
 	}
-	if (int_height 
-		* ft_dot_product(line.orientation, (double *)cyl->orientation) <= 0)
+	if ((int_height * ft_dot_product(line.orientation, \
+			(double *)cyl->orientation)) * 0 == 0)
 		return (0);
-	return (ft_cap_inters(ret, line, figure, int_height));
+	ft_cap_inters(ret, line, figure, int_height);
+	return (0);
 }
 
 // int inter_cyl_line(t_vector ret, t_line line, void *figure)
