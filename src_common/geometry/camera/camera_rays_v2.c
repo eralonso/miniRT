@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_rays_v2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:49:58 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:21:02 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ static void	origin_configure(t_camera *cam, t_vector origin, int size[2])
 {
 	t_vector		trash;
 
+	(void)size;
 	ft_addition(origin, cam->point, ft_scale_vector(trash, \
 		cam->orientation, cam->focal_dis));
 	ft_substraction(origin, origin, ft_scale_vector(trash, \
-		cam->horizontal, (size[0] - 1.0) / 2.0));
+		cam->horizontal, (size[W] - 1.0) / 2.0));
 	ft_substraction(origin, origin, ft_scale_vector(trash, \
-		cam->vertical, (size[1] - 1.0) / 2.0));
+		cam->vertical, (size[H] - 1.0) / 2.0));
 }
 
 static void	camera_configure(t_camera *cam, int width)
@@ -37,8 +38,8 @@ static void	camera_configure(t_camera *cam, int width)
 	ft_normalize(cam->horizontal, cam->horizontal);
 	ft_cross_product(cam->vertical, cam->orientation, cam->horizontal);
 	ft_normalize(cam->vertical, cam->vertical);
-	ft_cross_product(cam->orientation, cam->vertical, cam->horizontal);
-	ft_normalize(cam->orientation, cam->orientation);
+	// ft_cross_product(cam->orientation, cam->vertical, cam->horizontal);
+	// ft_normalize(cam->orientation, cam->orientation);
 }
 
 void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
