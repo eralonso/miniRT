@@ -3,56 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cyl_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/14 11:32:00 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:17:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../common.h"
+#include "intersections.h"
 #include <math.h>
 
-int inter_cyl_line(t_vector ret, t_line line, void *figure)
+static int	ft_coef_calc(double coef[3], t_line line, const t_cylinder *cyl)
 {
-	const t_cylinder	*cyl = (t_cylinder *)figure;
-	const double		radius = cyl->diameter / 2.0;
 	t_vector			w;
+	double				radius;
 	double				v_dot_h;
 	double				v_dot_w;
 	double				w_dot_h;
-	double				a_coef;
-	double				b_h_coef;
-	double				c_coef;
-	double				disc;
-	double				d;
-	t_vector			line_int;
-	t_plane				plane;
 
+	radius = cyl->diameter / 2.0;
 	v_dot_h = ft_dot_product(line.orientation, (double *)cyl->orientation);
 	ft_substraction(w, line.point, (double *)cyl->point);
-	if (v_dot_h == 1.0)
+	if (v_dot_h > 0.99)
 		return (0);
 	v_dot_w = ft_dot_product(line.orientation, w);
 	w_dot_h = ft_dot_product(w, (double *)cyl->orientation);
-	a_coef = ft_dot_product(line.orientation, line.orientation) - v_dot_h * v_dot_h;
-	b_h_coef = (v_dot_w - v_dot_h * w_dot_h);
-	c_coef = ft_dot_product(w, w) - w_dot_h * w_dot_h - radius * radius;
-	disc = (b_h_coef * b_h_coef - a_coef * c_coef);
-	if (disc < 0)
+	coef[0] = ft_dot_product(line.orientation, line.orientation);
+	coef[0] -= v_dot_h * v_dot_h;
+	coef[1] = (v_dot_w - v_dot_h * w_dot_h);
+	coef[2] = ft_dot_product(w, w) - w_dot_h * w_dot_h - radius * radius;
+	return (1);
+}
+
+static int	ft_cap_inters(t_vector ret, \
+	t_line line, const t_cylinder *cyl, double int_height)
+{
+	t_plane		plane;
+
+	ft_copy_vector(plane.orientation, (double *)cyl->orientation);
+	ft_addition(plane.point, (double *)cyl->point, 
+		ft_scale_vector(plane.point, (double *)cyl->orientation, int_height)); 
+	return (inter_plane_line(ret, line, (void *)&plane));
+}
+
+int	inter_cyl_line(t_vector ret, t_line line, void *figure)
+{
+	const t_cylinder	*cyl = (t_cylinder *)figure;
+	double				coef[3];
+	double				d;
+	double				int_height;
+	t_vector			line_int;
+
+	if (!ft_coef_calc(coef, line, cyl))
 		return (0);
-	d = (- b_h_coef - sqrt(disc)) / (a_coef);
-	ft_addition(line_int, line.point, ft_scale_vector(line_int, line.orientation, d));
-	if (ft_dot_product((double *)cyl->orientation, ft_substraction(ret, line_int, (double *)cyl->point)))
+	d = ft_quadrat_eq(coef);
+	if (d == NAN)
+		return (0);
+	ft_addition(line_int, line.point, \
+		ft_scale_vector(line_int, line.orientation, d));
+	int_height = ft_dot_product((double *)cyl->orientation, \
+		ft_substraction(ret, line_int, (double *)cyl->point));
+	if (fabs(int_height) < (cyl->height / 2.0))
 	{
-		ft_scale_vector(ret, line_int, 1.0);
+		ft_copy_vector(ret, line_int);
 		return (1);
 	}
-	ft_scale_vector(plane.orientation, (double *)cyl->orientation, 1.0);
-	ft_scale_vector(plane.point, (double *)cyl->point, 1.0);
-	inter_plane_line(line_int, line, figure);
-	ft_scale_vector(ret, line_int, 1.0);
-	return (1);
+	if (int_height 
+		* ft_dot_product(line.orientation, (double *)cyl->orientation) <= 0)
+		return (0);
+	return (ft_cap_inters(ret, line, figure, int_height));
 }
 
 // int inter_cyl_line(t_vector ret, t_line line, void *figure)

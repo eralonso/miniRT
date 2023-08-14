@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
+#    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/13 14:34:11 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/14 16:24:25 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCC_R			:= ft_read_map.c\
 					geometry/matrix_product.c\
 					geometry/camera/camera_rays_v2.c\
 					geometry/raytrace/raytrace.c\
+					geometry/intersections/ft_quadrat_eq.c\
 					geometry/intersections/inter_sphere_line.c\
 					geometry/intersections/inter_plane_line.c\
 					geometry/intersections/inter_cyl_line.c
