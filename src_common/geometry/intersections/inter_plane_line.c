@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 18:10:05 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/14 11:06:47 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int inter_plane_line(t_vector res, t_line line, void *figure)
 	if (dot1 == 0)
 		return (0);
 	t = -(dot2 + d) / dot1;
+	if (t < 0)
+		return (0);
 	ft_addition(res, line.point, ft_scale_vector(res, line.orientation, t));
 	return (1);
 }
