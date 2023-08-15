@@ -6,13 +6,14 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/14 18:43:53 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/15 11:54:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../common.h"
 #include "intersections.h"
 #include <math.h>
+#include <stdio.h>
 
 static int	ft_coef_calc(double coef[3], t_line line, const t_cylinder *cyl)
 {
@@ -25,7 +26,8 @@ static int	ft_coef_calc(double coef[3], t_line line, const t_cylinder *cyl)
 	radius = cyl->diameter / 2.0;
 	v_dot_h = ft_dot_product(line.orientation, (double *)cyl->orientation);
 	ft_substraction(w, line.point, (double *)cyl->point);
-	if (v_dot_h > 0.99)
+
+	if (fabs(v_dot_h) > 0.99)
 		return (0);
 	v_dot_w = ft_dot_product(line.orientation, w);
 	w_dot_h = ft_dot_product(w, (double *)cyl->orientation);
@@ -36,15 +38,27 @@ static int	ft_coef_calc(double coef[3], t_line line, const t_cylinder *cyl)
 	return (1);
 }
 
-static int	ft_cap_inters(t_vector ret, \
-	t_line line, const t_cylinder *cyl, double int_height)
+static int	ft_cap_inters(t_vector ret, t_line line, const t_cylinder *cyl)
 {
 	t_plane		plane;
+	t_line		cyl_axis;
+	t_vector	cap_center;
+	double		sign;
+	double		axe_dist;
 
+	return (0);
 	ft_copy_vector(plane.orientation, (double *)cyl->orientation);
-	ft_addition(plane.point, (double *)cyl->point, 
-		ft_scale_vector(plane.point, (double *)cyl->orientation, int_height)); 
-	return (inter_plane_line(ret, line, (void *)&plane));
+	sign = -ft_dot_product(line.orientation, (double *)cyl->orientation);
+	ft_addition(plane.point, (double *)cyl->point, \
+		ft_scale_vector(plane.point, \
+			(double *)cyl->orientation, sign * cyl->height / 2.0)); 
+	if (inter_plane_line(ret, line, (void *)&plane) == 0.0)
+		return (0);
+	ft_copy_vector(cyl_axis.orientation, (double *)cyl->orientation);
+	ft_copy_vector(cyl_axis.point, ret);
+	inter_plane_line(cap_center, cyl_axis, (void *)&plane);
+	axe_dist = ft_distance_sq(cap_center, ret);
+	return (axe_dist <= (cyl->diameter * cyl->diameter / 4.0));
 }
 
 int	inter_cyl_line(t_vector ret, t_line line, void *figure)
@@ -56,7 +70,7 @@ int	inter_cyl_line(t_vector ret, t_line line, void *figure)
 	t_vector			line_int;
 
 	if (!ft_coef_calc(coef, line, cyl))
-		return (0);
+		return (ft_cap_inters(ret, line, figure));
 	d = ft_quadrat_eq(coef);
 	if (d == INFINITY)
 		return (0);
@@ -70,10 +84,9 @@ int	inter_cyl_line(t_vector ret, t_line line, void *figure)
 		return (1);
 	}
 	if ((int_height * ft_dot_product(line.orientation, \
-			(double *)cyl->orientation)) * 0 == 0)
+			(double *)cyl->orientation)) >= 0)
 		return (0);
-	ft_cap_inters(ret, line, figure, int_height);
-	return (0);
+	return (ft_cap_inters(ret, line, figure));
 }
 
 // int inter_cyl_line(t_vector ret, t_line line, void *figure)
