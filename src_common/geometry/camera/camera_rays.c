@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   camera_rays.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/10 15:39:02 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:57:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#incclude <math.h>
+#include <math.h>
 #include "../../common.h"
 
 
-t_list *camera_rays(t_camera *cam, int size[2])
+t_list	*camera_rays(t_camera *cam, int size[2])
 {
 	t_list		*ray_list;
 	double		half_width = (size[0] - 1.0) / 2.0;
@@ -43,13 +43,13 @@ t_list *camera_rays(t_camera *cam, int size[2])
 		i = 0;
 		while (i < size[1])
 		{
-			ray = malloc(t_line);
-			ft_scale_vector(ray->point, cam->point, 1.0); //just copy
-			ft_scale_vector(ray->orientation, aux, 1.0); //just copy
+			ray = malloc(sizeof(t_line));
+			ft_copy_vector(ray->point, cam->point);
+			ft_copy_vector(ray->orientation, aux);
 			ft_scale_vector(aux, horizontal, i - half_width);
 			ft_addition(ray->orientation, ray->orientation, aux);
 			ft_normalize(ray->orientation, ray->orientation);
-			ft_lstadd_front(&ray_list,ft_lstnew(ray));
+			ft_lstadd_front(&ray_list, ft_lstnew(ray));
 			i++;
 		}
 		j++;

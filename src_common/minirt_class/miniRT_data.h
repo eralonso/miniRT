@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 17:13:19 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:48:54 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,12 @@ typedef enum e_minirt_type
 	MRT_CYLINDER,
 }	t_minirt_type;
 
+typedef struct s_intersect_data
+{
+	double	distance;
+	t_plane	tan_plane;
+}	t_intersect_data;
+
 typedef struct s_minirt_data
 {
 	t_graphics		*gr_ctx;
@@ -153,7 +159,7 @@ typedef struct s_minirt_data
 
 typedef int		(*t_object_parser)(t_list *, char **);
 typedef void	(*t_print)(void *);
-typedef int		(*t_intersect)(t_vector , t_line , void *);
+typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);

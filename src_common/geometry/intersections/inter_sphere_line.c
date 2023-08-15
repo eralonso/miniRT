@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_sphere_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 18:04:43 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:31:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <math.h>
 // dependency: Vector3, Line, Plane
 
-int inter_sphere_line(t_vector ret, t_line line, void *figure)
+int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_sphere	*sphere = (t_sphere *)figure;
 	const double	radius = sphere->diameter / 2.0;
@@ -28,9 +28,12 @@ int inter_sphere_line(t_vector ret, t_line line, void *figure)
 	disc = (coefs[0] * coefs[0] - coefs[1]);
 	if (disc < 0)
 		return (0);
-	ft_addition(ret, line.point, ft_scale_vector(ret, \
-		line.orientation, -coefs[0] - sqrt(disc)));
-	ft_normalize(ret, ret);
+	ret->distance = -coefs[0] - sqrt(disc);
+	ret->tan_plane.color = sphere->color;
+	ft_addition(ret->tan_plane.point, line.point, \
+		ft_scale_vector(ret->tan_plane.point, \
+			line.orientation, ret->distance));
+	ft_normalize(ret->tan_plane.point, ret->tan_plane.point);
 	return (1);
 }
 
