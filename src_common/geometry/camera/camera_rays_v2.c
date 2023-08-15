@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/14 15:21:02 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:24:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ static void	origin_configure(t_camera *cam, t_vector origin, int size[2])
 
 static void	camera_configure(t_camera *cam, int width)
 {
-	t_vector	z_axis;
+	t_vector	main_axis;
 
-	z_axis[0] = 0;
-	z_axis[1] = 0;
-	z_axis[2] = 1;
-	cam->focal_dis = ((width - 1.0) / 2.0) / tan(cam->fov / 2);
-	ft_cross_product(cam->horizontal, cam->orientation, z_axis);
+	if (fabs(ft_dot_product(ft_vector_fill_unitary(main_axis, 2), \
+			cam->orientation)) < 0.95)
+		ft_cross_product(cam->horizontal, cam->orientation, main_axis);
+	else
+		ft_cross_product(cam->horizontal, cam->orientation, 
+			ft_vector_fill_unitary(main_axis, 1));
 	ft_normalize(cam->horizontal, cam->horizontal);
+	cam->focal_dis = ((width - 1.0) / 2.0) / tan(cam->fov / 2);
 	ft_cross_product(cam->vertical, cam->orientation, cam->horizontal);
 	ft_normalize(cam->vertical, cam->vertical);
-	// ft_cross_product(cam->orientation, cam->vertical, cam->horizontal);
-	// ft_normalize(cam->orientation, cam->orientation);
 }
 
 void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
