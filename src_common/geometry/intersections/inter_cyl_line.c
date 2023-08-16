@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/15 15:54:10 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:05:22 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	double				sign;
 	double				axe_dist;
 
-	return (0);
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cyl->orientation);
 	sign = -ft_dot_product(line.orientation, (double *)cyl->orientation);
 	ft_addition(ret->tan_plane.point, (double *)cyl->point, \
