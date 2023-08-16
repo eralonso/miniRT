@@ -6,21 +6,12 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/15 16:15:33 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/16 17:34:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "../../common.h"
-
-// t_rgba	get_color(t_figure_type ft, void *figure)
-// {
-// 	if (ft == FT_SPHERE)
-// 		return (((t_sphere *)figure)->color);
-// 	else if (ft == FT_PLANE)
-// 		return (((t_plane *)figure)->color);
-// 	return (((t_cylinder *)figure)->color);
-// }
 
 static void	ft_init_best(t_intersect_data *best)
 {
@@ -57,7 +48,6 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray)
 		ft = *((t_figure_type *)(figures->content)); 
 		if (intersect[ft](&hit, ray, figures->content))
 			ft_take_best_intersection(&best, &hit);
-			// color = get_color(((t_sphere *)(figures->content))->ft, figures->content);
 		figures = figures->next;
 	}
 	return (best.tan_plane.color);
