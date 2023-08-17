@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/17 12:29:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:34:28 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	inter_plane_line(t_intersect_data *res, t_line line, void *figure)
 	res->distance = -(dot2 + d) / dot1;
 	if (res->distance < 0)
 		return (0);
-	sign = dot1 / fabs(dot1);
+	sign = -dot1 / fabs(dot1);
 	ft_scale_vector(res->tan_plane.orientation, \
 		(double *)plane->orientation, sign);
 	res->tan_plane.color = plane->color;
