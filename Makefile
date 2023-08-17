@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/14 16:24:25 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/17 17:41:22 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCC_R			:= ft_read_map.c\
 					geometry/intersections/ft_quadrat_eq.c\
 					geometry/intersections/inter_sphere_line.c\
 					geometry/intersections/inter_plane_line.c\
+					geometry/intersections/inter_cone_line.c\
 					geometry/intersections/inter_cyl_line.c
 
 SRC_R			:= main.c

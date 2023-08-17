@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/17 12:56:35 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/17 15:40:28 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ typedef enum e_figure_type
 {
 	FT_SPHERE,
 	FT_PLANE,
-	FT_CYLINDER
+	FT_CYLINDER,
+	FT_CONE
 }	t_figure_type;
 
 typedef struct line_s
@@ -127,6 +128,16 @@ typedef struct s_cylinder
 	t_rgba			color;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	t_figure_type	ft;
+	t_vector		point;
+	t_vector		orientation;
+	double			theta;
+	double			heights[2];
+	t_rgba			color;
+}	t_cone;
+
 typedef enum e_minirt_type
 {
 	MRT_INVALID,
@@ -137,6 +148,7 @@ typedef enum e_minirt_type
 	MRT_SPHERE,
 	MRT_PLANE,
 	MRT_CYLINDER,
+	MRT_CONE
 }	t_minirt_type;
 
 typedef struct s_intersect_data
