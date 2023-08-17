@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/17 17:40:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/17 17:44:01 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_substraction(int_rel_center, line_int, center);
 	ft_cross_product(ret->tan_plane.orientation, \
-		cone->orientation, int_rel_center);
+		(double *)cone->orientation, int_rel_center);
 	ft_cross_product(ret->tan_plane.orientation, \
 		ret->tan_plane.orientation, int_rel_center);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
@@ -83,7 +83,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 
 int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 {
-	const t_cone	*cone = (t_cylinder *)figure;
+	const t_cone	*cone = (t_cone *)figure;
 	double			coef[3];
 	double			int_height;
 	t_vector		line_int;
