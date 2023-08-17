@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/16 17:35:40 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:01:52 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 	ft_addition(ret->tan_plane.point, line.point, \
 		ft_scale_vector(ret->tan_plane.point, \
 			line.orientation, ret->distance));
-	ft_normalize(ret->tan_plane.point, ret->tan_plane.point);
+	ft_substraction(ret->tan_plane.orientation, \
+		ret->tan_plane.point, (double *)sphere->point);
+	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
 	return (1);
 }

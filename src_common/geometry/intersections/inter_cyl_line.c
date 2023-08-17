@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/16 17:37:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:22:02 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,19 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	return (axe_dist <= (cyl->diameter * cyl->diameter / 4.0));
 }
 
+static int	ft_give_inters(t_intersect_data *ret, \
+	t_vector line_int, const t_cylinder *cyl, double int_height)
+{
+	t_vector	center;
+
+	ft_addition(center, (double *) cyl->point, \
+		ft_scale_vector(center, (double *) cyl->orientation, int_height));
+	ft_copy_vector(ret->tan_plane.point, line_int);
+	ft_substraction(ret->tan_plane.orientation, line_int, center);
+	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
+	return (1);
+}
+
 int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_cylinder	*cyl = (t_cylinder *)figure;
@@ -75,10 +88,7 @@ int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 	int_height = ft_dot_product((double *)cyl->orientation, \
 		ft_substraction(ret->tan_plane.point, line_int, (double *)cyl->point));
 	if (fabs(int_height) < (cyl->height / 2.0))
-	{
-		ft_copy_vector(ret->tan_plane.point, line_int);
-		return (1);
-	}
+		return (ft_give_inters(ret, line_int, cyl, int_height));
 	if ((int_height * ft_dot_product(line.orientation, \
 			(double *)cyl->orientation)) >= 0)
 		return (0);
