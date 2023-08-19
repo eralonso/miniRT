@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/17 17:41:22 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/19 18:33:27 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_isorientation.c\
 					utils/ft_isfov.c\
 					utils/ft_islight_ratio.c\
+					utils/colors.c\
 					geometry/vector_class.c\
 					geometry/matrix_class.c\
 					geometry/ft_addition.c\

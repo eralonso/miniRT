@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/04 18:10:59 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:35:45 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@
 # define ISFOV_NIR "Is not in range: [0 - 180]\n"
 # define ISLIGHT_RATIO_NIR "Is not in range: [0.0 - 1.0]\n"
 
-int		ft_matrixlen(char **matrix);
-int		ft_isdouble(char *str, double *ret);
-int		ft_isunsignedchar(char *str, unsigned char *ret);
-int		ft_isrgb(char *str, t_rgba *ret);
-double	ft_strtod(const char *str);
-int		ft_isvector(char *str, t_vector vect);
-int		ft_validate_double(char *str);
-int		ft_isorientation(char *str, t_vector orient);
-int		ft_isfov(char *str, double *fov);
-int		ft_islight_ratio(char *str, double *light);
+int				ft_matrixlen(char **matrix);
+int				ft_isdouble(char *str, double *ret);
+int				ft_isunsignedchar(char *str, unsigned char *ret);
+int				ft_isrgb(char *str, t_rgba *ret);
+double			ft_strtod(const char *str);
+int				ft_isvector(char *str, t_vector vect);
+int				ft_validate_double(char *str);
+int				ft_isorientation(char *str, t_vector orient);
+int				ft_isfov(char *str, double *fov);
+int				ft_islight_ratio(char *str, double *light);
+unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2);
+t_rgba			ft_rgba_addition(t_rgba color1, t_rgba color2);
+t_rgba			ft_col_light(t_rgba color_source, double ratio, \
+							t_rgba surf_col);
 
 #endif

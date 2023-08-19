@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/19 11:48:23 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:29:48 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 	camera_configure(cam, size[W]);
 	origin_configure(cam, origin, size);
 	ft_copy_vector(ray.point, cam->point);
-	printf("light.point[0]: %f && light.point[1]: %f && light.point[2]: %f\n", minirt->light.point[0], minirt->light.point[1], minirt->light.point[2]);
 	iter[H] = -1;
 	while (++iter[H] < size[H])
 	{
