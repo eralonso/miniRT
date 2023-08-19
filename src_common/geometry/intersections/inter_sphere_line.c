@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/17 12:49:35 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:50:35 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 	if (disc < 0)
 		return (0);
 	ret->distance = -coefs[0] - sqrt(disc);
+	if (ret->distance < 0)
+		ret->distance = -coefs[0] + sqrt(disc);
+	if (ret->distance < 0)
+		return (0);
 	ret->tan_plane.color = sphere->color;
 	ft_addition(ret->tan_plane.point, line.point, \
 		ft_scale_vector(ret->tan_plane.point, \
