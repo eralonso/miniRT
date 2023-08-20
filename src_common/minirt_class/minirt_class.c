@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 13:05:37 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:49:49 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	check_object(t_minirt_data *minirt, t_list *node,
 		return (ft_log_error("Ambient light must be only once\n"));
 	else if (mrtt == MRT_CAMERA && minirt->camera.count == 1)
 		return (ft_log_error("Camera must be only once\n"));
-	else if (mrtt == MRT_LIGHT && minirt->light.count == 1)
-		return (ft_log_error("Light must be only once\n"));
+	// else if (mrtt == MRT_LIGHT && minirt->light.count == 1)
+	// 	return (ft_log_error("Light must be only once\n"));
 	return (1);
 }
 
@@ -39,8 +39,10 @@ static int	ft_save_object(t_minirt_data *minirt, t_list *node,
 	else if (mrtt == MRT_CAMERA)
 		ft_memcpy(&minirt->camera, node->content, sizeof(t_camera));
 	else if (mrtt == MRT_LIGHT)
-		ft_memcpy(&minirt->light, node->content, sizeof(t_light));
-	ft_lstdelone(node, free);
+		ft_lstadd_front(&minirt->lights, node);
+		// ft_memcpy(&minirt->light, node->content, sizeof(t_light));
+	if (mrtt != MRT_LIGHT)
+		ft_lstdelone(node, free);
 	return (1);
 }
 
