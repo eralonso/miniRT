@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/20 13:35:33 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/20 13:41:57 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray)
 	best = get_best_intersect(minirt->figures, ray, intersect, -1);
 	color = best.tan_plane.color;
 	if (best.distance != INFINITY)
-		best.tan_plane.color = shader(minirt, best, \
-			intersect, minirt->figures);
-	best.tan_plane.color = ft_rgba_addition(best.tan_plane.color, \
-		ft_col_light(minirt->ambient.color, minirt->ambient.ratio, color));
+		color = shader(minirt, best, intersect, minirt->figures);
+	best.tan_plane.color = ft_rgba_addition(color, ft_col_light(\
+	minirt->ambient.color, minirt->ambient.ratio, best.tan_plane.color));
 	return (best.tan_plane.color);
 }
