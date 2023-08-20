@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/19 18:35:45 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/20 13:18:05 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2);
 t_rgba			ft_rgba_addition(t_rgba color1, t_rgba color2);
 t_rgba			ft_col_light(t_rgba color_source, double ratio, \
 							t_rgba surf_col);
+t_rgba			get_background_color(void);
 
 #endif

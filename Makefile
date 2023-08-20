@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/19 18:33:27 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/20 13:31:23 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ SRCC_R			:= ft_read_map.c\
 					geometry/intersections/inter_sphere_line.c\
 					geometry/intersections/inter_plane_line.c\
 					geometry/intersections/inter_cone_line.c\
-					geometry/intersections/inter_cyl_line.c
+					geometry/intersections/inter_cyl_line.c\
+					geometry/intersections/best_intersection.c
 
 SRC_R			:= main.c
 

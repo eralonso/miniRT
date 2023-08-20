@@ -6,12 +6,17 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 18:30:33 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/19 18:36:37 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/20 13:18:41 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../common.h"
 #include <math.h>
+
+t_rgba	get_background_color(void)
+{
+	return ((t_rgba){127, 127, 127, 0});
+}
 
 unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2)
 {
