@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 19:15:02 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:08:18 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define SPHERE_COMPONENTS_NUMBER 4
 # define PLANE_COMPONENTS_NUMBER 4
 # define CYLINDER_COMPONENTS_NUMBER 6
+# define CONE_COMPONENTS_NUMBER 7
 
 # define ERR_AMBIENT_COMPONENTS_NUMBER \
 		"Invalid number of components for ambient light\n"
@@ -47,8 +48,13 @@
 		"Invalid number of components for cylinder\n"
 # define ERR_CYLINDER_MALLOC_FAILED \
 		"Malloc failed when allocating cylinder\n"
+# define ERR_CONE_COMPONENTS_NUMBER \
+		"Invalid number of components for cone\n"
+# define ERR_CONE_MALLOC_FAILED \
+		"Malloc failed when allocating cone\n"
 # define ERR_MISSED_ARGUMENTS_AT_PARSE \
 		"Missed arguments at parse\n"
+
 
 typedef double	t_vector[3];
 

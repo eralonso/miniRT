@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 13:18:05 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 13:02:07 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 # define ISDOUBLE_NIR "Is not in range\n"
 # define ISORIENTATION_MOD_TOO_LOW "Orientation module too low\n"
 # define ISORIENTATION_COMPS_OOR "Orientation component out of range\n"
-# define ISFOV_NIR "Is not in range: [0 - 180]\n"
-# define ISLIGHT_RATIO_NIR "Is not in range: [0.0 - 1.0]\n"
+# define ISFOV_NIR "FOV is not in range: [0 - 180]\n"
+# define ISTHETA_NIR "Theta is not in range: [0 - 90]\n"
+# define ISLIGHT_RATIO_NIR "Light ratio is not in range: [0.0 - 1.0]\n"
 
 int				ft_matrixlen(char **matrix);
 int				ft_isdouble(char *str, double *ret);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_figures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:07:45 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:11:31 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,32 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 	}
 	free_x((void **)&node->content);
 	node->content = cylinder;
+	return (1);
+}
+
+int	ft_parse_cone(t_list *node, char **str_arr)
+{
+	t_cone	*cone;
+
+	if (!str_arr || !node)
+		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
+	cone = malloc(sizeof(t_cone));
+	if (!cone)
+		return (ft_log_error(ERR_CONE_MALLOC_FAILED));
+	cone->ft = FT_CONE;
+	if (ft_matrixlen(str_arr) != CONE_COMPONENTS_NUMBER)
+		return (ft_log_error(ERR_CONE_COMPONENTS_NUMBER));
+	if (!ft_isvector(str_arr[1], cone->point)
+		|| !ft_isorientation(str_arr[2], cone->orientation)
+		|| !ft_isdouble(str_arr[3], &cone->theta)
+		|| !ft_isdouble(str_arr[4], &cone->heights[0])
+		|| !ft_isdouble(str_arr[5], &cone->heights[1])
+		|| !ft_isrgb(str_arr[6], &cone->color))
+	{
+		free(cone);
+		return (0);
+	}
+	free_x((void **)&node->content);
+	node->content = cone;
 	return (1);
 }
