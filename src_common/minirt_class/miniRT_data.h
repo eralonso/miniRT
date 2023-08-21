@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 19:15:02 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:10:06 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,9 +153,10 @@ typedef enum e_minirt_type
 
 typedef struct s_intersect_data
 {
-	double	distance;
-	int		pos;
-	t_plane	tan_plane;
+	double			distance;
+	int				pos;
+	t_plane			tan_plane;
+	t_figure_type	ft;
 }	t_intersect_data;
 
 typedef struct s_minirt_data

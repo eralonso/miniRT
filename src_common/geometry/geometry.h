@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 19:14:49 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:08:54 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ double				**ft_matrix_x_matrix(t_matrix a, t_matrix b);
 double				*ft_copy_vector(t_vector dst, t_vector src);
 void				camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 						t_img *img, int size[2]);
-t_rgba				raytrace(t_minirt_data *minirt, t_line ray);
+t_rgba				raytrace(t_minirt_data *minirt, t_line ray, int depth);
 t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
 							t_intersect *intersect, int exclude);
 double				ft_quadrat_eq(double coef[3]);
