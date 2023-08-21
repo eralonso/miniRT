@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cyl_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 17:19:03 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:44:40 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 
 	if (!ft_coef_calc(coef, line, cyl))
 		return (ft_cap_inters(ret, line, figure));
-	ret->distance = ft_quadrat_eq(coef);
+	ret->distance = ft_quadrat_eq(coef, 1);
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
 	ret->tan_plane.color = cyl->color;

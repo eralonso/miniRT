@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 19:14:49 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:44:07 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void				camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 t_rgba				raytrace(t_minirt_data *minirt, t_line ray);
 t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
 							t_intersect *intersect, int exclude);
-double				ft_quadrat_eq(double coef[3]);
+double				ft_quadrat_eq(double coef[3], int sign);
 int					inter_plane_line(t_intersect_data *res, \
 									t_line line, void *figure);
 int					inter_sphere_line(t_intersect_data *ret, \
 									t_line line, void *figure);
 int					inter_cyl_line(t_intersect_data *ret, \
+									t_line line, void *figure);
+int					inter_cone_line(t_intersect_data *ret, \
 									t_line line, void *figure);
 
 #endif

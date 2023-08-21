@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   best_intersection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/20 19:15:23 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:14:45 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
 	hit.pos = -1;
 	while (figures)
 	{
-		ft = *((t_figure_type *)(figures->content)); 
+		ft = *((t_figure_type *)(figures->content));
 		if (++hit.pos != exclude && intersect[ft](&hit, ray, \
 			figures->content))
 			ft_take_best_intersection(&best, &hit);

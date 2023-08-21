@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quadrat_eq.c                                    :+:      :+:    :+:   */
+/*   ft_ispositivedouble.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 10:00:29 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 16:42:53 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/08/21 14:29:49 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/08/21 14:32:38 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math.h"
+#include "../../libft/libft.h"
+#include "../common.h"
+#include <math.h>
 
-double	ft_quadrat_eq(double coef[3], int sign)
+int	ft_ispositivedouble(char *str, double *value)
 {
-	double	disc;
-	double	dsign;
-
-	dsign = 1.0 * sign;
-	dsign /= fabs(dsign);
-	disc = (coef[1] * coef[1] - dsign * coef[0] * coef[2]);
-	if (disc < 0)
-		return (INFINITY); 
-	return ((-coef[1] - sqrt(disc)) / coef[0]);
+	if (!ft_isdouble(str, value))
+		return (0);
+	if (*value < 0)
+		return (ft_log_error(ISPOSITIVEDOUBLE_NIR));
+	return (1);
 }

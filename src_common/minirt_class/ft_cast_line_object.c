@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cast_line_object.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:48:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:41:42 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:26:28 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static t_minirt_type	ft_get_object_type(char *id)
 		return (MRT_SPHERE);
 	if (!ft_strncmp(id, "cy", len))
 		return (MRT_CYLINDER);
+	if (!ft_strncmp(id, "cn", len))
+		return (MRT_CONE);
 	if (!ft_strncmp(id, "A", len))
 		return (MRT_AMBIENT);
 	if (!ft_strncmp(id, "C", len))
@@ -38,7 +40,7 @@ static t_minirt_type	ft_parse_object(t_list *node, \
 										char **str_arr, \
 										t_minirt_type mrtt)
 {
-	t_object_parser	parser[8];
+	t_object_parser	parser[9];
 	int				parse_res;
 
 	parser[MRT_INVALID] = NULL;
@@ -49,6 +51,7 @@ static t_minirt_type	ft_parse_object(t_list *node, \
 	parser[MRT_SPHERE] = ft_parse_sphere;
 	parser[MRT_PLANE] = ft_parse_plane;
 	parser[MRT_CYLINDER] = ft_parse_cylinder;
+	parser[MRT_CONE] = ft_parse_cone;
 	if (parser[mrtt])
 	{
 		parse_res = parser[mrtt](node, str_arr);
@@ -74,6 +77,8 @@ t_minirt_type	ft_cast_line_object(t_list *node)
 		return (MRT_EMPTY);
 	}
 	mrtt = ft_get_object_type(str_arr[0]);
+	if (mrtt == MRT_INVALID)
+		return (ft_log_error("Invalid type of object\n"));
 	mrtt = ft_parse_object(node, str_arr, mrtt);
 	ft_delete_str_arr(str_arr);
 	return (mrtt);

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 12:08:18 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:39:39 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);
 int	ft_parse_cylinder(t_list *node, char **str_arr);
+int	ft_parse_cone(t_list *node, char **str_arr);
 int	ft_parse_ambient(t_list *node, char **str_arr);
 int	ft_parse_camera(t_list *node, char **str_arr);
 int	ft_parse_light(t_list *node, char **str_arr);

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 12:11:31 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:23:51 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_SPHERE_COMPONENTS_NUMBER));
 	}
 	if (!ft_isvector(str_arr[1], sphere->point)
-		|| !ft_isdouble(str_arr[2], &sphere->diameter)
+		|| !ft_ispositivedouble(str_arr[2], &sphere->diameter)
 		|| !ft_isrgb(str_arr[3], &sphere->color))
 	{
 		free(sphere);
@@ -77,8 +77,8 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_CYLINDER_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], cylinder->point)
 		|| !ft_isorientation(str_arr[2], cylinder->orientation)
-		|| !ft_isdouble(str_arr[3], &cylinder->diameter)
-		|| !ft_isdouble(str_arr[4], &cylinder->height)
+		|| !ft_ispositivedouble(str_arr[3], &cylinder->diameter)
+		|| !ft_ispositivedouble(str_arr[4], &cylinder->height)
 		|| !ft_isrgb(str_arr[5], &cylinder->color))
 	{
 		free(cylinder);
@@ -103,9 +103,9 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_CONE_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], cone->point)
 		|| !ft_isorientation(str_arr[2], cone->orientation)
-		|| !ft_isdouble(str_arr[3], &cone->theta)
-		|| !ft_isdouble(str_arr[4], &cone->heights[0])
-		|| !ft_isdouble(str_arr[5], &cone->heights[1])
+		|| !ft_istheta(str_arr[3], &cone->theta)
+		|| !ft_ispositivedouble(str_arr[4], &cone->heights[0])    
+		|| !ft_ispositivedouble(str_arr[5], &cone->heights[1])
 		|| !ft_isrgb(str_arr[6], &cone->color))
 	{
 		free(cone);

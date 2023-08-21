@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/17 17:44:01 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:55:45 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	double		cap_radius;
 
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cone->orientation);
-	sign = -ft_dot_product(line.orientation, (double *)cone->orientation);
-	sign /= fabs(sign);
+	sign = ft_dot_product(line.orientation, (double *)cone->orientation);
+	sign /= -fabs(sign);
 	height = cone->heights[(int)round((sign + 1.0) / 2.0)];
 	ft_addition(cap_center, (double *)cone->point, \
 		ft_scale_vector(cap_center, (double *)cone->orientation, height));
@@ -76,7 +76,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ft_cross_product(ret->tan_plane.orientation, \
 		(double *)cone->orientation, int_rel_center);
 	ft_cross_product(ret->tan_plane.orientation, \
-		ret->tan_plane.orientation, int_rel_center);
+		int_rel_center, ret->tan_plane.orientation);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
 	return (1);
 }
@@ -90,7 +90,7 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 
 	if (!ft_coef_calc(coef, line, cone))
 		return (ft_cap_inters(ret, line, figure));
-	ret->distance = ft_quadrat_eq(coef);
+	ret->distance = ft_quadrat_eq(coef, 1);
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
 	ret->tan_plane.color = cone->color;
@@ -101,7 +101,7 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 	if (int_height > cone->heights[0] && int_height < cone->heights[1])
 		return (ft_give_inters(ret, line_int, cone, int_height));
 	if ((int_height * ft_dot_product(line.orientation, \
-			(double *)cone->orientation)) >= 0)
+			(double *)cone->orientation)) <= 0)
 		return (0);
 	return (ft_cap_inters(ret, line, cone));
 }
