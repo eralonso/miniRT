@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/21 12:50:49 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:28:43 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 t_line	gen_shadow_ray(t_light *light, \
 					t_intersect_data best, double *dis)
 {
-	t_line	ray;
+	t_line		ray;
+	t_vector	trash;
 
 	ft_copy_vector(ray.point, light->point);
+	ft_addition(ray.point, ray.point, ft_scale_vector(trash, best.tan_plane.orientation, 0.0006));
 	ft_substraction(ray.orientation, best.tan_plane.point, \
 		light->point);
 	if (dis)
@@ -58,23 +60,41 @@ t_rgba	shader(t_light *light, t_intersect_data best, \
 	t_line				sr;
 	t_intersect_data	hit;
 	double				res;
+	double				res2;
 	double				dis;
+	double				kr;
+	double				ratio;
+	t_vector			trash;
 
 	sr = gen_shadow_ray(light, best, &dis);
 	res = -ft_dot_product(best.tan_plane.orientation, sr.orientation);
+	res2 = ft_dot_product(ft_scale_vector(trash, ray.orientation, -1), get_reflect_ray(sr, best).orientation);
+	if (res2 < 0)
+		res2 = 0;
+	res2 = pow(res, 50);
 	if (res < 0)
+		res = 0;
+	res = res * 0.4 + res2;
+	ratio = light->brightness;
+	kr = 0;
+	if (best.ft == FT_PLANE)
+		kr = 0.6;
+	else
+		kr = 0.6;
+	if (res < 0 && !kr)
 		return ((t_rgba){0, 0, 0, 0});
+	// else if (res < 0)
+	// 	res = 0;
 	hit = get_best_intersect(figures, sr, intersect, best.pos);
 	if (hit.distance < dis)
 		return ((t_rgba){0, 0, 0, 0});
 	(void)ray;
 	(void)minirt;
 	(void)depth;
-	if (best.ft == FT_PLANE)
-		best.tan_plane.color = ft_rgba_addition(best.tan_plane.color, \
-			ft_rgba_scale(raytrace(minirt, get_reflect_ray(ray, best), depth - 1), 0.8));
-	return (ft_col_light(light->color, res * \
-		light->brightness, best.tan_plane.color));
+	if (kr)
+		best.tan_plane.color = ft_rgba_addition(ft_rgba_scale(ft_rgba_scale(best.tan_plane.color, res), 1 - kr), \
+			ft_rgba_scale(raytrace(minirt, get_reflect_ray(ray, best), depth - 1), kr * (res + 0.1)));
+	return (ft_col_light(light->color, light->brightness, best.tan_plane.color));
 }
 
 t_rgba	get_sum_lights(t_list *lights, t_intersect_data best, \
