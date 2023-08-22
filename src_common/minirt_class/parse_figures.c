@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 15:23:51 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:24:26 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 	}
 	if (!ft_isvector(str_arr[1], sphere->point)
 		|| !ft_ispositivedouble(str_arr[2], &sphere->diameter)
-		|| !ft_isrgb(str_arr[3], &sphere->color))
+		|| !ft_isrgb(str_arr[3], &sphere->color)
+		|| !ft_isratio(str_arr[4], &sphere->reflec_ratio))
 	{
 		free(sphere);
 		return (0);
@@ -53,7 +54,8 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_PLANE_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], plane->point)
 		|| !ft_isorientation(str_arr[2], plane->orientation)
-		|| !ft_isrgb(str_arr[3], &plane->color))
+		|| !ft_isrgb(str_arr[3], &plane->color)
+		|| !ft_isratio(str_arr[4], &plane->reflec_ratio))
 	{
 		free(plane);
 		return (0);
@@ -79,7 +81,8 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 		|| !ft_isorientation(str_arr[2], cylinder->orientation)
 		|| !ft_ispositivedouble(str_arr[3], &cylinder->diameter)
 		|| !ft_ispositivedouble(str_arr[4], &cylinder->height)
-		|| !ft_isrgb(str_arr[5], &cylinder->color))
+		|| !ft_isrgb(str_arr[5], &cylinder->color)
+		|| !ft_isratio(str_arr[6], &cylinder->reflec_ratio))
 	{
 		free(cylinder);
 		return (0);
@@ -106,7 +109,8 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 		|| !ft_istheta(str_arr[3], &cone->theta)
 		|| !ft_ispositivedouble(str_arr[4], &cone->heights[0])    
 		|| !ft_ispositivedouble(str_arr[5], &cone->heights[1])
-		|| !ft_isrgb(str_arr[6], &cone->color))
+		|| !ft_isrgb(str_arr[6], &cone->color)
+		|| !ft_isratio(str_arr[7], &cone->reflec_ratio))
 	{
 		free(cone);
 		return (0);

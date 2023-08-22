@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 15:17:13 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:22:52 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # define AMBIENT_COMPONENTS_NUMBER 3
 # define CAMERA_COMPONENTS_NUMBER 4
 # define LIGHT_COMPONENTS_NUMBER 4
-# define SPHERE_COMPONENTS_NUMBER 4
-# define PLANE_COMPONENTS_NUMBER 4
-# define CYLINDER_COMPONENTS_NUMBER 6
-# define CONE_COMPONENTS_NUMBER 7
+# define SPHERE_COMPONENTS_NUMBER 5
+# define PLANE_COMPONENTS_NUMBER 5
+# define CYLINDER_COMPONENTS_NUMBER 7
+# define CONE_COMPONENTS_NUMBER 8
 
 # define ERR_AMBIENT_COMPONENTS_NUMBER \
 		"Invalid number of components for ambient light\n"
@@ -113,6 +113,7 @@ typedef struct s_sphere
 	t_vector		point;
 	double			diameter;
 	t_rgba			color;
+	double			reflec_ratio;
 }	t_sphere;
 
 typedef struct s_plane
@@ -121,6 +122,7 @@ typedef struct s_plane
 	t_vector		point;
 	t_vector		orientation;
 	t_rgba			color;
+	double			reflec_ratio;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -131,6 +133,7 @@ typedef struct s_cylinder
 	double			diameter;
 	double			height;
 	t_rgba			color;
+	double			reflec_ratio;
 }	t_cylinder;
 
 typedef struct s_cone
@@ -141,6 +144,7 @@ typedef struct s_cone
 	double			theta;
 	double			heights[2];
 	t_rgba			color;
+	double			reflec_ratio;
 }	t_cone;
 
 typedef enum e_minirt_type

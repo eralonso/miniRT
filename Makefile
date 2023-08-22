@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/22 15:31:28 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/22 16:19:09 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_isfov.c\
 					utils/ft_ispositivedouble.c\
 					utils/ft_istheta.c\
-					utils/ft_islight_ratio.c\
+					utils/ft_isratio.c\
 					utils/colors.c\
 					geometry/vector_class.c\
 					geometry/matrix_class.c\

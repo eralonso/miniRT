@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene_obj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:50:28 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/04 18:10:42 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:20:39 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_parse_ambient(t_list *node, char **str_arr)
 		free(ambient);
 		return (ft_log_error(ERR_AMBIENT_COMPONENTS_NUMBER));
 	}
-	if (!ft_islight_ratio(str_arr[1], &ambient->ratio)
+	if (!ft_isratio(str_arr[1], &ambient->ratio)
 		|| !ft_isrgb(str_arr[2], &ambient->color))
 	{
 		free(ambient);
@@ -81,7 +81,7 @@ int	ft_parse_light(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_LIGHT_COMPONENTS_NUMBER));
 	}
 	if (!ft_isvector(str_arr[1], light->point)
-		|| !ft_islight_ratio(str_arr[2], &light->brightness)
+		|| !ft_isratio(str_arr[2], &light->brightness)
 		|| !ft_isrgb(str_arr[3], &light->color))
 	{
 		free(light);
