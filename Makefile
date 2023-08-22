@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/21 14:34:52 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/22 12:52:35 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,6 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_strtod.c\
 					utils/ft_isorientation.c\
 					utils/ft_isfov.c\
-					utils/ft_ispositivedouble.c\
-					utils/ft_istheta.c\
 					utils/ft_islight_ratio.c\
 					utils/colors.c\
 					geometry/vector_class.c\
@@ -50,6 +48,7 @@ SRCC_R			:= ft_read_map.c\
 					geometry/matrix_product.c\
 					geometry/camera/camera_rays_v2.c\
 					geometry/raytrace/raytrace.c\
+					geometry/raytrace/gen_ray.c\
 					geometry/intersections/ft_quadrat_eq.c\
 					geometry/intersections/inter_sphere_line.c\
 					geometry/intersections/inter_plane_line.c\

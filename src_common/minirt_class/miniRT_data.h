@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 14:39:39 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:59:55 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define SPHERE_COMPONENTS_NUMBER 4
 # define PLANE_COMPONENTS_NUMBER 4
 # define CYLINDER_COMPONENTS_NUMBER 6
-# define CONE_COMPONENTS_NUMBER 7
 
 # define ERR_AMBIENT_COMPONENTS_NUMBER \
 		"Invalid number of components for ambient light\n"
@@ -48,13 +47,8 @@
 		"Invalid number of components for cylinder\n"
 # define ERR_CYLINDER_MALLOC_FAILED \
 		"Malloc failed when allocating cylinder\n"
-# define ERR_CONE_COMPONENTS_NUMBER \
-		"Invalid number of components for cone\n"
-# define ERR_CONE_MALLOC_FAILED \
-		"Malloc failed when allocating cone\n"
 # define ERR_MISSED_ARGUMENTS_AT_PARSE \
 		"Missed arguments at parse\n"
-
 
 typedef double	t_vector[3];
 
@@ -159,9 +153,11 @@ typedef enum e_minirt_type
 
 typedef struct s_intersect_data
 {
-	double	distance;
-	int		pos;
-	t_plane	tan_plane;
+	double			distance;
+	int				pos;
+	t_plane			tan_plane;
+	t_figure_type	ft;
+	double			kr;
 }	t_intersect_data;
 
 typedef struct s_minirt_data
@@ -184,7 +180,6 @@ typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);
 int	ft_parse_cylinder(t_list *node, char **str_arr);
-int	ft_parse_cone(t_list *node, char **str_arr);
 int	ft_parse_ambient(t_list *node, char **str_arr);
 int	ft_parse_camera(t_list *node, char **str_arr);
 int	ft_parse_light(t_list *node, char **str_arr);

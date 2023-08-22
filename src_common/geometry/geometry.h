@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 16:44:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:59:23 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ double				**ft_matrix_x_matrix(t_matrix a, t_matrix b);
 double				*ft_copy_vector(t_vector dst, t_vector src);
 void				camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 						t_img *img, int size[2]);
-t_rgba				raytrace(t_minirt_data *minirt, t_line ray);
+t_rgba				raytrace(t_minirt_data *minirt, t_line ray, int depth);
 t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
 							t_intersect *intersect, int exclude);
-double				ft_quadrat_eq(double coef[3], int sign);
+double				ft_quadrat_eq(double coef[3]);
 int					inter_plane_line(t_intersect_data *res, \
 									t_line line, void *figure);
 int					inter_sphere_line(t_intersect_data *ret, \
 									t_line line, void *figure);
 int					inter_cyl_line(t_intersect_data *ret, \
 									t_line line, void *figure);
-int					inter_cone_line(t_intersect_data *ret, \
-									t_line line, void *figure);
+t_line				gen_shadow_ray(t_light *light, \
+					t_intersect_data best, double *dis);
+t_line				gen_reflect_ray(t_line ray, t_intersect_data hit);
+
 
 #endif

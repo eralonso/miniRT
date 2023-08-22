@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 18:30:33 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/20 18:50:01 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:48:24 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_rgba	get_background_color(void)
 {
-	return ((t_rgba){127, 127, 127, 0});
+	return ((t_rgba){0, 0, 0, 0});
 }
 
 unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2)
@@ -36,6 +36,17 @@ t_rgba	ft_rgba_addition(t_rgba color1, t_rgba color2)
 	ret.g = check_addition_rgba(color1.g, color2.g);
 	ret.b = check_addition_rgba(color1.b, color2.b);
 	ret.a = check_addition_rgba(color1.a, color2.a);
+	return (ret);
+}
+
+t_rgba	ft_rgba_scale(t_rgba color, double scale)
+{
+	t_rgba	ret;
+
+	ret.r = color.r * scale;
+	ret.g = color.g * scale;
+	ret.b = color.b * scale;
+	ret.a = color.a * scale;
 	return (ret);
 }
 

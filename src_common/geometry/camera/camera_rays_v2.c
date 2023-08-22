@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 19:15:10 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:09:03 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 				cam->vertical, iter[H]));
 			ft_substraction(ray.orientation, pixel, ray.point);
 			ft_normalize(ray.orientation, ray.orientation);
-			ft_pixel_put(img, iter[W], iter[H], raytrace(minirt, ray));
+			ft_pixel_put(img, iter[W], iter[H], raytrace(minirt, ray, 2));
 		}
 	}
 }
