@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 12:08:54 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:59:23 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ int					inter_sphere_line(t_intersect_data *ret, \
 									t_line line, void *figure);
 int					inter_cyl_line(t_intersect_data *ret, \
 									t_line line, void *figure);
+t_line				gen_shadow_ray(t_light *light, \
+					t_intersect_data best, double *dis);
+t_line				gen_reflect_ray(t_line ray, t_intersect_data hit);
+
 
 #endif
