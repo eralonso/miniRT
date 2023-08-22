@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/22 13:00:41 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:33:10 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,10 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray, int depth)
 {
 	t_intersect_data	best;
 	t_rgba				color;
-	static t_intersect	intersect[3] = {inter_sphere_line, \
-									inter_plane_line, inter_cyl_line};
-
+	static t_intersect	intersect[4] = {inter_sphere_line, \
+									inter_plane_line, \
+									inter_cyl_line, \
+									inter_cone_line};
 	if (depth == 0)
 		return (get_background_color());
 	best = get_best_intersect(minirt->figures, ray, intersect, -1);

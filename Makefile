@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
+#    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/22 12:52:35 by eralonso         ###   ########.fr        #
+#    Updated: 2023/08/22 15:31:28 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_strtod.c\
 					utils/ft_isorientation.c\
 					utils/ft_isfov.c\
+					utils/ft_ispositivedouble.c\
+					utils/ft_istheta.c\
 					utils/ft_islight_ratio.c\
 					utils/colors.c\
 					geometry/vector_class.c\
@@ -78,7 +80,7 @@ DEPS			:= $(addprefix $(BUILD_PATH), $(SRC:.c=.d))
 DEPSB			:= $(addprefix $(BUILD_PATH), $(SRCB:.c=.d))
 
 CC				:= 	@gcc
-CFLAGS			:= -Wall -Werror -Wextra -g
+CFLAGS			:= -Wall -Werror -Wextra -g -fsanitize=address
 CFD				:= -MMD
 RM				:= 	@rm -f
 LIBC 			:= 	@ar -rcs
