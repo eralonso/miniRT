@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 17:41:26 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:20:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int				ft_isorientation(char *str, t_vector orient);
 int				ft_isfov(char *str, double *fov);
 int				ft_istheta(char *str, double *theta);
 int				ft_ispositivedouble(char *str, double *value);
-int				ft_isratio(char *str, double *value);
+int				ft_isratio(char *str, double *light);
 unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2);
 t_rgba			ft_rgba_addition(t_rgba color1, t_rgba color2);
 t_rgba			ft_rgba_scale(t_rgba color, double scale);

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 16:47:24 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:44:40 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
 	ret->tan_plane.color = cyl->color;
-	ret->kr = cyl->reflec_ratio;
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));
 	int_height = ft_dot_product((double *)cyl->orientation, \

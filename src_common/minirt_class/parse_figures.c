@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 18:00:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:24:26 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 	if (!ft_isvector(str_arr[1], cone->point)
 		|| !ft_isorientation(str_arr[2], cone->orientation)
 		|| !ft_istheta(str_arr[3], &cone->theta)
-		|| !ft_ispositivedouble(str_arr[4], &cone->heights[0])
+		|| !ft_ispositivedouble(str_arr[4], &cone->heights[0])    
 		|| !ft_ispositivedouble(str_arr[5], &cone->heights[1])
 		|| !ft_isrgb(str_arr[6], &cone->color)
 		|| !ft_isratio(str_arr[7], &cone->reflec_ratio))

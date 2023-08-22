@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 16:48:04 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 13:11:18 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
 	ret->tan_plane.color = cone->color;
-	ret->kr = cone->reflec_ratio;
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));
 	int_height = ft_dot_product((double *)cone->orientation, \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_plane_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 16:45:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/19 15:10:49 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	inter_plane_line(t_intersect_data *res, t_line line, void *figure)
 	ft_scale_vector(res->tan_plane.orientation, \
 		(double *)plane->orientation, sign);
 	res->tan_plane.color = plane->color;
-	res->kr = plane->reflec_ratio;
 	ft_addition(res->tan_plane.point, line.point, \
 		ft_scale_vector(res->tan_plane.point, \
 			line.orientation, res->distance));
