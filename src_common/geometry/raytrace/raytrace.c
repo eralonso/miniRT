@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/22 15:33:10 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:52:49 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray, int depth)
 									inter_plane_line, \
 									inter_cyl_line, \
 									inter_cone_line};
+
 	if (depth == 0)
 		return (get_background_color());
 	best = get_best_intersect(minirt->figures, ray, intersect, -1);
