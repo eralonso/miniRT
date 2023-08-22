@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/22 16:19:09 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/22 17:52:13 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ DEPS			:= $(addprefix $(BUILD_PATH), $(SRC:.c=.d))
 DEPSB			:= $(addprefix $(BUILD_PATH), $(SRCB:.c=.d))
 
 CC				:= 	@gcc
-CFLAGS			:= -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS			:= -Wall -Werror -Wextra -g 
 CFD				:= -MMD
 RM				:= 	@rm -f
 LIBC 			:= 	@ar -rcs
