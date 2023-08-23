@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 13:11:18 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:25:00 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static int	ft_coef_calc(double coef[3], t_line line, const t_cone *cone)
 	w_dot_h = ft_dot_product(w, (double *)cone->orientation);
 	coef[0] = v_dot_h * v_dot_h;
 	coef[0] -= cos_theta_sq;
-	if (fabs(coef[0]) < 1.0e-5)
-		return (0);
 	coef[1] = v_dot_h * w_dot_h;
 	coef[1] -= v_dot_w * cos_theta_sq;
 	coef[2] = w_dot_h * w_dot_h;
 	coef[2] -= ft_dot_product(w, w) * cos_theta_sq;
+	if ((coef[0]) < 1.0e-5)
+		return (0);
 	return (1);
 }
 
@@ -56,11 +56,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 		ft_scale_vector(cap_center, (double *)cone->orientation, height));
 	cap_radius = height * tan(cone->theta);
 	ft_copy_vector(ret->tan_plane.point, cap_center);
-	// ret->tan_plane.color = cone->color;
-	ret->tan_plane.color.r = 0;
-	ret->tan_plane.color.g = 0;
-	ret->tan_plane.color.b = 0;
-	ret->tan_plane.color.a = 0;
+	ret->tan_plane.color = cone->color;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
@@ -80,7 +76,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_substraction(int_rel_center, line_int, center);
 	ft_cross_product(ret->tan_plane.orientation, \
-		int_rel_center, (double *)cone->orientation);
+		(double *)cone->orientation, int_rel_center);
 	ft_cross_product(ret->tan_plane.orientation, \
 		ret->tan_plane.orientation, int_rel_center);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
@@ -93,9 +89,15 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 	double			coef[3];
 	double			int_height;
 	t_vector		line_int;
+	int				cap_int_res;
 
+	cap_int_res = 1;
 	if (!ft_coef_calc(coef, line, cone))
-		return (ft_cap_inters(ret, line, figure));
+	{
+		cap_int_res = ft_cap_inters(ret, line, figure);
+		if (cap_int_res)
+			return (cap_int_res);
+	}
 	ret->distance = ft_quadrat_eq(coef, -1);
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
