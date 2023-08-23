@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/22 15:52:49 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:15:03 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ t_rgba	shader(t_light *light, t_intersect_data best, \
 	res2 = pow(res, 300);
 	res *= (1 - res2);
 	ratio = light->brightness;
-	best.kr = 0;
-	if (best.ft == FT_PLANE)
-		best.kr = 0.5;
-	else
-		best.kr = 0.5;
 	hit = get_best_intersect(figures, sr, intersect, best.pos);
 	if (hit.distance < dis)
 		return ((t_rgba){0, 0, 0, 0});
