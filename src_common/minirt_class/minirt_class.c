@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 15:28:03 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 09:41:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_minirt_data	*minirt_dispose(t_minirt_data **minirt)
 	g = *minirt;
 	ft_lstclear(&g->list, &free);
 	ft_lstclear(&g->figures, &free);
+	ft_lstclear(&g->lights, &free);
 	ft_dispose_graph_ctx(g);
 	free_x((void **)minirt);
 	exit (0);
