@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 16:22:52 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:45:35 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../graph_ctx/graph_decl.h"
 
 # define AMBIENT_COMPONENTS_NUMBER 3
-# define CAMERA_COMPONENTS_NUMBER 4
+# define CAMERA_COMPONENTS_NUMBER 5
 # define LIGHT_COMPONENTS_NUMBER 4
 # define SPHERE_COMPONENTS_NUMBER 5
 # define PLANE_COMPONENTS_NUMBER 5
@@ -29,7 +29,7 @@
 # define ERR_AMBIENT_MALLOC_FAILED \
 		"Malloc failed when allocating ambient\n"
 # define ERR_CAMERA_COMPONENTS_NUMBER \
-		"Invalid number of components for light\n"
+		"Invalid number of components for camera\n"
 # define ERR_CAMERA_MALLOC_FAILED \
 		"Malloc failed when allocating camera\n"
 # define ERR_LIGHT_COMPONENTS_NUMBER \
@@ -83,6 +83,7 @@ typedef struct s_camera
 	t_vector	horizontal;
 	t_vector	vertical;
 	size_t		count;
+	u_int8_t	reflec_depth;
 }	t_camera;
 
 typedef struct s_light

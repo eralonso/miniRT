@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:50:28 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 16:20:39 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:46:22 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	ft_parse_camera(t_list *node, char **str_arr)
 	}
 	if (!ft_isvector(str_arr[1], camera->point)
 		|| !ft_isorientation(str_arr[2], camera->orientation)
-		|| !ft_isfov(str_arr[3], &camera->fov))
+		|| !ft_isfov(str_arr[3], &camera->fov)
+		|| !ft_isunsignedchar(str_arr[4], &camera->reflec_depth))
 	{
 		free(camera);
 		return (0);
