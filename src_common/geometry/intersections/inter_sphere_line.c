@@ -6,13 +6,12 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 11:36:25 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:52:01 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../common.h"
 #include <math.h>
-
 
 static int	ft_coef_calc(double coefs[3], t_line line, const t_sphere *sphere)
 {
@@ -20,7 +19,6 @@ static int	ft_coef_calc(double coefs[3], t_line line, const t_sphere *sphere)
 	const double	radius = sphere->diameter / 2.0;
 
 	ft_substraction(rel_origin, line.point, (double *)sphere->point);
-
 	coefs[0] = 1.0;
 	coefs[1] = ft_dot_product(line.orientation, rel_origin);
 	coefs[2] = ft_dot_product(rel_origin, rel_origin) - radius * radius;

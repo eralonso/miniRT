@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 16:22:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:53:11 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,6 @@ typedef struct s_minirt_data
 	t_list			*list;
 	t_ambient		ambient;
 	t_camera		camera;
-	t_light			light;
 	t_list			*lights;
 	t_list			*figures;
 	t_intersect		intersect[4];
