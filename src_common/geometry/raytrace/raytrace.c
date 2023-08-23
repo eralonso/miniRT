@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/23 12:15:03 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:27:50 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../../common.h"
 
 t_rgba	shader(t_light *light, t_intersect_data best, \
-				t_intersect *intersect, t_list *figures, \
 					t_line ray, t_minirt_data *minirt, int depth)
 {
 	t_line				sr;
@@ -36,7 +35,7 @@ t_rgba	shader(t_light *light, t_intersect_data best, \
 	res2 = pow(res, 300);
 	res *= (1 - res2);
 	ratio = light->brightness;
-	hit = get_best_intersect(figures, sr, intersect, best.pos);
+	hit = get_best_intersect(minirt->figures, sr, minirt->intersect, best.pos);
 	if (hit.distance < dis)
 		return ((t_rgba){0, 0, 0, 0});
 	if (best.kr)
@@ -52,17 +51,18 @@ t_rgba	shader(t_light *light, t_intersect_data best, \
 			best.tan_plane.color)), 0.8));
 }
 
-t_rgba	get_sum_lights(t_list *lights, t_intersect_data best, \
-			t_intersect *intersect, t_list *figures, \
+t_rgba	get_sum_lights(t_intersect_data best, \
 			t_line ray, t_minirt_data *minirt, int depth)
 {
 	t_rgba	color;
+	t_list	*lights;
 
 	color = (t_rgba){0, 0, 0, 0};
+	lights = minirt->lights;
 	while (lights)
 	{
 		color = ft_rgba_addition(color, shader((t_light *)lights->content, \
-						best, intersect, figures, ray, minirt, depth));
+						best, ray, minirt, depth));
 		lights = lights->next;
 	}
 	return (color);
@@ -72,18 +72,13 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray, int depth)
 {
 	t_intersect_data	best;
 	t_rgba				color;
-	static t_intersect	intersect[4] = {inter_sphere_line, \
-									inter_plane_line, \
-									inter_cyl_line, \
-									inter_cone_line};
 
 	if (depth == 0)
 		return (get_background_color());
-	best = get_best_intersect(minirt->figures, ray, intersect, -1);
+	best = get_best_intersect(minirt->figures, ray, minirt->intersect, -1);
 	color = best.tan_plane.color;
 	if (best.distance != INFINITY)
-		color = get_sum_lights(minirt->lights, best, intersect, \
-			minirt->figures, ray, minirt, depth);
+		color = get_sum_lights(best, ray, minirt, depth);
 	best.tan_plane.color = ft_rgba_addition(color, ft_col_light(\
 	minirt->ambient.color, minirt->ambient.ratio * 0.4, best.tan_plane.color));
 	return (best.tan_plane.color);

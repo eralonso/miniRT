@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 09:41:43 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:21:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ t_minirt_data	*minirt_constructor(char *filename)
 		minirt->exit_cmd = 0;
 		minirt->filename = filename;
 		minirt->gr_ctx = NULL;
+		minirt->intersect[FT_SPHERE] = inter_sphere_line;
+		minirt->intersect[FT_PLANE] = inter_plane_line;
+		minirt->intersect[FT_CYLINDER] = inter_cyl_line;
+		minirt->intersect[FT_CONE] = inter_cone_line;
 		minirt = ft_init_minirt_data(minirt);
 	}
 	else

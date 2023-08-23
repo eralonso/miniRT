@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 12:45:35 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:22:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,8 @@ typedef struct s_intersect_data
 	double			kr;
 }	t_intersect_data;
 
+typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
+
 typedef struct s_minirt_data
 {
 	t_graphics		*gr_ctx;
@@ -181,11 +183,11 @@ typedef struct s_minirt_data
 	t_light			light;
 	t_list			*lights;
 	t_list			*figures;
+	t_intersect		intersect[4];
 }	t_minirt_data;
 
 typedef int		(*t_object_parser)(t_list *, char **);
 typedef void	(*t_print)(void *);
-typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 
 int	ft_parse_sphere(t_list *node, char **str_arr);
 int	ft_parse_plane(t_list *node, char **str_arr);
