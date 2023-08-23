@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 16:44:40 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:37:38 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 			(double *)cyl->orientation, sign * cyl->height / 2.0));
 	ft_copy_vector(ret->tan_plane.point, cap_center);
 	ret->tan_plane.color = cyl->color;
+	ret->kr = cyl->reflec_ratio;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
