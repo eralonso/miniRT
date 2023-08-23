@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_rays_v2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 12:09:03 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:12:53 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,25 @@ static void	camera_configure(t_camera *cam, int width)
 	ft_normalize(cam->vertical, cam->vertical);
 }
 
+static void	ft_make_ray(t_camera *cam, t_vector origin, \
+							t_line *ray, int iter[2])
+{
+	t_vector		pixel;
+	t_vector		trash;
+
+	ft_copy_vector(pixel, origin);
+	ft_addition(pixel, pixel, ft_scale_vector(trash, \
+		cam->horizontal, iter[W]));
+	ft_addition(pixel, pixel, ft_scale_vector(trash, \
+		cam->vertical, iter[H]));
+	ft_substraction(ray->orientation, pixel, ray->point);
+	ft_normalize(ray->orientation, ray->orientation);
+}
+
 void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 						t_img *img, int size[2])
 {
 	t_vector		origin;
-	t_vector		pixel;
-	t_vector		trash;
 	t_line			ray;
 	int				iter[2];
 
@@ -60,14 +73,9 @@ void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 		iter[W] = -1;
 		while (++iter[W] < size[W])
 		{
-			ft_copy_vector(pixel, origin);
-			ft_addition(pixel, pixel, ft_scale_vector(trash, \
-				cam->horizontal, iter[W]));
-			ft_addition(pixel, pixel, ft_scale_vector(trash, \
-				cam->vertical, iter[H]));
-			ft_substraction(ray.orientation, pixel, ray.point);
-			ft_normalize(ray.orientation, ray.orientation);
-			ft_pixel_put(img, iter[W], iter[H], raytrace(minirt, ray, 2));
+			ft_make_ray(cam, origin, &ray, iter);
+			ft_pixel_put(img, iter[W], iter[H], \
+				raytrace(minirt, ray, minirt->camera.reflec_depth));
 		}
 	}
 }
