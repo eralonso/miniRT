@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/23 17:15:38 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:49:49 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,44 @@ typedef struct s_shader_data
 	t_line				ray;
 }	t_shader_data;
 
-// static t_rgba	shader(t_light *light, t_intersect_data *best, \
-// 					t_line ray, t_minirt_data *minirt, int depth)
+static t_rgba	ft_reflected_light(t_shader_data *data, int depth)
+{
+	t_rgba	ret;
+	t_rgba	specular;
+	t_rgba	reflected_color;
+	t_rgba	object_color;
+
+	specular = ft_rgba_scale(data->light->color, \
+				data->light->brightness * data->specular);
+	reflected_color = raytrace(data->minirt, \
+						gen_reflect_ray(data->ray, data->best), depth - 1);
+	reflected_color = ft_col_light(data->light->color, \
+				data->diffuse * data->light->brightness * data->best->kr, \
+				reflected_color);
+	object_color = ft_col_light(data->light->color, \
+				data->diffuse * data->light->brightness * \
+				(1 - data->best->kr), data->best->tan_plane.color);
+	ret = ft_rgba_addition(reflected_color, object_color);
+	ret = ft_rgba_addition(specular, ret);
+	ret = ft_rgba_scale(ret, 0.8);
+	return (ret);
+}
+
+static t_rgba	ft_non_reflective_light(t_shader_data *data)
+{
+	t_rgba	ret;
+	t_rgba	specular;
+	t_rgba	diffuse;
+
+	specular = ft_rgba_scale(data->light->color, \
+							data->light->brightness * data->specular);
+	diffuse = ft_col_light(data->light->color, \
+						data->diffuse * data->light->brightness, \
+						data->best->tan_plane.color);
+	ret = ft_rgba_scale(ft_rgba_addition(specular, diffuse), 0.8);
+	return (ret);
+}
+
 static t_rgba	shader(t_shader_data data, int depth)
 {
 	t_vector			trash;
@@ -37,7 +73,8 @@ static t_rgba	shader(t_shader_data data, int depth)
 									data.sr.orientation);
 	if (data.diffuse < 0)
 		data.diffuse = 0;
-	data.specular = ft_dot_product(ft_scale_vector(trash, data.ray.orientation, -1), \
+	data.specular = ft_dot_product(\
+		ft_scale_vector(trash, data.ray.orientation, -1), \
 		gen_reflect_ray(data.sr, data.best).orientation);
 	if (data.specular < 0)
 		data.specular = 0;
@@ -48,17 +85,8 @@ static t_rgba	shader(t_shader_data data, int depth)
 	if (data.hit.distance < data.dis)
 		return ((t_rgba){0, 0, 0, 0});
 	if (data.best->kr)
-		return (ft_rgba_scale(ft_rgba_addition(ft_rgba_scale(data.light->color, \
-				data.light->brightness * data.specular), \
-				ft_rgba_addition(ft_col_light(data.light->color, \
-					data.diffuse * data.light->brightness * data.best->kr, \
-				raytrace(data.minirt, gen_reflect_ray(data.ray, data.best), depth - 1)), \
-				ft_col_light(data.light->color, data.diffuse * data.light->brightness * \
-				(1 - data.best->kr), data.best->tan_plane.color))), 0.8));
-	return (ft_rgba_scale(ft_rgba_addition(ft_rgba_scale(\
-			data.light->color, data.light->brightness * data.specular), \
-			ft_col_light(data.light->color, data.diffuse * data.light->brightness, \
-			data.best->tan_plane.color)), 0.8));
+		return (ft_reflected_light(&data, depth));
+	return (ft_non_reflective_light(&data));
 }
 
 static t_rgba	get_sum_lights(t_intersect_data *best, \
