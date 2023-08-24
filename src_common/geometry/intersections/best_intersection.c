@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/24 14:08:46 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:03:39 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_intersect_data	get_best_intersect(t_minirt_data *minirt, \
 	t_intersect_data	best;
 	t_intersect_data	hit;
 	t_figure_type		ft;
-
 
 	ft_init_best(&best, minirt);
 	hit.pos = -1;
