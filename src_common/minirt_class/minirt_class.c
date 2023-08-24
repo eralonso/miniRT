@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 15:25:55 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:24:37 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static int	ft_save_object(t_minirt_data *minirt, t_list *node,
 		ft_memcpy(&minirt->camera, node->content, sizeof(t_camera));
 	else if (mrtt == MRT_LIGHT)
 		ft_lstadd_front(&minirt->lights, node);
-	if (mrtt != MRT_LIGHT)
+	else if (mrtt == MRT_MATERIAL)
+		ft_lstadd_front(&minirt->materials_list, node);
+	if (mrtt != MRT_LIGHT && mrtt != MRT_MATERIAL)
 		ft_lstdelone(node, free);
 	return (1);
 }
@@ -74,6 +76,7 @@ t_minirt_data	*minirt_dispose(t_minirt_data **minirt)
 	ft_lstclear(&g->list, &free);
 	ft_lstclear(&g->figures, &free);
 	ft_lstclear(&g->lights, &free);
+	ft_lstclear(&g->materials_list, &ft_free_material);
 	ft_dispose_graph_ctx(g);
 	free_x((void **)minirt);
 	exit (0);

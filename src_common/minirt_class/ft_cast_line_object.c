@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:48:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 14:13:52 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:12:20 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static t_minirt_type	ft_get_object_type(char *id)
 {
-	size_t	len;
+	size_t				len;
+	size_t				i;
+	const char			*mrt_str_id_arr[8] = {\
+							"pl", "sp", "cy", "cn", \
+							"A", "C", "L", "mt"};
+	const t_minirt_type	mrt_id_arr[8] = {\
+		MRT_PLANE, MRT_SPHERE, MRT_CYLINDER, MRT_CONE, \
+		MRT_AMBIENT, MRT_CAMERA, MRT_LIGHT, MRT_MATERIAL};
 
 	len = ft_strlen_x(id);
 	if (len < 1 || len > 2)
 		return (MRT_INVALID);
-	if (!ft_strncmp(id, "pl", len))
-		return (MRT_PLANE);
-	if (!ft_strncmp(id, "sp", len))
-		return (MRT_SPHERE);
-	if (!ft_strncmp(id, "cy", len))
-		return (MRT_CYLINDER);
-	if (!ft_strncmp(id, "cn", len))
-		return (MRT_CONE);
-	if (!ft_strncmp(id, "A", len))
-		return (MRT_AMBIENT);
-	if (!ft_strncmp(id, "C", len))
-		return (MRT_CAMERA);
-	if (!ft_strncmp(id, "L", len))
-		return (MRT_LIGHT);
+	i = 0;
+	while (i < 8)
+	{
+		if (!ft_strncmp(id, mrt_str_id_arr[i], len))
+			return (mrt_id_arr[i]);
+		i++;
+	}
 	return (MRT_INVALID);
 }
 
@@ -40,7 +40,7 @@ static t_minirt_type	ft_parse_object(t_list *node, \
 										char **str_arr, \
 										t_minirt_type mrtt)
 {
-	t_object_parser	parser[9];
+	t_object_parser	parser[10];
 	int				parse_res;
 
 	parser[MRT_INVALID] = NULL;
@@ -48,6 +48,7 @@ static t_minirt_type	ft_parse_object(t_list *node, \
 	parser[MRT_AMBIENT] = ft_parse_ambient;
 	parser[MRT_CAMERA] = ft_parse_camera;
 	parser[MRT_LIGHT] = ft_parse_light;
+	parser[MRT_MATERIAL] = ft_parse_material;
 	parser[MRT_SPHERE] = ft_parse_sphere;
 	parser[MRT_PLANE] = ft_parse_plane;
 	parser[MRT_CYLINDER] = ft_parse_cylinder;

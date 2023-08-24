@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 15:22:00 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:45:11 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define AMBIENT_COMPONENTS_NUMBER 3
 # define CAMERA_COMPONENTS_NUMBER 5
 # define LIGHT_COMPONENTS_NUMBER 4
+# define MATERIAL_MIN_COMPONENTS_NUMBER 5
 # define SPHERE_COMPONENTS_NUMBER 5
 # define PLANE_COMPONENTS_NUMBER 5
 # define CYLINDER_COMPONENTS_NUMBER 7
@@ -36,6 +37,10 @@
 		"Invalid number of components for light\n"
 # define ERR_LIGHT_MALLOC_FAILED \
 		"Malloc failed when allocating light\n"
+# define ERR_MATERIAL_COMPONENTS_NUMBER \
+		"Invalid number of components for material\n"
+# define ERR_MATERIAL_MALLOC_FAILED \
+		"Malloc failed when allocating material\n"
 # define ERR_SPHERE_COMPONENTS_NUMBER \
 		"Invalid number of components for sphere\n"
 # define ERR_SPHERE_MALLOC_FAILED \
@@ -155,6 +160,7 @@ typedef enum e_minirt_type
 	MRT_AMBIENT,
 	MRT_CAMERA,
 	MRT_LIGHT,
+	MRT_MATERIAL,
 	MRT_SPHERE,
 	MRT_PLANE,
 	MRT_CYLINDER,
@@ -169,6 +175,22 @@ typedef struct s_intersect_data
 	t_figure_type	ft;
 }	t_intersect_data;
 
+typedef enum e_material_type
+{
+	MTT_INVALID,
+	MTT_HOMOG,
+	MTT_CHESS,
+}	t_material_type;
+
+typedef struct s_material
+{
+	t_material_type	type;
+	char			*name;
+	t_rgba			color;
+	double			reflec_ratio;
+	void			*ext_prop;
+}	t_material;
+
 typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 
 typedef struct s_minirt_data
@@ -181,6 +203,7 @@ typedef struct s_minirt_data
 	t_camera		camera;
 	t_list			*lights;
 	t_list			*figures;
+	t_list			*materials_list;
 	t_intersect		intersect[4];
 	t_rgba			background_color;
 }	t_minirt_data;
@@ -188,12 +211,13 @@ typedef struct s_minirt_data
 typedef int		(*t_object_parser)(t_list *, char **);
 typedef void	(*t_print)(void *);
 
-int	ft_parse_sphere(t_list *node, char **str_arr);
-int	ft_parse_plane(t_list *node, char **str_arr);
-int	ft_parse_cylinder(t_list *node, char **str_arr);
-int	ft_parse_cone(t_list *node, char **str_arr);
-int	ft_parse_ambient(t_list *node, char **str_arr);
-int	ft_parse_camera(t_list *node, char **str_arr);
-int	ft_parse_light(t_list *node, char **str_arr);
-
+void	ft_free_material(void *p);
+int		ft_parse_sphere(t_list *node, char **str_arr);
+int		ft_parse_plane(t_list *node, char **str_arr);
+int		ft_parse_cylinder(t_list *node, char **str_arr);
+int		ft_parse_cone(t_list *node, char **str_arr);
+int		ft_parse_ambient(t_list *node, char **str_arr);
+int		ft_parse_camera(t_list *node, char **str_arr);
+int		ft_parse_light(t_list *node, char **str_arr);
+int		ft_parse_material(t_list *node, char **str_arr);
 #endif

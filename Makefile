@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/24 14:03:35 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/24 17:16:37 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCC_R			:= ft_read_map.c\
 					minirt_class/ft_cast_line_object.c\
 					minirt_class/parse_figures.c\
 					minirt_class/parse_scene_obj.c\
+					minirt_class/parse_material.c\
+					minirt_class/ft_free_material.c\
 					graph_ctx/graph_ctx.c \
 					graph_ctx/graph_ctx_utils.c \
 					utils/ft_matrix_len.c\
@@ -34,6 +36,8 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_ispositivedouble.c\
 					utils/ft_istheta.c\
 					utils/ft_isratio.c\
+					utils/ft_isname.c\
+					utils/ft_ismattype.c\
 					utils/colors.c\
 					geometry/vector_class.c\
 					geometry/matrix_class.c\

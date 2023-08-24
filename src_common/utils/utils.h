@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 15:29:49 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:34:04 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define ISUNSIGNEDCHAR_NIR "Is not in range\n"
 # define ISVECTOR_MISS_STR "Miss string argument\n"
 # define ISVECTOR_SIZE "Invalid number of vector components\n"
+# define ISSTRING_DUPERR "Failed to duplicate string"
+# define ISMATTYPE_INVALID "Material type is invalid"
 # define ISDOUBLE_MISS_STR "Miss string argument\n"
 # define ISDOUBLE_NAN "Is not a double\n"
 # define ISDOUBLE_NIR "Is not in range\n"
@@ -43,6 +45,8 @@ int				ft_isfov(char *str, double *fov);
 int				ft_istheta(char *str, double *theta);
 int				ft_ispositivedouble(char *str, double *value);
 int				ft_isratio(char *str, double *light);
+int				ft_ismattype(char *str, t_material_type *ret);
+int				ft_isname(char *str, char **ret);
 unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2);
 t_rgba			ft_rgba_addition(t_rgba color1, t_rgba color2);
 t_rgba			ft_rgba_scale(t_rgba color, double scale);
