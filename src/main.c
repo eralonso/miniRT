@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/20 13:41:30 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/24 19:01:10 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,5 @@ int	main(int argc, char const *argv[])
 			minirt->gr_ctx->img.image, 0, 0);
 		mlx_loop(minirt->gr_ctx->inst);
 	}
-	ft_putstr_fd ("exit main\n", 1);
-	minirt_dispose(&minirt);
 	return (0);
 }

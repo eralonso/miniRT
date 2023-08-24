@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 18:20:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 19:13:10 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@
 # define CYLINDER_COMPONENTS_NUMBER 7
 # define CONE_COMPONENTS_NUMBER 8
 
+# define ERR_MISSING_AMBIENT_LIGHT \
+		"Missing ambient light\n"
+# define ERR_MISSING_CAMERA \
+		"Missing camera\n"
+# define ERR_MISSING_LIGHTS \
+		"Missing lights\n"
+# define ERR_MINIRT_MALLOC_FAILED \
+		"Malloc failed while constructing minirt\n"
+# define ERR_CHECK_OBJECT_MISS_DATA \
+		"Either miniRT data or node missed\n"
+# define ERR_AMBIENT_LIGHT_REPEATED \
+		"Ambient light must be only once\n"
+# define ERR_CAMERA_REPEATED \
+		"Camera must be only once\n"
 # define ERR_AMBIENT_COMPONENTS_NUMBER \
 		"Invalid number of components for ambient light\n"
 # define ERR_AMBIENT_MALLOC_FAILED \
@@ -63,6 +77,7 @@
 		"Malloc failed when allocating cone\n"
 # define ERR_MISSED_ARGUMENTS_AT_PARSE \
 		"Missed arguments at parse\n"
+
 
 typedef double	t_vector[3];
 

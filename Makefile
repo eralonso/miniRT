@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/24 18:20:01 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/24 19:05:37 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCC_R			:= ft_read_map.c\
 					ft_take_argument.c\
 					ft_draw.c\
 					minirt_class/minirt_class.c\
+					minirt_class/ft_init_minirt_data.c\
 					minirt_class/ft_cast_line_object.c\
 					minirt_class/parse_figures.c\
 					minirt_class/parse_scene_obj.c\

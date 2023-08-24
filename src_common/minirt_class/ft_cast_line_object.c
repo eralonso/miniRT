@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:48:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 16:12:20 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 19:38:52 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static t_minirt_type	ft_get_object_type(char *id)
 	size_t				i;
 	const char			*mrt_str_id_arr[8] = {\
 							"pl", "sp", "cy", "cn", \
-							"A", "C", "L", "mt"};
+							"mt", "A", "C", "L"};
 	const t_minirt_type	mrt_id_arr[8] = {\
 		MRT_PLANE, MRT_SPHERE, MRT_CYLINDER, MRT_CONE, \
-		MRT_AMBIENT, MRT_CAMERA, MRT_LIGHT, MRT_MATERIAL};
+		MRT_MATERIAL, MRT_AMBIENT, MRT_CAMERA, MRT_LIGHT};
 
 	len = ft_strlen_x(id);
 	if (len < 1 || len > 2)
