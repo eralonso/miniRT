@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 17:52:41 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:25:55 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ t_minirt_data	*ft_init_minirt_data(t_minirt_data *minirt)
 	}
 	if (mrtt == MRT_INVALID || ! ft_create_graph_ctx(minirt))
 		return (minirt_dispose(&minirt));
+	minirt->background_color = ft_rgba_scale(minirt->ambient.color, \
+												minirt->ambient.ratio);
 	return (minirt);
 }

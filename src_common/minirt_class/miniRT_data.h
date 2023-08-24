@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 11:56:24 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:22:00 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ typedef struct s_minirt_data
 	t_list			*lights;
 	t_list			*figures;
 	t_intersect		intersect[4];
+	t_rgba			background_color;
 }	t_minirt_data;
 
 typedef int		(*t_object_parser)(t_list *, char **);
