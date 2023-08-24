@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/23 18:02:08 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/24 14:03:35 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,8 @@ DEPS			:= $(addprefix $(BUILD_PATH), $(SRC:.c=.d))
 DEPSB			:= $(addprefix $(BUILD_PATH), $(SRCB:.c=.d))
 
 CC				:= 	@gcc
-CFLAGS			:= -Wall -Werror -Wextra -g -O3
+OPTIM_FLAG		:= -O3
+CFLAGS			:= -Wall -Werror -Wextra -g
 SANIT_FLAG		:=  -fsanitize=address
 CFD				:= -MMD
 RM				:= 	@rm -f
@@ -100,7 +101,7 @@ folder_create 	= $(shell mkdir -p $(1))
 
 .SECONDEXPANSION:
 
-$(BUILD_PATH)%.o: %.c ${HEADER} | $$(call folder_create,$$(dir $$@))
+$(BUILD_PATH)%.o: %.c ${HEADER} Makefile | $$(call folder_create,$$(dir $$@))
 	@echo "Compiling " $@ " ..."
 	${CC} ${CFLAGS} ${CFD} -I ${LIBFT_PATH} -I ${MLX_PATH} -c $< -o $@
 

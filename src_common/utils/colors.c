@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 18:30:33 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/22 12:48:24 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:06:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../common.h"
 #include <math.h>
 
-t_rgba	get_background_color(void)
+t_rgba	get_background_color(t_minirt_data *minirt)
 {
-	return ((t_rgba){0, 0, 0, 0});
+	t_rgba	ret;
+
+	ret = ft_rgba_scale(minirt->ambient.color, minirt->ambient.ratio);
+	return (ret);
 }
 
 unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2)

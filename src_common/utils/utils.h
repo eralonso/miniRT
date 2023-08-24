@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/22 16:20:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:07:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ t_rgba			ft_rgba_addition(t_rgba color1, t_rgba color2);
 t_rgba			ft_rgba_scale(t_rgba color, double scale);
 t_rgba			ft_col_light(t_rgba color_source, double ratio, \
 							t_rgba surf_col);
-t_rgba			get_background_color(void);
+t_rgba			get_background_color(t_minirt_data *minirt);
 
 #endif

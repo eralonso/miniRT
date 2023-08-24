@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/24 11:58:26 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:08:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ static t_rgba	shader(t_shader_data data, int depth)
 		data.specular = 0;
 	data.specular = pow(data.specular, 5);
 	data.diffuse *= (1 - data.specular);
-	data.hit = get_best_intersect(data.minirt->figures, data.sr, \
-									data.minirt->intersect, data.best->pos);
+	data.hit = get_best_intersect(data.minirt, data.sr, data.best->pos);
 	if (data.hit.distance < data.dis)
 		return ((t_rgba){0, 0, 0, 0});
 	if (data.best->tan_plane.reflec_ratio)
@@ -118,8 +117,8 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray, int depth)
 	t_rgba				color;
 
 	if (depth == 0)
-		return (get_background_color());
-	best = get_best_intersect(minirt->figures, ray, minirt->intersect, -1);
+		return (get_background_color(minirt));
+	best = get_best_intersect(minirt, ray, -1);
 	color = best.tan_plane.color;
 	if (best.distance != INFINITY)
 		color = get_sum_lights(&best, ray, minirt, depth);

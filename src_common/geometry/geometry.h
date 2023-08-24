@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 16:57:01 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:58:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ double				*ft_copy_vector(t_vector dst, t_vector src);
 void				camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 						t_img *img, int size[2]);
 t_rgba				raytrace(t_minirt_data *minirt, t_line ray, int depth);
-t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
-							t_intersect *intersect, int exclude);
+t_intersect_data	get_best_intersect(t_minirt_data *minirt, t_line ray, \
+							int exclude);
 double				ft_quadrat_eq(double coef[3], int sign);
 int					inter_plane_line(t_intersect_data *res, \
 									t_line line, void *figure);

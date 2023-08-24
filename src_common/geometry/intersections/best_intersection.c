@@ -6,18 +6,18 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/24 12:00:19 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:08:46 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../common.h"
 #include <math.h>
 
-static void	ft_init_best(t_intersect_data *best)
+static void	ft_init_best(t_intersect_data *best, t_minirt_data *minirt)
 {
 	best->distance = INFINITY;
 	best->pos = 0;
-	best->tan_plane.color = get_background_color();
+	best->tan_plane.color = get_background_color(minirt);
 	best->tan_plane.reflec_ratio = 0;
 }
 
@@ -33,14 +33,17 @@ static void	ft_take_best_intersection(t_intersect_data *best, \
 	best->tan_plane.reflec_ratio = hit->tan_plane.reflec_ratio;
 }
 
-t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
-							t_intersect *intersect, int exclude)
+t_intersect_data	get_best_intersect(t_minirt_data *minirt, \
+										t_line ray, int exclude)
 {
+	const t_list		*figures = minirt->figures;
+	const t_intersect	*intersect = minirt->intersect;
 	t_intersect_data	best;
 	t_intersect_data	hit;
 	t_figure_type		ft;
 
-	ft_init_best(&best);
+
+	ft_init_best(&best, minirt);
 	hit.pos = -1;
 	while (figures)
 	{

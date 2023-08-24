@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:48:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/21 15:26:28 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:13:52 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ t_minirt_type	ft_cast_line_object(t_list *node)
 	}
 	mrtt = ft_get_object_type(str_arr[0]);
 	if (mrtt == MRT_INVALID)
+	{
+		ft_delete_str_arr(str_arr);
 		return (ft_log_error("Invalid type of object\n"));
+	}
 	mrtt = ft_parse_object(node, str_arr, mrtt);
 	ft_delete_str_arr(str_arr);
 	return (mrtt);
