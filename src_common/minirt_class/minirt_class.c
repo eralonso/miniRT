@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 17:24:37 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:25:48 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_minirt_data	*minirt_constructor(char *filename)
 		minirt->intersect[FT_CYLINDER] = inter_cyl_line;
 		minirt->intersect[FT_CONE] = inter_cone_line;
 		minirt = ft_init_minirt_data(minirt);
+		if (!ft_grab_materials(minirt))
+			return (0);
 	}
 	else
 		ft_log_error("Malloc failed while constructing minirt\n");
@@ -77,6 +79,8 @@ t_minirt_data	*minirt_dispose(t_minirt_data **minirt)
 	ft_lstclear(&g->figures, &free);
 	ft_lstclear(&g->lights, &free);
 	ft_lstclear(&g->materials_list, &ft_free_material);
+	if (g->mat_table)
+		free (g->mat_table);
 	ft_dispose_graph_ctx(g);
 	free_x((void **)minirt);
 	exit (0);

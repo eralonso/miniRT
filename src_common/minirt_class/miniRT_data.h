@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 17:45:11 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:20:36 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@
 		"Invalid number of components for material\n"
 # define ERR_MATERIAL_MALLOC_FAILED \
 		"Malloc failed when allocating material\n"
+# define ERR_MATERIAL_TABLE_MALLOC_FAILED \
+		"Malloc failed when allocating table for materials\n"
+# define ERR_MATERIAL_TABLE_OVERFLOW \
+		"Too many materials instantiated for the table\n"
 # define ERR_SPHERE_COMPONENTS_NUMBER \
 		"Invalid number of components for sphere\n"
 # define ERR_SPHERE_MALLOC_FAILED \
@@ -204,6 +208,8 @@ typedef struct s_minirt_data
 	t_list			*lights;
 	t_list			*figures;
 	t_list			*materials_list;
+	t_material		**mat_table;
+	u_int8_t		mat_count;
 	t_intersect		intersect[4];
 	t_rgba			background_color;
 }	t_minirt_data;
@@ -212,6 +218,7 @@ typedef int		(*t_object_parser)(t_list *, char **);
 typedef void	(*t_print)(void *);
 
 void	ft_free_material(void *p);
+int		ft_grab_materials(t_minirt_data *minirt);
 int		ft_parse_sphere(t_list *node, char **str_arr);
 int		ft_parse_plane(t_list *node, char **str_arr);
 int		ft_parse_cylinder(t_list *node, char **str_arr);
