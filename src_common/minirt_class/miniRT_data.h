@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 17:53:11 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:56:24 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,6 @@ typedef struct s_intersect_data
 	int				pos;
 	t_plane			tan_plane;
 	t_figure_type	ft;
-	double			kr;
 }	t_intersect_data;
 
 typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);

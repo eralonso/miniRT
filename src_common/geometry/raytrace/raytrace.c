@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/23 17:49:49 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:58:26 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ static t_rgba	ft_reflected_light(t_shader_data *data, int depth)
 	reflected_color = raytrace(data->minirt, \
 						gen_reflect_ray(data->ray, data->best), depth - 1);
 	reflected_color = ft_col_light(data->light->color, \
-				data->diffuse * data->light->brightness * data->best->kr, \
+				data->diffuse * data->light->brightness \
+					* data->best->tan_plane.reflec_ratio, \
 				reflected_color);
 	object_color = ft_col_light(data->light->color, \
 				data->diffuse * data->light->brightness * \
-				(1 - data->best->kr), data->best->tan_plane.color);
+				(1 - data->best->tan_plane.reflec_ratio), \
+				data->best->tan_plane.color);
 	ret = ft_rgba_addition(reflected_color, object_color);
 	ret = ft_rgba_addition(specular, ret);
 	ret = ft_rgba_scale(ret, 0.8);
@@ -78,13 +80,13 @@ static t_rgba	shader(t_shader_data data, int depth)
 		gen_reflect_ray(data.sr, data.best).orientation);
 	if (data.specular < 0)
 		data.specular = 0;
-	data.specular = pow(data.specular, 300);
+	data.specular = pow(data.specular, 5);
 	data.diffuse *= (1 - data.specular);
 	data.hit = get_best_intersect(data.minirt->figures, data.sr, \
 									data.minirt->intersect, data.best->pos);
 	if (data.hit.distance < data.dis)
 		return ((t_rgba){0, 0, 0, 0});
-	if (data.best->kr)
+	if (data.best->tan_plane.reflec_ratio)
 		return (ft_reflected_light(&data, depth));
 	return (ft_non_reflective_light(&data));
 }

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/23 11:45:03 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:00:19 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_init_best(t_intersect_data *best)
 	best->distance = INFINITY;
 	best->pos = 0;
 	best->tan_plane.color = get_background_color();
-	best->kr = 0;
+	best->tan_plane.reflec_ratio = 0;
 }
 
 static void	ft_take_best_intersection(t_intersect_data *best, \
@@ -30,7 +30,7 @@ static void	ft_take_best_intersection(t_intersect_data *best, \
 	best->ft = hit->ft;
 	best->distance = hit->distance;
 	best->tan_plane = hit->tan_plane;
-	best->kr = hit->kr;
+	best->tan_plane.reflec_ratio = hit->tan_plane.reflec_ratio;
 }
 
 t_intersect_data	get_best_intersect(t_list *figures, t_line ray, \
