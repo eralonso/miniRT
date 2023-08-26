@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cyl_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 11:59:48 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:11:56 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 {
 	t_vector	center;
 
+	ret->tan_plane.reflec_ratio = cyl->reflec_ratio;
 	ft_addition(center, (double *) cyl->point, \
 		ft_scale_vector(center, (double *) cyl->orientation, int_height));
 	ft_copy_vector(ret->tan_plane.point, line_int);

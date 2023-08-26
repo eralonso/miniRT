@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:44:35 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/09 16:05:58 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:43:22 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	ft_handle_no_event(void *data)
 		return (0);
 	minirt = data;
 	if (minirt->exit_cmd || ! minirt->gr_ctx->wnd)
+	{
 		minirt_dispose(&minirt);
+		exit(0);
+	}
 	else
 		ft_draw(minirt);
 	return (0);

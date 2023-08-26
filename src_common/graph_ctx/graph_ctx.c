@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:35:33 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/04 17:09:59 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:48:35 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,8 @@ int	ft_dispose_graph_ctx(t_minirt_data *minirt)
 		return (0);
 	if (minirt->gr_ctx->inst)
 	{
-		mlx_loop_hook(minirt->gr_ctx->inst, NULL, NULL);
 		if (minirt->gr_ctx->wnd)
 		{
-			mlx_key_hook(minirt->gr_ctx->wnd, NULL, minirt);
-			mlx_hook(minirt->gr_ctx->wnd, ON_DESTROY, 0, NULL, NULL);
 			mlx_destroy_window(minirt->gr_ctx->inst, minirt->gr_ctx->wnd);
 			mlx_destroy_image(minirt->gr_ctx->inst, minirt->gr_ctx->img.image);
 			minirt->gr_ctx->wnd = NULL;

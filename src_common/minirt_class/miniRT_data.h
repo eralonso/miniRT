@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 19:13:10 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:21:14 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@
 		"Malloc failed when allocating cone\n"
 # define ERR_MISSED_ARGUMENTS_AT_PARSE \
 		"Missed arguments at parse\n"
-
 
 typedef double	t_vector[3];
 

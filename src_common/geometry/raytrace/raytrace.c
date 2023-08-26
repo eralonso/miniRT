@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/24 15:28:52 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:14:09 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_rgba	ft_reflected_light(t_shader_data *data, int depth)
 				data->best->tan_plane.color);
 	ret = ft_rgba_addition(reflected_color, object_color);
 	ret = ft_rgba_addition(specular, ret);
-	ret = ft_rgba_scale(ret, 0.8);
+	ret = ft_rgba_scale(ret, 1);
 	return (ret);
 }
 
@@ -62,7 +62,7 @@ static t_rgba	ft_non_reflective_light(t_shader_data *data)
 	diffuse = ft_col_light(data->light->color, \
 						data->diffuse * data->light->brightness, \
 						data->best->tan_plane.color);
-	ret = ft_rgba_scale(ft_rgba_addition(specular, diffuse), 0.8);
+	ret = ft_rgba_scale(ft_rgba_addition(specular, diffuse), 1);
 	return (ret);
 }
 
@@ -85,7 +85,7 @@ static t_rgba	shader(t_shader_data data, int depth)
 	data.hit = get_best_intersect(data.minirt, data.sr, data.best->pos);
 	if (data.hit.distance < data.dis)
 		return ((t_rgba){0, 0, 0, 0});
-	if (data.best->tan_plane.reflec_ratio)
+	if (data.best->tan_plane.reflec_ratio > 0)
 		return (ft_reflected_light(&data, depth));
 	return (ft_non_reflective_light(&data));
 }

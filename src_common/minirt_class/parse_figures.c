@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_figures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 17:54:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:10:06 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
-	sphere = malloc(sizeof(t_sphere));
+	sphere = ft_calloc(sizeof(t_sphere), 1);
 	if (!sphere)
 		return (ft_log_error(ERR_SPHERE_MALLOC_FAILED));
 	sphere->ft = FT_SPHERE;
@@ -46,7 +46,7 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
-	plane = malloc(sizeof(t_plane));
+	plane = ft_calloc(sizeof(t_plane), 1);
 	if (!plane)
 		return (ft_log_error(ERR_PLANE_MALLOC_FAILED));
 	plane->ft = FT_PLANE;
@@ -71,7 +71,7 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
-	cylinder = malloc(sizeof(t_cylinder));
+	cylinder = ft_calloc(sizeof(t_cylinder), 1);
 	if (!cylinder)
 		return (ft_log_error(ERR_CYLINDER_MALLOC_FAILED));
 	cylinder->ft = FT_CYLINDER;
@@ -98,7 +98,7 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
-	cone = malloc(sizeof(t_cone));
+	cone = ft_calloc(sizeof(t_cone), 1);
 	if (!cone)
 		return (ft_log_error(ERR_CONE_MALLOC_FAILED));
 	cone->ft = FT_CONE;

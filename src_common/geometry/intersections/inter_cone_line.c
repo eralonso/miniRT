@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 11:59:29 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:13:34 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	double		height;
 	double		cap_radius;
 
+	ret->tan_plane.reflec_ratio = cone->reflec_ratio;
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cone->orientation);
 	sign = ft_dot_product(line.orientation, (double *)cone->orientation);
 	sign /= -fabs(sign);
@@ -67,6 +68,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	t_vector line_int, const t_cone *cone, double int_height)
 {
 	t_vector	center;
+	t_vector	trash;
 	t_vector	int_rel_center;
 	double		int_radius;
 
@@ -78,7 +80,8 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ft_cross_product(ret->tan_plane.orientation, \
 		(double *)cone->orientation, int_rel_center);
 	ft_cross_product(ret->tan_plane.orientation, \
-		ret->tan_plane.orientation, int_rel_center);
+		ret->tan_plane.orientation, ft_substraction(trash, \
+			line_int, (double *)cone->point));
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
 	return (1);
 }
