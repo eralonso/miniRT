@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/24 19:05:37 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/28 09:34:38 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ DEPSB			:= $(addprefix $(BUILD_PATH), $(SRCB:.c=.d))
 
 CC				:= 	@gcc
 OPTIM_FLAG		:= -O3
-CFLAGS			:= -Wall -Werror -Wextra -g
+CFLAGS			:= -Wall -Werror -Wextra -g -O3
 SANIT_FLAG		:=  -fsanitize=address
 CFD				:= -MMD
 RM				:= 	@rm -f

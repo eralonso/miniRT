@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/26 19:13:34 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/28 09:54:21 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	double		height;
 	double		cap_radius;
 
-	ret->tan_plane.reflec_ratio = cone->reflec_ratio;
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cone->orientation);
 	sign = ft_dot_product(line.orientation, (double *)cone->orientation);
 	sign /= -fabs(sign);
@@ -58,6 +57,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	cap_radius = height * tan(cone->theta);
 	ft_copy_vector(ret->tan_plane.point, cap_center);
 	ret->tan_plane.color = cone->color;
+	ret->tan_plane.reflec_ratio = cone->reflec_ratio;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
@@ -67,21 +67,16 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 static int	ft_give_inters(t_intersect_data *ret, \
 	t_vector line_int, const t_cone *cone, double int_height)
 {
-	t_vector	center;
 	t_vector	trash;
-	t_vector	int_rel_center;
 	double		int_radius;
 
 	int_radius = int_height * tan(cone->theta);
-	ft_addition(center, (double *) cone->point, \
-		ft_scale_vector(center, (double *) cone->orientation, int_height));
 	ft_copy_vector(ret->tan_plane.point, line_int);
-	ft_substraction(int_rel_center, line_int, center);
 	ft_cross_product(ret->tan_plane.orientation, \
-		(double *)cone->orientation, int_rel_center);
-	ft_cross_product(ret->tan_plane.orientation, \
-		ret->tan_plane.orientation, ft_substraction(trash, \
+		(double *)cone->orientation, ft_substraction(trash, \
 			line_int, (double *)cone->point));
+	ft_cross_product(ret->tan_plane.orientation, \
+		ret->tan_plane.orientation, trash);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
 	return (1);
 }
