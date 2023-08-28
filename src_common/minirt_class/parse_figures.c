@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 10:21:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:04:19 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 		|| !ft_isratio(str_arr[4], &sphere->reflec_ratio)
 		|| !ft_isname(str_arr[5], &sphere->material_id))
 	{
-		free(sphere);
+		ft_free_figure(sphere);
 		return (0);
 	}
 	free_x((void **)&node->content);
@@ -59,7 +59,7 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 		|| !ft_isratio(str_arr[4], &plane->reflec_ratio)
 		|| !ft_isname(str_arr[5], &plane->material_id))
 	{
-		free(plane);
+		ft_free_figure(plane);
 		return (0);
 	}
 	free_x((void **)&node->content);
@@ -116,7 +116,7 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 		|| !ft_isratio(str_arr[7], &cone->reflec_ratio)
 		|| !ft_isname(str_arr[8], &cone->material_id))
 	{
-		free(cone);
+		ft_free_figure(cone);
 		return (0);
 	}
 	free_x((void **)&node->content);

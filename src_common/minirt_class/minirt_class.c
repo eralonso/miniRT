@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_class.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/26 17:34:34 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:15:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_minirt_data	*minirt_constructor(char *filename)
 		{
 			if (!ft_grab_materials(minirt))
 				return (0);
+			if (!ft_link_materials(minirt))
+				return (0);
 			minirt = ft_check_missing(minirt);
 		}
 	}
@@ -65,7 +67,7 @@ t_minirt_data	*minirt_dispose(t_minirt_data **minirt)
 		return (*minirt);
 	g = *minirt;
 	ft_lstclear(&g->list, &free);
-	ft_lstclear(&g->figures, &free);
+	ft_lstclear(&g->figures, &ft_free_figure);
 	ft_lstclear(&g->lights, &free);
 	ft_lstclear(&g->materials_list, &ft_free_material);
 	if (g->mat_table)

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfindfirst.c                                  :+:      :+:    :+:   */
+/*   ft_find_material.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 14:46:19 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 12:03:40 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/08/28 11:26:47 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/08/28 12:13:44 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_extra.h"
+#include "../common.h"
 
-t_list	*ft_lstfindfirst(t_list *lst, \
-		int (*f)(unsigned int, void *, void *), void *arg)
+static int	ft_material_is_id(unsigned int ui, void *content, void *id)
 {
-	t_list			*cur;
-	unsigned int	i;
+	const t_material	*mat = content;
 
-	cur = lst;
-	i = 0;
-	if (! f || ! arg)
+	(void)ui;
+	return (!ft_strncmp(mat->name, id, 32));
+}
+
+t_material	*ft_find_material(t_list *mats, char *id)
+{
+	t_list	*loc;
+
+	loc = ft_lstfindfirst(mats, ft_material_is_id, id);
+	if (!loc)
 		return (NULL);
-	while (cur)
-	{
-		if ((*f)(i, (void *)cur->content, arg))
-			return (cur);
-		cur = cur->next;
-		i++;
-	}
-	return (NULL);
+	return ((t_material *)loc->content);
 }

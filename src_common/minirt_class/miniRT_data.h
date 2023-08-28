@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 10:16:24 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:59:13 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ typedef struct s_sphere
 	t_rgba			color;
 	double			reflec_ratio;
 	char			*material_id;
-	t_material_type	*material;
+	t_material		*material;
 }	t_sphere;
 
 typedef struct s_plane
@@ -166,7 +166,7 @@ typedef struct s_plane
 	t_rgba			color;
 	double			reflec_ratio;
 	char			*material_id;
-	t_material_type	*material;
+	t_material		*material;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -179,7 +179,7 @@ typedef struct s_cylinder
 	t_rgba			color;
 	double			reflec_ratio;
 	char			*material_id;
-	t_material_type	*material;
+	t_material		*material;
 }	t_cylinder;
 
 typedef struct s_cone
@@ -192,7 +192,7 @@ typedef struct s_cone
 	t_rgba			color;
 	double			reflec_ratio;
 	char			*material_id;
-	t_material_type	*material;
+	t_material		*material;
 }	t_cone;
 
 typedef enum e_minirt_type
@@ -219,6 +219,10 @@ typedef struct s_intersect_data
 
 typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 
+typedef void	(*t_freeer)(void *);
+
+typedef int		(*t_mat_linker)(void *figure, t_list *mats);
+
 typedef struct s_minirt_data
 {
 	t_graphics		*gr_ctx;
@@ -231,6 +235,7 @@ typedef struct s_minirt_data
 	t_list			*figures;
 	t_list			*materials_list;
 	t_material		**mat_table;
+	int				mat_link_nok;
 	u_int8_t		mat_count;
 	t_intersect		intersect[4];
 	t_rgba			background_color;
@@ -239,14 +244,19 @@ typedef struct s_minirt_data
 typedef int		(*t_object_parser)(t_list *, char **);
 typedef void	(*t_print)(void *);
 
-void	ft_free_material(void *p);
-int		ft_grab_materials(t_minirt_data *minirt);
-int		ft_parse_sphere(t_list *node, char **str_arr);
-int		ft_parse_plane(t_list *node, char **str_arr);
-int		ft_parse_cylinder(t_list *node, char **str_arr);
-int		ft_parse_cone(t_list *node, char **str_arr);
-int		ft_parse_ambient(t_list *node, char **str_arr);
-int		ft_parse_camera(t_list *node, char **str_arr);
-int		ft_parse_light(t_list *node, char **str_arr);
-int		ft_parse_material(t_list *node, char **str_arr);
+void		ft_free_material(void *p);
+void		ft_free_figure(void *figure);
+int			ft_grab_materials(t_minirt_data *minirt);
+int			ft_parse_sphere(t_list *node, char **str_arr);
+int			ft_parse_plane(t_list *node, char **str_arr);
+int			ft_parse_cylinder(t_list *node, char **str_arr);
+int			ft_parse_cone(t_list *node, char **str_arr);
+int			ft_parse_ambient(t_list *node, char **str_arr);
+int			ft_parse_camera(t_list *node, char **str_arr);
+int			ft_parse_light(t_list *node, char **str_arr);
+int			ft_parse_material(t_list *node, char **str_arr);
+t_material	*ft_find_material(t_list *mats, char *id);
+int			ft_link_figure_material(void *figure, t_list *mats);
+int			ft_link_materials(t_minirt_data *minirt);
+
 #endif
