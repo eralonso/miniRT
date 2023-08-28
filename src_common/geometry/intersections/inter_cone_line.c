@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 14:26:20 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:12:55 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 		ft_scale_vector(cap_center, (double *)cone->orientation, height));
 	cap_radius = height * tan(cone->theta);
 	ft_copy_vector(ret->tan_plane.point, cap_center);
-	ret->tan_plane.color = cone->material->color;
-	ret->tan_plane.reflec_ratio = cone->material->reflec_ratio;
+	// ret->tan_plane.material->color = cone->material->color;
+	// ret->tan_plane.material->reflec_ratio = cone->material->reflec_ratio;
 	ret->tan_plane.material = cone->material;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
@@ -100,8 +100,8 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 	ret->distance = ft_quadrat_eq(coef, -1);
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
-	ret->tan_plane.color = cone->material->color;
-	ret->tan_plane.reflec_ratio = cone->material->reflec_ratio;
+	// ret->tan_plane.material->color = cone->material->color;
+	// ret->tan_plane.material->reflec_ratio = cone->material->reflec_ratio;
 	ret->tan_plane.material = cone->material;
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));

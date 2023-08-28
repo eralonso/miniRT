@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 11:04:19 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:34:36 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_parse_sphere(t_list *node, char **str_arr)
 {
 	t_sphere	*sphere;
+	t_material	aux_mat;
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
@@ -29,8 +30,8 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 	}
 	if (!ft_isvector(str_arr[1], sphere->point)
 		|| !ft_ispositivedouble(str_arr[2], &sphere->diameter)
-		|| !ft_isrgb(str_arr[3], &sphere->color)
-		|| !ft_isratio(str_arr[4], &sphere->reflec_ratio)
+		|| !ft_isrgb(str_arr[3], &aux_mat.color)
+		|| !ft_isratio(str_arr[4], &aux_mat.reflec_ratio)
 		|| !ft_isname(str_arr[5], &sphere->material_id))
 	{
 		ft_free_figure(sphere);
@@ -43,7 +44,8 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 
 int	ft_parse_plane(t_list *node, char **str_arr)
 {
-	t_plane	*plane;
+	t_plane		*plane;
+	t_material	aux_mat;
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
@@ -55,8 +57,8 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_PLANE_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], plane->point)
 		|| !ft_isorientation(str_arr[2], plane->orientation)
-		|| !ft_isrgb(str_arr[3], &plane->color)
-		|| !ft_isratio(str_arr[4], &plane->reflec_ratio)
+		|| !ft_isrgb(str_arr[3], &aux_mat.color)
+		|| !ft_isratio(str_arr[4], &aux_mat.reflec_ratio)
 		|| !ft_isname(str_arr[5], &plane->material_id))
 	{
 		ft_free_figure(plane);
@@ -70,6 +72,7 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 int	ft_parse_cylinder(t_list *node, char **str_arr)
 {
 	t_cylinder	*cylinder;
+	t_material	aux_mat;
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
@@ -83,8 +86,8 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 		|| !ft_isorientation(str_arr[2], cylinder->orientation)
 		|| !ft_ispositivedouble(str_arr[3], &cylinder->diameter)
 		|| !ft_ispositivedouble(str_arr[4], &cylinder->height)
-		|| !ft_isrgb(str_arr[5], &cylinder->color)
-		|| !ft_isratio(str_arr[6], &cylinder->reflec_ratio)
+		|| !ft_isrgb(str_arr[5], &aux_mat.color)
+		|| !ft_isratio(str_arr[6], &aux_mat.reflec_ratio)
 		|| !ft_isname(str_arr[7], &cylinder->material_id))
 	{
 		free(cylinder);
@@ -97,7 +100,8 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 
 int	ft_parse_cone(t_list *node, char **str_arr)
 {
-	t_cone	*cone;
+	t_cone		*cone;
+	t_material	aux_mat;
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
@@ -112,8 +116,8 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 		|| !ft_istheta(str_arr[3], &cone->theta)
 		|| !ft_ispositivedouble(str_arr[4], &cone->heights[0])
 		|| !ft_ispositivedouble(str_arr[5], &cone->heights[1])
-		|| !ft_isrgb(str_arr[6], &cone->color)
-		|| !ft_isratio(str_arr[7], &cone->reflec_ratio)
+		|| !ft_isrgb(str_arr[6], &aux_mat.color)
+		|| !ft_isratio(str_arr[7], &aux_mat.reflec_ratio)
 		|| !ft_isname(str_arr[8], &cone->material_id))
 	{
 		ft_free_figure(cone);

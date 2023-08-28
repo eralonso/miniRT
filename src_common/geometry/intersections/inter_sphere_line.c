@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 14:25:38 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:15:03 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 		ret->distance = ft_quadrat_eq(coefs, -1);
 	if (ret->distance < 0)
 		return (0);
-	ret->tan_plane.color = sphere->material->color;
-	ret->tan_plane.reflec_ratio = sphere->material->reflec_ratio;
+	// ret->tan_plane.material->color = sphere->material->color;
+	// ret->tan_plane.material->reflec_ratio = sphere->material->reflec_ratio;
 	ret->tan_plane.material = sphere->material;
 	ft_addition(ret->tan_plane.point, line.point, \
 		ft_scale_vector(ret->tan_plane.point, \

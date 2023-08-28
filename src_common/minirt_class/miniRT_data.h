@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 12:59:13 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:05:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ typedef struct s_sphere
 	t_figure_type	ft;
 	t_vector		point;
 	double			diameter;
-	t_rgba			color;
-	double			reflec_ratio;
+	// t_rgba			color;
+	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_sphere;
@@ -163,8 +163,8 @@ typedef struct s_plane
 	t_figure_type	ft;
 	t_vector		point;
 	t_vector		orientation;
-	t_rgba			color;
-	double			reflec_ratio;
+	// t_rgba			color;
+	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_plane;
@@ -176,8 +176,8 @@ typedef struct s_cylinder
 	t_vector		orientation;
 	double			diameter;
 	double			height;
-	t_rgba			color;
-	double			reflec_ratio;
+	// t_rgba			color;
+	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_cylinder;
@@ -189,8 +189,8 @@ typedef struct s_cone
 	t_vector		orientation;
 	double			theta;
 	double			heights[2];
-	t_rgba			color;
-	double			reflec_ratio;
+	// t_rgba			color;
+	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_cone;
@@ -258,5 +258,6 @@ int			ft_parse_material(t_list *node, char **str_arr);
 t_material	*ft_find_material(t_list *mats, char *id);
 int			ft_link_figure_material(void *figure, t_list *mats);
 int			ft_link_materials(t_minirt_data *minirt);
+int			ft_create_background(t_minirt_data *minirt);
 
 #endif

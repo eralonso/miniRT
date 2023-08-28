@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/28 14:17:54 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:58:54 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	ft_init_best(t_intersect_data *best, t_minirt_data *minirt)
 {
 	best->distance = INFINITY;
 	best->pos = 0;
-	best->tan_plane.color = minirt->background_color;
-	best->tan_plane.reflec_ratio = 0;
+	best->tan_plane.ft = FT_PLANE;
+	best->tan_plane.material = minirt->materials_list->content;
 }
 
 static void	ft_take_best_intersection(t_intersect_data *best, \
