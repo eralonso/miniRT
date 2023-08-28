@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/26 17:21:14 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:07:07 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,22 @@ typedef struct line_s
 	t_vector	orientation;
 }	t_line;
 
+typedef enum e_material_type
+{
+	MTT_INVALID,
+	MTT_HOMOG,
+	MTT_CHESS,
+}	t_material_type;
+
+typedef struct s_material
+{
+	t_material_type	type;
+	char			*name;
+	t_rgba			color;
+	double			reflec_ratio;
+	void			*ext_prop;
+}	t_material;
+
 typedef struct s_sphere
 {
 	t_figure_type	ft;
@@ -138,6 +154,8 @@ typedef struct s_sphere
 	double			diameter;
 	t_rgba			color;
 	double			reflec_ratio;
+	char			*material_id;
+	t_material_type	*material;
 }	t_sphere;
 
 typedef struct s_plane
@@ -147,6 +165,8 @@ typedef struct s_plane
 	t_vector		orientation;
 	t_rgba			color;
 	double			reflec_ratio;
+	char			*material_id;
+	t_material_type	*material;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -158,6 +178,8 @@ typedef struct s_cylinder
 	double			height;
 	t_rgba			color;
 	double			reflec_ratio;
+	char			*material_id;
+	t_material_type	*material;
 }	t_cylinder;
 
 typedef struct s_cone
@@ -169,6 +191,8 @@ typedef struct s_cone
 	double			heights[2];
 	t_rgba			color;
 	double			reflec_ratio;
+	char			*material_id;
+	t_material_type	*material;
 }	t_cone;
 
 typedef enum e_minirt_type
@@ -192,22 +216,6 @@ typedef struct s_intersect_data
 	t_plane			tan_plane;
 	t_figure_type	ft;
 }	t_intersect_data;
-
-typedef enum e_material_type
-{
-	MTT_INVALID,
-	MTT_HOMOG,
-	MTT_CHESS,
-}	t_material_type;
-
-typedef struct s_material
-{
-	t_material_type	type;
-	char			*name;
-	t_rgba			color;
-	double			reflec_ratio;
-	void			*ext_prop;
-}	t_material;
 
 typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 
