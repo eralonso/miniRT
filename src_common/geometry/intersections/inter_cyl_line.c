@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cyl_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/26 19:11:56 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:25:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 		ft_scale_vector(cap_center, \
 			(double *)cyl->orientation, sign * cyl->height / 2.0));
 	ft_copy_vector(ret->tan_plane.point, cap_center);
-	ret->tan_plane.color = cyl->color;
-	ret->tan_plane.reflec_ratio = cyl->reflec_ratio;
+	ret->tan_plane.color = cyl->material->color;
+	ret->tan_plane.reflec_ratio = cyl->material->reflec_ratio;
+	ret->tan_plane.material = cyl->material;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
@@ -63,7 +64,9 @@ static int	ft_give_inters(t_intersect_data *ret, \
 {
 	t_vector	center;
 
-	ret->tan_plane.reflec_ratio = cyl->reflec_ratio;
+	ret->tan_plane.color = cyl->material->color;
+	ret->tan_plane.reflec_ratio = cyl->material->reflec_ratio;
+	ret->tan_plane.material = cyl->material;
 	ft_addition(center, (double *) cyl->point, \
 		ft_scale_vector(center, (double *) cyl->orientation, int_height));
 	ft_copy_vector(ret->tan_plane.point, line_int);
@@ -84,7 +87,9 @@ int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 	ret->distance = ft_quadrat_eq(coef, 1);
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
-	ret->tan_plane.color = cyl->color;
+	ret->tan_plane.color = cyl->material->color;
+	ret->tan_plane.reflec_ratio = cyl->material->reflec_ratio;
+	ret->tan_plane.material = cyl->material;
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));
 	int_height = ft_dot_product((double *)cyl->orientation, \

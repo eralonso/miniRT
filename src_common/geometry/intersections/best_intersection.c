@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/24 15:29:11 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:17:54 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_take_best_intersection(t_intersect_data *best, \
 	best->ft = hit->ft;
 	best->distance = hit->distance;
 	best->tan_plane = hit->tan_plane;
-	best->tan_plane.reflec_ratio = hit->tan_plane.reflec_ratio;
+	//best->tan_plane.reflec_ratio = hit->tan_plane.reflec_ratio;
 }
 
 t_intersect_data	get_best_intersect(t_minirt_data *minirt, \
