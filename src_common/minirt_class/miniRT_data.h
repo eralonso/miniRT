@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 11:24:20 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:04:34 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ typedef struct s_intersect_data
 	int				pos;
 	t_plane			tan_plane;
 	t_figure_type	ft;
+	t_rgba			color;
 }	t_intersect_data;
 
 typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/29 11:44:12 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:06:52 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_rgba	ft_reflected_light(t_shader_data *data, int depth)
 	object_color = ft_col_light(data->light->color, \
 				data->diffuse * data->light->brightness * \
 				(1 - data->best->tan_plane.material->reflec_ratio), \
-				data->best->tan_plane.material->color);
+				data->best->color);
 	ret = ft_rgba_addition(reflected_color, object_color);
 	ret = ft_rgba_addition(specular, ret);
 	ret = ft_rgba_scale(ret, 1);
@@ -61,7 +61,7 @@ static t_rgba	ft_non_reflective_light(t_shader_data *data)
 							data->light->brightness * data->specular);
 	diffuse = ft_col_light(data->light->color, \
 						data->diffuse * data->light->brightness, \
-						data->best->tan_plane.material->color);
+						data->best->color);
 	ret = ft_rgba_scale(ft_rgba_addition(specular, diffuse), 1);
 	return (ret);
 }
@@ -124,7 +124,7 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray, int depth)
 	if (depth == 0)
 		return (minirt->background_color);
 	best = get_best_intersect(minirt, ray, -1);
-	color = best.tan_plane.material->color;
+	color = best.color;
 	best_color = color;
 	if (best.distance != INFINITY)
 		color = get_sum_lights(&best, ray, minirt, depth);

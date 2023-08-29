@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cyl_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 10:52:58 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:05:37 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	double		sign;
 	double		axe_dist;
 
+	ret->color = cyl->material->color;
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cyl->orientation);
 	sign = -ft_dot_product(line.orientation, (double *)cyl->orientation);
 	sign /= fabs(sign);
@@ -63,6 +64,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	t_vector	center;
 
 	ret->tan_plane.material = cyl->material;
+	ret->color = cyl->material->color;
 	ft_addition(center, (double *) cyl->point, \
 		ft_scale_vector(center, (double *) cyl->orientation, int_height));
 	ft_copy_vector(ret->tan_plane.point, line_int);

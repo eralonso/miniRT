@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 10:52:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:06:06 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	double		height;
 	double		cap_radius;
 
+	ret->color = cone->material->color;
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cone->orientation);
 	sign = ft_dot_product(line.orientation, (double *)cone->orientation);
 	sign /= -fabs(sign);
@@ -69,6 +70,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	t_vector	trash;
 	double		int_radius;
 
+	ret->color = cone->material->color;
 	int_radius = int_height * tan(cone->theta);
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_cross_product(ret->tan_plane.orientation, \

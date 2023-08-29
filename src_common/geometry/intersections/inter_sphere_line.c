@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_sphere_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 10:53:18 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:36:37 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,32 @@ static int	ft_coef_calc(double coefs[3], t_line line, const t_sphere *sphere)
 	coefs[1] = ft_dot_product(line.orientation, rel_origin);
 	coefs[2] = ft_dot_product(rel_origin, rel_origin) - radius * radius;
 	return (1);
+}
+
+void     spherical_map(double *uv, t_vector point)
+{
+	float   theta;
+	float   phi;
+
+	theta = atan2(point[0], point[2]);
+	phi = acos(point[1]);
+	uv[0] = 1 - ((theta / (M_PI * 2)) + 0.5);
+	uv[1] = 1 - (phi / M_PI);
+}
+
+static double       module(double num)
+{
+     return (num - floor(num));
+}
+
+t_rgba	chess_method(t_vector orientation, t_rgba color)
+{
+	double		uv[2];
+
+	spherical_map(uv, orientation);
+	if ((module(uv[0] * 20) < 0.5) ^ (module(uv[1] * 10) < 0.5))
+		return (color);
+     return ((t_rgba){0, 0, 0, 0});
 }
 
 int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
@@ -46,5 +72,6 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 	ft_substraction(ret->tan_plane.orientation, \
 		ret->tan_plane.point, (double *)sphere->point);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
+	ret->color = chess_method(ret->tan_plane.orientation, sphere->material->color);
 	return (1);
 }
