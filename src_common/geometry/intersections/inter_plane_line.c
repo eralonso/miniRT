@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 15:14:53 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 10:53:09 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	inter_plane_line(t_intersect_data *res, t_line line, void *figure)
 	sign = -dot1 / fabs(dot1);
 	ft_scale_vector(res->tan_plane.orientation, \
 		(double *)plane->orientation, sign);
-	// res->tan_plane.material->color = plane->material->color;
-	// res->tan_plane.material->reflec_ratio = plane->material->reflec_ratio;
 	res->tan_plane.material = plane->material;
 	ft_addition(res->tan_plane.point, line.point, \
 		ft_scale_vector(res->tan_plane.point, \

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 10:09:19 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 10:53:51 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,6 @@ typedef struct s_sphere
 	t_figure_type	ft;
 	t_vector		point;
 	double			diameter;
-	// t_rgba			color;
-	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_sphere;
@@ -163,8 +161,6 @@ typedef struct s_plane
 	t_figure_type	ft;
 	t_vector		point;
 	t_vector		orientation;
-	// t_rgba			color;
-	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_plane;
@@ -176,8 +172,6 @@ typedef struct s_cylinder
 	t_vector		orientation;
 	double			diameter;
 	double			height;
-	// t_rgba			color;
-	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_cylinder;
@@ -189,8 +183,6 @@ typedef struct s_cone
 	t_vector		orientation;
 	double			theta;
 	double			heights[2];
-	// t_rgba			color;
-	// double			reflec_ratio;
 	char			*material_id;
 	t_material		*material;
 }	t_cone;

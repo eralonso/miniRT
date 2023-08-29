@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 15:13:42 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 10:52:58 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 		ft_scale_vector(cap_center, \
 			(double *)cyl->orientation, sign * cyl->height / 2.0));
 	ft_copy_vector(ret->tan_plane.point, cap_center);
-	// ret->tan_plane.material->color = cyl->material->color;
-	// ret->tan_plane.material->reflec_ratio = cyl->material->reflec_ratio;
 	ret->tan_plane.material = cyl->material;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
@@ -64,8 +62,6 @@ static int	ft_give_inters(t_intersect_data *ret, \
 {
 	t_vector	center;
 
-	// ret->tan_plane.material->color = cyl->material->color;
-	// ret->tan_plane.material->reflec_ratio = cyl->material->reflec_ratio;
 	ret->tan_plane.material = cyl->material;
 	ft_addition(center, (double *) cyl->point, \
 		ft_scale_vector(center, (double *) cyl->orientation, int_height));
@@ -87,8 +83,6 @@ int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 	ret->distance = ft_quadrat_eq(coef, 1);
 	if (ret->distance == INFINITY || ret->distance < 0)
 		return (0);
-	// ret->tan_plane.material->color = cyl->material->color;
-	// ret->tan_plane.material->reflec_ratio = cyl->material->reflec_ratio;
 	ret->tan_plane.material = cyl->material;
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));
