@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/29 09:59:10 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:44:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,13 @@ static t_rgba	shader(t_shader_data data, int depth)
 		gen_reflect_ray(data.sr, data.best).orientation);
 	if (data.specular < 0)
 		data.specular = 0;
-	data.specular = pow(data.specular, 5);
-	data.diffuse *= (1 - data.specular);
 	data.hit = get_best_intersect(data.minirt, data.sr, data.best->pos);
+	if (data.hit.tan_plane.material->n_sharpness >= 5)
+		data.specular = pow(data.specular, \
+						data.hit.tan_plane.material->n_sharpness);
+	else
+		data.specular = pow(data.specular, 5);
+	data.diffuse *= (1 - data.specular);
 	if (data.hit.distance < data.dis)
 		return ((t_rgba){0, 0, 0, 0});
 	if (data.best->tan_plane.material->reflec_ratio > 0)
