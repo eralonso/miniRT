@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 15:05:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 10:09:19 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # define CAMERA_COMPONENTS_NUMBER 5
 # define LIGHT_COMPONENTS_NUMBER 4
 # define MATERIAL_MIN_COMPONENTS_NUMBER 5
-# define SPHERE_COMPONENTS_NUMBER 6
-# define PLANE_COMPONENTS_NUMBER 6
-# define CYLINDER_COMPONENTS_NUMBER 8
-# define CONE_COMPONENTS_NUMBER 9
+# define SPHERE_COMPONENTS_NUMBER 4
+# define PLANE_COMPONENTS_NUMBER 4
+# define CYLINDER_COMPONENTS_NUMBER 6
+# define CONE_COMPONENTS_NUMBER 7
 
 # define ERR_MISSING_AMBIENT_LIGHT \
 		"Missing ambient light\n"
