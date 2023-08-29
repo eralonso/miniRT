@@ -10,7 +10,7 @@ cy 50,0,-20        0.5,0,1       10.0  300.0        BLUE
 cy 50,50,-20        0.5,0,1      10.0  100.0        BLUE
 cn 50,50,-20        1,-1,1       20.0  50.0 100.0   WHITE
 
-mt HOMOG WHITE                                   255,255,255   0.5
-mt HOMOG RED                                     255,0,0         0
-mt HOMOG GREEN                                   0,255,0         0
-mt HOMOG BLUE                                    0,0,255         0
+mt HOMOG WHITE                                   255,255,255   0.5 5
+mt HOMOG RED                                     255,0,0         0 0
+mt HOMOG GREEN                                   0,255,0         0 0
+mt HOMOG BLUE                                    0,0,255         0 0

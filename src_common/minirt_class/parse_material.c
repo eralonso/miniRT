@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:45:02 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 17:39:51 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:24:05 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	ft_parse_material(t_list *node, char **str_arr)
 		!ft_ismattype(str_arr[1], &mat->type)
 		|| !ft_isname(str_arr[2], &mat->name)
 		|| !ft_isrgb(str_arr[3], &mat->color)
-		|| !ft_isratio(str_arr[4], &mat->reflec_ratio))
+		|| !ft_isratio(str_arr[4], &mat->reflec_ratio)
+		|| !ft_ispositivedouble(str_arr[5], &mat->n_sharpness))
 	{
 		ft_free_material(mat);
 		return (0);

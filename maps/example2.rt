@@ -20,13 +20,13 @@ sp 0,0,10                        3.1        PINK
 sp 0,-10,0                       3.1        PINK
 sp 0,0,-10                       3.1        PINK
 
-mt HOMOG PINK                                    255,128,128     0
-mt HOMOG YELLOW                                  255,255,0       0
-mt HOMOG WHITE                                   255,255,255     0
-mt HOMOG BLACK                                   0,0,0           0
-mt HOMOG DARK_GREEN                              0,125,0         0
-mt HOMOG LIGHT_GREEN                             128,255,128     0
-mt HOMOG PURPLE                                  125,0,125       0
-mt HOMOG RED                                     255,0,0         0
-mt HOMOG GREEN                                   0,255,0         0
-mt HOMOG BLUE                                    0,0,255         0
+mt HOMOG PINK                                    255,128,128     0 0
+mt HOMOG YELLOW                                  255,255,0       0 0
+mt HOMOG WHITE                                   255,255,255     0 0
+mt HOMOG BLACK                                   0,0,0           0 0
+mt HOMOG DARK_GREEN                              0,125,0         0 0
+mt HOMOG LIGHT_GREEN                             128,255,128     0 0
+mt HOMOG PURPLE                                  125,0,125       0 0
+mt HOMOG RED                                     255,0,0         0 0
+mt HOMOG GREEN                                   0,255,0         0 0
+mt HOMOG BLUE                                    0,0,255         0 0
