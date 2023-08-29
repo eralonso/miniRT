@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/28 14:38:25 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/29 09:59:10 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,16 @@ t_rgba	raytrace(t_minirt_data *minirt, t_line ray, int depth)
 {
 	t_intersect_data	best;
 	t_rgba				color;
+	t_rgba				best_color;
 
 	if (depth == 0)
 		return (minirt->background_color);
 	best = get_best_intersect(minirt, ray, -1);
 	color = best.tan_plane.material->color;
+	best_color = color;
 	if (best.distance != INFINITY)
 		color = get_sum_lights(&best, ray, minirt, depth);
-	best.tan_plane.material->color = ft_rgba_addition(color, ft_col_light(\
-	minirt->ambient.color, minirt->ambient.ratio * 0.4, best.tan_plane.material->color));
-	return (best.tan_plane.material->color);
+	best_color = ft_rgba_addition(color, ft_col_light(\
+	minirt->ambient.color, minirt->ambient.ratio * 0.4, best_color));
+	return (best_color);
 }
