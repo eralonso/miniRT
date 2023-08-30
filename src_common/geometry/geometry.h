@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/24 13:58:33 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:49:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ int					inter_cone_line(t_intersect_data *ret, \
 t_line				gen_shadow_ray(t_light *light, \
 					t_intersect_data *best, double *dis);
 t_line				gen_reflect_ray(t_line ray, t_intersect_data *hit);
+t_rgba				chess_pick_color(t_vector point, t_vector origin, \
+									t_vector orientation, t_material *mat);
 
 #endif

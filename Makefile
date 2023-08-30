@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/08/30 13:27:30 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/08/30 18:31:12 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRCC_R			:= ft_read_map.c\
 					geometry/camera/camera_rays_v2.c\
 					geometry/raytrace/raytrace.c\
 					geometry/raytrace/gen_ray.c\
+					geometry/intersections/ft_chess_pick_color.c\
 					geometry/intersections/ft_quadrat_eq.c\
 					geometry/intersections/inter_sphere_line.c\
 					geometry/intersections/inter_plane_line.c\

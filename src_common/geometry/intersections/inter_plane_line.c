@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 13:57:55 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:54:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,41 +46,6 @@
 // 	return (color);
 // }
 
-static double	module(double num)
-{
-	return (num - floor(num));
-}
-
-static t_rgba	material_pick_color(t_vector point, t_vector orientation, \
-									t_material *mat)
-{
-	t_vector	trash;
-	double		uv[2];
-	t_chess_ext	*chess_ext;
-
-	if (mat->type == MTT_HOMOG)
-		return (mat->color);
-	chess_ext = (t_chess_ext *)mat->ext_prop;
-	if (ft_dot_product((t_vector){1, 1, 0}, orientation))
-	{
-		uv[0] = ft_scale_vector(trash, orientation, point[0])[0];
-		uv[1] = ft_scale_vector(trash, orientation, point[1])[1];
-	}
-	else if (ft_dot_product((t_vector){0, 1, 1}, orientation))
-	{
-		uv[0] = ft_scale_vector(trash, orientation, point[1])[1];
-		uv[1] = ft_scale_vector(trash, orientation, point[2])[2];
-	}
-	else if (ft_dot_product((t_vector){1, 0, 1}, orientation))
-	{
-		uv[0] = ft_scale_vector(trash, orientation, point[0])[0];
-		uv[1] = ft_scale_vector(trash, orientation, point[2])[2];
-	}
-	if ((module(uv[0]) < 0.5) ^ (module(uv[1]) < 0.5))
-		return (mat->color);
-	return (chess_ext->color);
-}
-
 int	inter_plane_line(t_intersect_data *res, t_line line, void *figure)
 {
 	const t_plane	*plane = (t_plane *)figure;
@@ -104,7 +69,7 @@ int	inter_plane_line(t_intersect_data *res, t_line line, void *figure)
 	ft_addition(res->tan_plane.point, line.point, \
 		ft_scale_vector(res->tan_plane.point, \
 			line.orientation, res->distance));
-	res->color = material_pick_color(res->tan_plane.point, \
+	res->color = chess_pick_color(res->tan_plane.point, (double *)plane->point, \
 					res->tan_plane.orientation, res->tan_plane.material);
 	return (1);
 }
