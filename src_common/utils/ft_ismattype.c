@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:30:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 16:04:51 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:35:15 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	ft_ismattype(char *str, t_material_type *ret)
 		}
 		i++;
 	}
+	ft_log_error(ISMATTYPE_INVALID);
 	return (0);
 }

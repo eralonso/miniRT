@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 14:04:34 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:40:46 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,9 +228,7 @@ typedef struct s_minirt_data
 	t_list			*lights;
 	t_list			*figures;
 	t_list			*materials_list;
-	t_material		**mat_table;
 	int				mat_link_nok;
-	u_int8_t		mat_count;
 	t_intersect		intersect[4];
 	t_rgba			background_color;
 }	t_minirt_data;
@@ -240,7 +238,6 @@ typedef void	(*t_print)(void *);
 
 void		ft_free_material(void *p);
 void		ft_free_figure(void *figure);
-int			ft_grab_materials(t_minirt_data *minirt);
 int			ft_parse_sphere(t_list *node, char **str_arr);
 int			ft_parse_plane(t_list *node, char **str_arr);
 int			ft_parse_cylinder(t_list *node, char **str_arr);

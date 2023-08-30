@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 13:15:47 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:40:10 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ t_minirt_data	*minirt_constructor(char *filename)
 		minirt = ft_init_minirt_data(minirt);
 		if (minirt)
 		{
-			if (!ft_grab_materials(minirt))
-				return (0);
 			if (!ft_link_materials(minirt))
 				return (0);
 			minirt = ft_check_missing(minirt);
@@ -70,8 +68,6 @@ t_minirt_data	*minirt_dispose(t_minirt_data **minirt)
 	ft_lstclear(&g->figures, &ft_free_figure);
 	ft_lstclear(&g->lights, &free);
 	ft_lstclear(&g->materials_list, &ft_free_material);
-	if (g->mat_table)
-		free_x ((void **)&g->mat_table);
 	ft_dispose_graph_ctx(g);
 	free_x((void **)minirt);
 	g = NULL;
