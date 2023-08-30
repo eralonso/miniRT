@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:45:02 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 12:47:57 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:37:56 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ static int	ft_parse_homog_material(t_material *mat, char **str_arr, int argc)
 	return (1);
 }
 
+static int	ft_parse_chess_extension(t_material *mat, char **str_arr)
+{
+	t_chess_ext	*chess_est;
+
+	chess_est = mat->ext_prop;
+	if (!ft_isrgb(str_arr[6], &chess_est->color)
+		|| !ft_isvector2d(str_arr[7], chess_est->scale)
+		|| !ft_isvector2d(str_arr[8], chess_est->offset)
+		|| !ft_isangle(str_arr[9], &chess_est->alpha))
+		return (0);
+	return (1);
+}
+
 static int	ft_parse_chess_material(t_material *mat, char **str_arr, int argc)
 {
 	if (argc < MATERIAL_CHESS_COMPONENTS_NUMBER)
@@ -46,7 +59,7 @@ static int	ft_parse_chess_material(t_material *mat, char **str_arr, int argc)
 		|| !ft_isrgb(str_arr[3], &mat->color)
 		|| !ft_isratio(str_arr[4], &mat->reflec_ratio)
 		|| !ft_ispositivedouble(str_arr[5], &mat->n_sharpness)
-		|| !ft_isrgb(str_arr[6], &((t_chess_ext *)(mat->ext_prop))->color))
+		|| !ft_parse_chess_extension(mat, str_arr))
 	{
 		ft_free_material(mat);
 		return (0);

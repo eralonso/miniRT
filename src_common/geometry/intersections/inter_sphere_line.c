@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 12:46:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:49:58 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,23 @@ static double	module(double num)
 	return (num - floor(num));
 }
 
-t_rgba	chess_method(t_vector orientation, t_rgba color1, t_rgba color2)
+static t_rgba	material_pick_color(t_vector orientation, t_material *mat)
 {
-	double		uv[2];
+	double			uv[2];
+	t_chess_ext		*chess_ext;
 
+	if (mat->type == MTT_HOMOG)
+		return (mat->color);
+	chess_ext = (t_chess_ext *)mat->ext_prop;
 	spherical_map(uv, orientation);
 	if ((module(uv[0] * 20) < 0.5) ^ (module(uv[1] * 10) < 0.5))
-		return (color1);
-	return (color2);
+		return (mat->color);
+	return (chess_ext->color);
 }
 
 int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_sphere		*sphere = (t_sphere *)figure;
-	t_chess_ext			*chess_ext;
 	double				coefs[3];
 
 	if (!ft_coef_calc(coefs, line, sphere))
@@ -67,14 +70,13 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 	if (ret->distance < 0)
 		return (0);
 	ret->tan_plane.material = sphere->material;
-	chess_ext = (t_chess_ext *)sphere->material->ext_prop;
 	ft_addition(ret->tan_plane.point, line.point, \
 		ft_scale_vector(ret->tan_plane.point, \
 			line.orientation, ret->distance));
 	ft_substraction(ret->tan_plane.orientation, \
 		ret->tan_plane.point, (double *)sphere->point);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
-	ret->color = chess_method(ret->tan_plane.orientation, \
-		sphere->material->color, chess_ext->color);
+	ret->color = material_pick_color(ret->tan_plane.orientation, \
+										sphere->material);
 	return (1);
 }

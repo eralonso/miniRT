@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 12:27:19 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:22:36 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define CAMERA_COMPONENTS_NUMBER 5
 # define LIGHT_COMPONENTS_NUMBER 4
 # define MATERIAL_MIN_COMPONENTS_NUMBER 6
-# define MATERIAL_CHESS_COMPONENTS_NUMBER 7
+# define MATERIAL_CHESS_COMPONENTS_NUMBER 10
 # define SPHERE_COMPONENTS_NUMBER 4
 # define PLANE_COMPONENTS_NUMBER 4
 # define CYLINDER_COMPONENTS_NUMBER 6
@@ -83,6 +83,8 @@
 
 typedef double	t_vector[3];
 
+typedef double	t_vector2d[2];
+
 typedef double	*t_matrix[3];
 
 typedef struct s_rgba
@@ -144,6 +146,9 @@ typedef enum e_material_type
 typedef struct s_chess_ext
 {
 	t_rgba			color;
+	t_vector2d		scale;
+	t_vector2d		offset;
+	double			alpha;
 }	t_chess_ext;
 
 typedef struct s_material
