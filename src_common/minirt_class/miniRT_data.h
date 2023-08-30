@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 11:40:46 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:27:19 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define CAMERA_COMPONENTS_NUMBER 5
 # define LIGHT_COMPONENTS_NUMBER 4
 # define MATERIAL_MIN_COMPONENTS_NUMBER 6
+# define MATERIAL_CHESS_COMPONENTS_NUMBER 7
 # define SPHERE_COMPONENTS_NUMBER 4
 # define PLANE_COMPONENTS_NUMBER 4
 # define CYLINDER_COMPONENTS_NUMBER 6
@@ -53,6 +54,8 @@
 		"Malloc failed when allocating light\n"
 # define ERR_MATERIAL_COMPONENTS_NUMBER \
 		"Invalid number of components for material\n"
+# define ERR_CHESS_MATERIAL_COMPONENTS_NUMBER \
+		"Invalid number of components for chess material\n"
 # define ERR_MATERIAL_MALLOC_FAILED \
 		"Malloc failed when allocating material\n"
 # define ERR_MATERIAL_TABLE_MALLOC_FAILED \
@@ -138,6 +141,11 @@ typedef enum e_material_type
 	MTT_CHESS,
 }	t_material_type;
 
+typedef struct s_chess_ext
+{
+	t_rgba			color;
+}	t_chess_ext;
+
 typedef struct s_material
 {
 	t_material_type	type;
@@ -216,6 +224,9 @@ typedef int		(*t_intersect)(t_intersect_data * , t_line , void *);
 typedef void	(*t_freeer)(void *);
 
 typedef int		(*t_mat_linker)(void *figure, t_list *mats);
+
+typedef int		(*t_mat_parser)(t_material *, char **, int);	
+
 
 typedef struct s_minirt_data
 {
