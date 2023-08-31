@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 14:50:42 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:45:13 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,13 @@ void				ft_rotate(t_vector2d uv, const t_vector2d xy, double angle);
 void				ft_spherical_map(double *uv, t_vector point);
 void				ft_planar_map(double *uv, t_vector point, t_vector origin, \
 									t_vector orientation);
+void				ft_cylindrical_map(double *uv, t_vector point, \
+									t_vector origin, t_vector orientation);
 t_rgba				chess_plane_pick_color(t_vector point, t_vector origin, \
 									t_vector orientation, t_material *mat);
 t_rgba				chess_sphere_pick_color(t_vector orientation, \
 									t_material *mat);
+t_rgba				chess_cyl_pick_color(t_vector point, t_vector origin, \
+									t_vector orientation, t_material *mat);
 
 #endif

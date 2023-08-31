@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_cone_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/29 14:06:06 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:12:04 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	ret->tan_plane.material = cone->material;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
+	ret->color = chess_cyl_pick_color(ret->tan_plane.point, \
+					(double *)cone->point, \
+					(double *)cone->orientation, ret->tan_plane.material);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
 	return (axe_dist <= (cap_radius * cap_radius));
 }
@@ -70,7 +73,8 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	t_vector	trash;
 	double		int_radius;
 
-	ret->color = cone->material->color;
+	// ret->color = cone->material->color;
+	ret->color = (t_rgba){0, 0, 0, 0};
 	int_radius = int_height * tan(cone->theta);
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_cross_product(ret->tan_plane.orientation, \
@@ -79,6 +83,9 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ft_cross_product(ret->tan_plane.orientation, \
 		ret->tan_plane.orientation, trash);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
+	ret->color = chess_cyl_pick_color(ret->tan_plane.point, \
+					(double *)cone->point, \
+					(double *)cone->orientation, ret->tan_plane.material);
 	return (1);
 }
 
