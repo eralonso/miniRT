@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 16:54:47 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/31 14:38:04 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	inter_plane_line(t_intersect_data *res, t_line line, void *figure)
 	ft_addition(res->tan_plane.point, line.point, \
 		ft_scale_vector(res->tan_plane.point, \
 			line.orientation, res->distance));
-	res->color = chess_pick_color(res->tan_plane.point, (double *)plane->point, \
+	res->color = chess_plane_pick_color(res->tan_plane.point, \
+					(double *)plane->point, \
 					res->tan_plane.orientation, res->tan_plane.material);
 	return (1);
 }

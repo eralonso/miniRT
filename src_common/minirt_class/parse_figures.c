@@ -6,18 +6,11 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 10:48:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 11:03:09 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:03:12 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../common.h"
-
-static int	ft_clean_n_log_error(void *to_free, char *msg)
-{
-	if (to_free)
-		free(to_free);
-	return (ft_log_error(msg));
-}
 
 int	ft_parse_sphere(t_list *node, char **str_arr)
 {
@@ -32,7 +25,7 @@ int	ft_parse_sphere(t_list *node, char **str_arr)
 	if (ft_matrixlen(str_arr) != SPHERE_COMPONENTS_NUMBER)
 	{
 		free(sphere);
-		return (ft_clean_n_log_error(sphere, ERR_SPHERE_COMPONENTS_NUMBER));
+		return (ft_free_n_log_error(sphere, ERR_SPHERE_COMPONENTS_NUMBER));
 	}
 	if (!ft_isvector(str_arr[1], sphere->point)
 		|| !ft_ispositivedouble(str_arr[2], &sphere->diameter)
@@ -57,7 +50,7 @@ int	ft_parse_plane(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_PLANE_MALLOC_FAILED));
 	plane->ft = FT_PLANE;
 	if (ft_matrixlen(str_arr) != PLANE_COMPONENTS_NUMBER)
-		return (ft_clean_n_log_error(plane, ERR_PLANE_COMPONENTS_NUMBER));
+		return (ft_free_n_log_error(plane, ERR_PLANE_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], plane->point)
 		|| !ft_isorientation(str_arr[2], plane->orientation)
 		|| !ft_isname(str_arr[3], &plane->material_id))
@@ -81,7 +74,7 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_CYLINDER_MALLOC_FAILED));
 	cylinder->ft = FT_CYLINDER;
 	if (ft_matrixlen(str_arr) != CYLINDER_COMPONENTS_NUMBER)
-		return (ft_clean_n_log_error(cylinder, ERR_CYLINDER_COMPONENTS_NUMBER));
+		return (ft_free_n_log_error(cylinder, ERR_CYLINDER_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], cylinder->point)
 		|| !ft_isorientation(str_arr[2], cylinder->orientation)
 		|| !ft_ispositivedouble(str_arr[3], &cylinder->diameter)
@@ -96,6 +89,18 @@ int	ft_parse_cylinder(t_list *node, char **str_arr)
 	return (1);
 }
 
+static void	ft_arrange_cone_heights(t_cone *cone)
+{
+	double	aux;
+
+	if (cone->heights[0] > cone->heights[1])
+	{
+		aux = cone->heights[0];
+		cone->heights[0] = cone->heights[1];
+		cone->heights[1] = aux;
+	}
+}
+
 int	ft_parse_cone(t_list *node, char **str_arr)
 {
 	t_cone		*cone;
@@ -107,7 +112,7 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 		return (ft_log_error(ERR_CONE_MALLOC_FAILED));
 	cone->ft = FT_CONE;
 	if (ft_matrixlen(str_arr) != CONE_COMPONENTS_NUMBER)
-		return (ft_clean_n_log_error(cone, ERR_CONE_COMPONENTS_NUMBER));
+		return (ft_free_n_log_error(cone, ERR_CONE_COMPONENTS_NUMBER));
 	if (!ft_isvector(str_arr[1], cone->point)
 		|| !ft_isorientation(str_arr[2], cone->orientation)
 		|| !ft_istheta(str_arr[3], &cone->theta)
@@ -118,6 +123,7 @@ int	ft_parse_cone(t_list *node, char **str_arr)
 		ft_free_figure(cone);
 		return (0);
 	}
+	ft_arrange_cone_heights(cone);
 	free_x((void **)&node->content);
 	node->content = cone;
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 12:31:24 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/31 14:49:41 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,6 @@ static int	ft_coef_calc(double coefs[3], t_line line, const t_sphere *sphere)
 	coefs[1] = ft_dot_product(line.orientation, rel_origin);
 	coefs[2] = ft_dot_product(rel_origin, rel_origin) - radius * radius;
 	return (1);
-}
-
-void	spherical_map(double *uv, t_vector point)
-{
-	float	theta;
-	float	phi;
-
-	theta = atan2(point[0], point[1]);
-	phi = acos(point[2]);
-	uv[0] = 1 - ((theta / (M_PI * 2)) + 0.5);
-	uv[1] = 1 - (phi / M_PI);
-}
-
-static t_rgba	material_pick_color(t_vector orientation, t_material *mat)
-{
-	t_vector2d		uv;
-	t_chess_ext		*chess_ext;
-
-	if (mat->type == MTT_HOMOG)
-		return (mat->color);
-	chess_ext = (t_chess_ext *)mat->ext_prop;
-	spherical_map(uv, orientation);
-	// if ((module(uv[0] * 20) < 0.5) ^ (module(uv[1] * 10) < 0.5))
-	uv[0] *= 20;
-	uv[1] *= 10;
-	if (ft_tile(uv, chess_ext))
-		return (mat->color);
-	return (chess_ext->color);
 }
 
 int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
@@ -74,7 +46,7 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 	ft_substraction(ret->tan_plane.orientation, \
 		ret->tan_plane.point, (double *)sphere->point);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
-	ret->color = material_pick_color(ret->tan_plane.orientation, \
+	ret->color = chess_sphere_pick_color(ret->tan_plane.orientation, \
 										sphere->material);
 	return (1);
 }

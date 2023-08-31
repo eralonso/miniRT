@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 13:28:59 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/31 14:57:49 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ISRATIO_NIR "Ratio is not in range: [0.0 - 1.0]\n"
 
 int				ft_matrixlen(char **matrix);
+int				ft_free_n_log_error(void *to_free, char *msg);
 int				ft_isdouble(char *str, double *ret);
 int				ft_isunsignedchar(char *str, unsigned char *ret);
 int				ft_isrgb(char *str, t_rgba *ret);

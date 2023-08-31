@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_log_error.c                                     :+:      :+:    :+:   */
+/*   ft_free_n_log_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 14:46:13 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 14:53:56 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/08/31 14:54:45 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/08/31 14:58:56 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_extra.h"
+#include "../../libft/libft.h"
 
-int	ft_log_error(char *msg)
+int	ft_free_n_log_error(void *to_free, char *msg)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(msg, 2);
-	return (0);
+	if (to_free)
+		free(to_free);
+	return (ft_log_error(msg));
 }

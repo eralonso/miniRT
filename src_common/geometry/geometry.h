@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 11:45:55 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/08/31 14:50:42 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,12 @@ t_line				gen_reflect_ray(t_line ray, t_intersect_data *hit);
 double				ft_residual(double num, double offset, double scale);
 int					ft_tile(t_vector2d uv, t_chess_ext *chess_ext);
 void				ft_rotate(t_vector2d uv, const t_vector2d xy, double angle);
-t_rgba				chess_pick_color(t_vector point, t_vector origin, \
+void				ft_spherical_map(double *uv, t_vector point);
+void				ft_planar_map(double *uv, t_vector point, t_vector origin, \
+									t_vector orientation);
+t_rgba				chess_plane_pick_color(t_vector point, t_vector origin, \
 									t_vector orientation, t_material *mat);
+t_rgba				chess_sphere_pick_color(t_vector orientation, \
+									t_material *mat);
 
 #endif
