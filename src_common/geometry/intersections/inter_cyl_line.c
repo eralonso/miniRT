@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 16:09:23 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/01 18:01:29 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	ret->tan_plane.material = cyl->material;
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
 		return (0);
-	ret->color = chess_cyl_pick_color(ret->tan_plane.point, \
-					(double *)cyl->point, \
-					(double *)cyl->orientation, ret->tan_plane.material);
+	// ret->color = chess_cyl_pick_color(ret->tan_plane.point, \
+	// 				(double *)cyl->point, \
+	// 				(double *)cyl->orientation, ret->tan_plane.material);
+	ret->color = chess_cylin_pick_color(ret->tan_plane.point, cyl);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
 	return (axe_dist <= (cyl->diameter * cyl->diameter / 4.0));
 }
@@ -72,9 +73,10 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_substraction(ret->tan_plane.orientation, line_int, center);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
-	ret->color = chess_cyl_pick_color(ret->tan_plane.point, \
-					(double *)cyl->point, \
-					(double *)cyl->orientation, ret->tan_plane.material);
+	// ret->color = chess_cyl_pick_color(ret->tan_plane.point, \
+	// 				(double *)cyl->point, \
+	// 				(double *)cyl->orientation, ret->tan_plane.material);
+	ret->color = chess_cylin_pick_color(ret->tan_plane.point, cyl);
 	return (1);
 }
 
