@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/01 18:28:42 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 09:39:51 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GEOMETRY_H
 # include "../common.h"
 
-float				ft_inv_sqrt(float value);
 double				*ft_scale_vector(t_vector res, t_vector a, double s);
 double				*ft_substraction(t_vector res, t_vector a, t_vector b);
 double				*ft_addition(t_vector res, t_vector a, t_vector b);
