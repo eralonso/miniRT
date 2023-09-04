@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 16:07:58 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:30:28 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,25 +83,25 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ret->color = chess_cone_pick_color(ret->tan_plane.point, cone);
 	return (1);
 }
+//aux is concatenation of coefs[3] and roots[2]
 
 int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_cone	*cone = (t_cone *)figure;
-	double			coefs[3];
-	double			roots[2];
 	double			int_height;
 	t_vector		line_int;
 	int				cap_int_res;
+	double			aux[5];
 
 	cap_int_res = 1;
-	if (!ft_coef_calc(coefs, line, cone))
+	if (!ft_coef_calc(aux, line, cone))
 	{
 		cap_int_res = ft_cap_inters(ret, line, figure);
 		if (cap_int_res)
 			return (cap_int_res);
 	}
-	ft_quadrat_eq2(coefs, roots);
-	if (!ft_take_max_pos_root(&ret->distance, roots))
+	ft_quadrat_eq2(aux, aux + 3);
+	if (!ft_take_max_pos_root(&ret->distance, aux + 3))
 		return (0);
 	ret->tan_plane.material = cone->material;
 	ft_addition(line_int, line.point, \
