@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 09:48:26 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:08:26 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ t_rgba				raytrace(t_minirt_data *minirt, t_line ray, int depth);
 t_intersect_data	get_best_intersect(t_minirt_data *minirt, t_line ray, \
 							int exclude);
 double				ft_quadrat_eq(double coef[3], int sign);
+double				*ft_quadrat_eq2(double coef[3], double roots[2]);
+int					ft_take_min_pos_root(double *pos_root, double *roots);
+int					ft_take_max_pos_root(double *pos_root, double *roots);
 int					inter_plane_line(t_intersect_data *res, \
 									t_line line, void *figure);
 int					inter_sphere_line(t_intersect_data *ret, \

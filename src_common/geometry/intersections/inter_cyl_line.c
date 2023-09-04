@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 10:39:17 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:03:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,15 @@ static int	ft_give_inters(t_intersect_data *ret, \
 int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_cylinder	*cyl = (t_cylinder *)figure;
-	double				coef[3];
+	double				coefs[3];
+	double				roots[2];
 	double				int_height;
 	t_vector			line_int;
 
-	if (!ft_coef_calc(coef, line, cyl))
+	if (!ft_coef_calc(coefs, line, cyl))
 		return (ft_cap_inters(ret, line, figure));
-	ret->distance = ft_quadrat_eq(coef, 1);
-	if (ret->distance == INFINITY || ret->distance < 0)
+	ft_quadrat_eq2(coefs, roots);
+	if (!ft_take_min_pos_root(&ret->distance, roots))
 		return (0);
 	ret->tan_plane.material = cyl->material;
 	ft_addition(line_int, line.point, \

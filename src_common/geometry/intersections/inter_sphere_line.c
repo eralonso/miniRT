@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 14:49:41 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 16:00:37 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_sphere		*sphere = (t_sphere *)figure;
 	double				coefs[3];
+	double				roots[2];
 
 	if (!ft_coef_calc(coefs, line, sphere))
 		return (0);
-	ret->distance = ft_quadrat_eq(coefs, 1);
-	if (ret->distance == INFINITY)
-		return (0);
-	if (ret->distance < 0)
-		ret->distance = ft_quadrat_eq(coefs, -1);
-	if (ret->distance < 0)
+	ft_quadrat_eq2(coefs, roots);
+	if (!ft_take_min_pos_root(&ret->distance, roots))
 		return (0);
 	ret->tan_plane.material = sphere->material;
 	ft_addition(ret->tan_plane.point, line.point, \
