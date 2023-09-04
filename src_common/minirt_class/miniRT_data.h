@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 13:22:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:40:07 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,6 @@ typedef void	(*t_freeer)(void *);
 typedef int		(*t_mat_linker)(void *figure, t_list *mats);
 
 typedef int		(*t_mat_parser)(t_material *, char **, int);	
-
 
 typedef struct s_minirt_data
 {

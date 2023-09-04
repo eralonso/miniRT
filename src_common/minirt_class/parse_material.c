@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:45:02 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/30 13:37:56 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:40:13 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int	ft_parse_chess_material(t_material *mat, char **str_arr, int argc)
 	}
 	return (1);
 }
-
 
 int	ft_parse_material(t_list *node, char **str_arr)
 {

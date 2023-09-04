@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   best_intersection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:27:11 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/29 14:08:08 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:38:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_init_best(t_intersect_data *best, t_minirt_data *minirt)
 	best->pos = 0;
 	best->tan_plane.ft = FT_PLANE;
 	best->tan_plane.material = minirt->materials_list->content;
-	best->color = ((t_material *)(minirt->materials_list->content))->color;	
+	best->color = ((t_material *)(minirt->materials_list->content))->color;
 }
 
 static void	ft_take_best_intersection(t_intersect_data *best, \

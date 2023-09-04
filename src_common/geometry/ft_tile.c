@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:41:36 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 12:23:15 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:40:00 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_rotate(t_vector2d uv, const t_vector2d xy, double angle)
 	const double	sin_a = sin(angle);
 	t_vector2d		aux;
 
-
 	aux[0] = xy[0] * cos_a - xy[1] * sin_a;
 	aux[1] = xy[0] * sin_a + xy[1] * cos_a;
 	uv[0] = aux[0];
@@ -45,5 +44,3 @@ int	ft_tile(t_vector2d uv, t_chess_ext *chess_ext)
 	residual[1] = ft_residual(rot_uv[1], offset[1], scale[1]);
 	return ((residual[0] < 0.5) ^ (residual[1] < 0.5));
 }
-
-
