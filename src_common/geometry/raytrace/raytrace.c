@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/04 11:00:27 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:38:23 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_rgba	shader(t_shader_data data, int depth)
 	if (data.specular < 0)
 		data.specular = 0;
 	data.hit = get_best_intersect(data.minirt, data.sr, data.best->pos);
-	if (data.hit.tan_plane.material->n_sharpness >= 5)
+	if (data.best->tan_plane.material->n_sharpness >= 5)
 		data.specular = pow(data.specular, \
 						data.best->tan_plane.material->n_sharpness);
 	else
