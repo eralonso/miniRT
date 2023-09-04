@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/29 14:06:52 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:00:27 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_rgba	shader(t_shader_data data, int depth)
 	data.hit = get_best_intersect(data.minirt, data.sr, data.best->pos);
 	if (data.hit.tan_plane.material->n_sharpness >= 5)
 		data.specular = pow(data.specular, \
-						data.hit.tan_plane.material->n_sharpness);
+						data.best->tan_plane.material->n_sharpness);
 	else
 		data.specular = pow(data.specular, 5);
 	data.diffuse *= (1 - data.specular);
