@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:37:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/12 17:08:26 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:43:55 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ int				ft_draw(t_minirt_data *minirt);
 int				ft_handle_no_event(void *data);
 int				ft_close(void *param);
 int				ft_key_input(int keycode, void *param);
-void			print_sphere(void *sphere);
-void			print_plane(void *plane);
-void			print_cylinder(void *cylinder);
 void			ft_pixel_put(t_img *img, int x, int y, t_rgba rgba);
 void			ft_print_line(t_vector a, t_vector b, t_rgba color, t_img *img);
 
