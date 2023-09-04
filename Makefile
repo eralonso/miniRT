@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/01 18:29:33 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/04 09:48:54 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRCC_R			:= ft_read_map.c\
 					utils/colors.c\
 					utils/ft_free_n_log_error.c\
 					geometry/vector_class.c\
-					geometry/matrix_class.c\
 					geometry/ft_addition.c\
 					geometry/ft_distance_sq.c\
 					geometry/ft_distance.c\
@@ -60,7 +59,6 @@ SRCC_R			:= ft_read_map.c\
 					geometry/ft_dot_product.c\
 					geometry/ft_cross_product.c\
 					geometry/ft_copy_vector.c\
-					geometry/matrix_product.c\
 					geometry/ft_tile.c\
 					geometry/skin_mapping.c\
 					geometry/ft_limit_height.c\
