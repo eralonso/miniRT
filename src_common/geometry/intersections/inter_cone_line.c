@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 16:30:28 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:48:30 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	ret->color = cone->material->color;
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cone->orientation);
 	sign = ft_dot_product(line.orientation, (double *)cone->orientation);
+	if (sign == 0.0)
+		return (0);
 	sign /= -fabs(sign);
 	height = cone->heights[(int)round((sign + 1.0) / 2.0)];
 	ft_addition(cap_center, (double *)cone->point, \
@@ -58,7 +60,7 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	cap_radius = height * tan(cone->theta);
 	ft_copy_vector(ret->tan_plane.point, cap_center);
 	ret->tan_plane.material = cone->material;
-	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0.0)
+	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0)
 		return (0);
 	ret->color = chess_cone_pick_color(ret->tan_plane.point, cone);
 	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
@@ -90,25 +92,20 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 	const t_cone	*cone = (t_cone *)figure;
 	double			int_height;
 	t_vector		line_int;
-	int				cap_int_res;
 	double			aux[5];
 
-	cap_int_res = 1;
-	if (!ft_coef_calc(aux, line, cone))
-	{
-		cap_int_res = ft_cap_inters(ret, line, figure);
-		if (cap_int_res)
-			return (cap_int_res);
-	}
+	ret->tan_plane.material = cone->material;
+	if (ft_cap_inters(ret, line, figure))
+		return (1);
+	ft_coef_calc(aux, line, cone);
 	ft_quadrat_eq2(aux, aux + 3);
 	if (!ft_take_max_pos_root(&ret->distance, aux + 3))
 		return (0);
-	ret->tan_plane.material = cone->material;
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));
 	int_height = ft_dot_product((double *)cone->orientation, \
 		ft_substraction(ret->tan_plane.point, line_int, (double *)cone->point));
-	if (int_height > cone->heights[0] && int_height < cone->heights[1])
+	if (int_height >= cone->heights[0] && int_height <= cone->heights[1])
 		return (ft_give_inters(ret, line_int, cone, int_height));
-	return (ft_cap_inters(ret, line, cone));
+	return (0);
 }
