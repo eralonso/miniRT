@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 13:23:46 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:44:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,21 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	ret->color = chess_cone_pick_color(ret->tan_plane.point, cone);
 	return (1);
 }
-//aux is concatenation of coefs[3] and roots[2]
 
 int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_cone	*cone = (t_cone *)figure;
 	double			int_height;
 	t_vector		line_int;
-	double			aux[5];
+	double			coefs[3];
+	double			roots[2];
 
 	ret->tan_plane.material = cone->material;
 	if (ft_cap_inters(ret, line, figure))
 		return (1);
-	ft_coef_calc(aux, line, cone);
-	ft_quadrat_eq2(aux, aux + 3);
-	if (!ft_take_max_pos_root(&ret->distance, aux + 3))
+	ft_coef_calc(coefs, line, cone);
+	ft_quadrat_eq2(coefs, roots);
+	if (!ft_take_max_pos_root(&ret->distance, roots))
 		return (0);
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));

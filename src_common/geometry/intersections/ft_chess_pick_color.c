@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:21:41 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/01 18:04:52 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:36:52 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include "../../common.h"
 
 t_rgba	chess_plane_pick_color(t_vector point, t_vector origin, \
-			t_vector orientation, t_material *mat)
+			t_vector orientation, const t_plane *plane)
 {
-	t_vector2d	uv;
-	t_chess_ext	*chess_ext;
+	const t_material	*mat = plane->material;
+	t_vector2d			uv;
+	t_chess_ext			*chess_ext;
 
 	if (mat->type == MTT_HOMOG)
 		return (mat->color);
@@ -28,10 +29,11 @@ t_rgba	chess_plane_pick_color(t_vector point, t_vector origin, \
 	return (chess_ext->color);
 }
 
-t_rgba	chess_sphere_pick_color(t_vector orientation, t_material *mat)
+t_rgba	chess_sphere_pick_color(t_vector orientation, const t_sphere *sphere)
 {
-	t_vector2d		uv;
-	t_chess_ext		*chess_ext;
+	const t_material	*mat = sphere->material;
+	t_vector2d			uv;
+	t_chess_ext			*chess_ext;
 
 	if (mat->type == MTT_HOMOG)
 		return (mat->color);
@@ -39,22 +41,6 @@ t_rgba	chess_sphere_pick_color(t_vector orientation, t_material *mat)
 	ft_spherical_map(uv, orientation);
 	uv[0] *= 20;
 	uv[1] *= 10;
-	if (ft_tile(uv, chess_ext))
-		return (mat->color);
-	return (chess_ext->color);
-}
-
-t_rgba	chess_cyl_pick_color(t_vector point, t_vector origin, \
-			t_vector orientation, t_material *mat)
-{
-	t_vector2d	uv;
-	t_chess_ext	*chess_ext;
-
-	if (mat->type == MTT_HOMOG)
-		return (mat->color);
-	chess_ext = (t_chess_ext *)mat->ext_prop;
-	ft_cylindrical_map(uv, point, origin, orientation);
-	uv[0] *= 20;
 	if (ft_tile(uv, chess_ext))
 		return (mat->color);
 	return (chess_ext->color);

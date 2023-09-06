@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 11:17:13 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:37:07 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,10 @@ void				ft_cyl_map(double *uv, t_vector point, \
 								const t_cylinder *cyl);
 void				ft_cone_map(double *uv, t_vector point, const t_cone *cone);
 t_rgba				chess_plane_pick_color(t_vector point, t_vector origin, \
-									t_vector orientation, t_material *mat);
+									t_vector orientation, const t_plane *plane);
 t_rgba				chess_sphere_pick_color(t_vector orientation, \
-									t_material *mat);
-t_rgba				chess_cyl_pick_color(t_vector point, t_vector origin, \
-									t_vector orientation, t_material *mat);
-t_rgba				chess_cylin_pick_color(t_vector point, \
+											const t_sphere *sphere);
+t_rgba				chess_cylin_pick_color(t_vector	point, \
 											const t_cylinder *cyl);
 t_rgba				chess_cone_pick_color(t_vector point, const t_cone *cone);
 double				ft_limit_cyl_height(double height, const t_cylinder *cyl);

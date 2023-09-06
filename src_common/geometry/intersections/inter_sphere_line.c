@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 16:00:37 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:37:26 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	inter_sphere_line(t_intersect_data *ret, t_line line, void *figure)
 		ret->tan_plane.point, (double *)sphere->point);
 	ft_normalize(ret->tan_plane.orientation, ret->tan_plane.orientation);
 	ret->color = chess_sphere_pick_color(ret->tan_plane.orientation, \
-										sphere->material);
+										sphere);
 	return (1);
 }

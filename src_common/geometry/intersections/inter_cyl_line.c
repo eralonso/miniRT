@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 13:09:34 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:42:40 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,20 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	return (1);
 }
 
-//aux is concatenation of coefs[3] and roots[2]
-
 int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 {
 	const t_cylinder	*cyl = (t_cylinder *)figure;
-	double				aux[5];
+	double				coefs[3];
+	double				roots[2];
 	double				int_height;
 	t_vector			line_int;
 
 	ret->tan_plane.material = cyl->material;
 	if (ft_cap_inters(ret, line, figure))
 		return (1);
-	ft_coef_calc(aux, line, cyl);
-	ft_quadrat_eq2(aux, aux + 3);
-	if (!ft_take_min_pos_root(&ret->distance, aux + 3))
+	ft_coef_calc(coefs, line, cyl);
+	ft_quadrat_eq2(coefs, roots);
+	if (!ft_take_min_pos_root(&ret->distance, roots))
 		return (0);
 	ft_addition(line_int, line.point, \
 		ft_scale_vector(line_int, line.orientation, ret->distance));
