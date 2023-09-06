@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isunsignedchar.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:52:29 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:42:50 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:30:03 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isunsignedchar(char *str, unsigned char *ret)
 
 	if (!str || !str[0])
 		return (ft_log_error(ISUNSIGNEDCHAR_MISS_STR));
-	if (ft_strlen(str) > 3 || (ft_strlen(str) == 3 
+	if (ft_strlen(str) > 3 || (ft_strlen(str) == 3
 			&& ft_strncmp(str, "255", 3) > 0))
 		return (ft_log_error(ISUNSIGNEDCHAR_NIR));
 	i = -1;

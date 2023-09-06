@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/05 14:48:30 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:23:46 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,21 @@
 
 static int	ft_coef_calc(double coef[3], t_line line, const t_cone *cone)
 {
-	double		cos_theta_sq;
 	t_vector	w;
 	double		v_dot_h;
 	double		v_dot_w;
 	double		w_dot_h;
 
-	cos_theta_sq = cos(cone->theta);
-	cos_theta_sq *= cos_theta_sq;
 	v_dot_h = ft_dot_product(line.orientation, (double *)cone->orientation);
 	ft_substraction(w, line.point, (double *)cone->point);
 	v_dot_w = ft_dot_product(line.orientation, w);
 	w_dot_h = ft_dot_product(w, (double *)cone->orientation);
 	coef[0] = v_dot_h * v_dot_h;
-	coef[0] -= cos_theta_sq;
+	coef[0] -= cone->cos_theta_sq;
 	coef[1] = v_dot_h * w_dot_h;
-	coef[1] -= v_dot_w * cos_theta_sq;
+	coef[1] -= v_dot_w * cone->cos_theta_sq;
 	coef[2] = w_dot_h * w_dot_h;
-	coef[2] -= ft_dot_product(w, w) * cos_theta_sq;
+	coef[2] -= ft_dot_product(w, w) * cone->cos_theta_sq;
 	if ((coef[0]) < 1.0e-5)
 		return (0);
 	return (1);
@@ -42,11 +39,11 @@ static int	ft_coef_calc(double coef[3], t_line line, const t_cone *cone)
 static int	ft_cap_inters(t_intersect_data *ret, \
 	t_line line, const t_cone *cone)
 {
-	t_vector	cap_center;
 	double		sign;
 	double		axe_dist;
 	double		height;
 	double		cap_radius;
+	int			cap_id;
 
 	ret->color = cone->material->color;
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cone->orientation);
@@ -54,16 +51,15 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	if (sign == 0.0)
 		return (0);
 	sign /= -fabs(sign);
-	height = cone->heights[(int)round((sign + 1.0) / 2.0)];
-	ft_addition(cap_center, (double *)cone->point, \
-		ft_scale_vector(cap_center, (double *)cone->orientation, height));
-	cap_radius = height * tan(cone->theta);
-	ft_copy_vector(ret->tan_plane.point, cap_center);
-	ret->tan_plane.material = cone->material;
+	cap_id = (sign > 0.0);
+	height = cone->heights[cap_id];
+	cap_radius = height * cone->tan_theta;
+	ret->tan_plane = cone->caps[cap_id];
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0)
 		return (0);
 	ret->color = chess_cone_pick_color(ret->tan_plane.point, cone);
-	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
+	axe_dist = ft_distance_sq((double *)cone->caps[cap_id].point, \
+					ret->tan_plane.point);
 	return (axe_dist <= (cap_radius * cap_radius));
 }
 
@@ -74,7 +70,7 @@ static int	ft_give_inters(t_intersect_data *ret, \
 	double		int_radius;
 
 	ret->color = (t_rgba){0, 0, 0, 0};
-	int_radius = int_height * tan(cone->theta);
+	int_radius = int_height * cone->tan_theta;
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_cross_product(ret->tan_plane.orientation, \
 		(double *)cone->orientation, ft_substraction(trash, \

@@ -6,13 +6,13 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 19:04:38 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/28 14:55:22 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:30:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../common.h"
 
-static int	check_object(t_minirt_data *minirt, t_list *node, 
+static int	check_object(t_minirt_data *minirt, t_list *node,
 							t_minirt_type mrtt)
 {
 	if (!node || !minirt)
@@ -24,7 +24,7 @@ static int	check_object(t_minirt_data *minirt, t_list *node,
 	return (1);
 }
 
-static int	ft_save_object(t_minirt_data *minirt, t_list *node, 
+static int	ft_save_object(t_minirt_data *minirt, t_list *node,
 							t_minirt_type mrtt)
 {
 	if (check_object(minirt, node, mrtt) == 0)

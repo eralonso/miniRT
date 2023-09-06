@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 13:12:53 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:00:45 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	camera_configure(t_camera *cam, int width)
 			cam->orientation)) < 0.95)
 		ft_cross_product(cam->horizontal, cam->orientation, main_axis);
 	else
-		ft_cross_product(cam->horizontal, cam->orientation, 
+		ft_cross_product(cam->horizontal, cam->orientation,
 			ft_vector_fill_unitary(main_axis, 1));
 	ft_normalize(cam->horizontal, cam->horizontal);
 	cam->focal_dis = ((width - 1.0) / 2.0) / tan(cam->fov / 2);

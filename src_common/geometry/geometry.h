@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 16:08:26 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:17:13 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int					inter_cyl_line(t_intersect_data *ret, \
 									t_line line, void *figure);
 int					inter_cone_line(t_intersect_data *ret, \
 									t_line line, void *figure);
+void				ft_sphere_precomputer(void *figure);
+void				ft_plane_precomputer(void *figure);
+void				ft_cylinder_precomputer(void *figure);
+void				ft_cone_precomputer(void *figure);
+void				ft_precompute_figure(unsigned int ui, void *fig, void *arg);
 t_line				gen_shadow_ray(t_light *light, \
 					t_intersect_data *best, double *dis);
 t_line				gen_reflect_ray(t_line ray, t_intersect_data *hit);

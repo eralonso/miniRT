@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 10:40:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:02:04 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct s_sphere
 	double			diameter;
 	char			*material_id;
 	t_material		*material;
+	double			radius;
 }	t_sphere;
 
 typedef struct s_plane
@@ -188,6 +189,10 @@ typedef struct s_cylinder
 	double			height;
 	char			*material_id;
 	t_material		*material;
+	double			radius;
+	double			radius_sq;
+	double			half_height;
+	t_plane			caps[2];
 }	t_cylinder;
 
 typedef struct s_cone
@@ -199,6 +204,9 @@ typedef struct s_cone
 	double			heights[2];
 	char			*material_id;
 	t_material		*material;
+	double			cos_theta_sq;
+	double			tan_theta;
+	t_plane			caps[2];
 }	t_cone;
 
 typedef enum e_minirt_type
@@ -232,6 +240,8 @@ typedef int		(*t_mat_linker)(void *figure, t_list *mats);
 
 typedef int		(*t_mat_parser)(t_material *, char **, int);	
 
+typedef void	(*t_precomputer)(void *);
+
 typedef struct s_minirt_data
 {
 	t_graphics		*gr_ctx;
@@ -245,6 +255,7 @@ typedef struct s_minirt_data
 	t_list			*materials_list;
 	int				mat_link_nok;
 	t_intersect		intersect[4];
+	t_precomputer	precomputer[4];
 	t_rgba			background_color;
 }	t_minirt_data;
 

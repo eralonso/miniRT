@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/05 14:48:15 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:09:34 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,17 @@
 static int	ft_coef_calc(double coef[3], t_line line, const t_cylinder *cyl)
 {
 	t_vector			w;
-	double				radius;
 	double				v_dot_h;
 	double				v_dot_w;
 	double				w_dot_h;
 
-	radius = cyl->diameter / 2.0;
 	v_dot_h = ft_dot_product(line.orientation, (double *)cyl->orientation);
 	ft_substraction(w, line.point, (double *)cyl->point);
 	v_dot_w = ft_dot_product(line.orientation, w);
 	w_dot_h = ft_dot_product(w, (double *)cyl->orientation);
-	coef[0] = ft_dot_product(line.orientation, line.orientation);
-	coef[0] -= v_dot_h * v_dot_h;
+	coef[0] = 1.0 - v_dot_h * v_dot_h;
 	coef[1] = (v_dot_w - v_dot_h * w_dot_h);
-	coef[2] = ft_dot_product(w, w) - w_dot_h * w_dot_h - radius * radius;
+	coef[2] = ft_dot_product(w, w) - w_dot_h * w_dot_h - cyl->radius_sq;
 	if (fabs(v_dot_h) > 0.9)
 		return (0);
 	return (1);
@@ -39,9 +36,9 @@ static int	ft_coef_calc(double coef[3], t_line line, const t_cylinder *cyl)
 static int	ft_cap_inters(t_intersect_data *ret, \
 	t_line line, const t_cylinder *cyl)
 {
-	t_vector	cap_center;
 	double		sign;
 	double		axe_dist;
+	int			cap_id;
 
 	ret->color = (t_rgba){0, 0, 0, 0};
 	ft_copy_vector(ret->tan_plane.orientation, (double *)cyl->orientation);
@@ -49,16 +46,14 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 	if (sign == 0.0)
 		return (0);
 	sign /= fabs(sign);
-	ft_addition(cap_center, (double *)cyl->point, \
-		ft_scale_vector(cap_center, \
-			(double *)cyl->orientation, sign * cyl->height / 2.0));
-	ft_copy_vector(ret->tan_plane.point, cap_center);
-	ret->tan_plane.material = cyl->material;
+	cap_id = (sign > 0.0);
+	ret->tan_plane = cyl->caps[cap_id];
 	if (inter_plane_line(ret, line, (void *)&ret->tan_plane) == 0)
 		return (0);
 	ret->color = chess_cylin_pick_color(ret->tan_plane.point, cyl);
-	axe_dist = ft_distance_sq(cap_center, ret->tan_plane.point);
-	return (axe_dist <= (cyl->diameter * cyl->diameter / 4.0));
+	axe_dist = ft_distance_sq((double *)cyl->caps[cap_id].point, \
+					ret->tan_plane.point);
+	return (axe_dist <= cyl->radius_sq);
 }
 
 static int	ft_give_inters(t_intersect_data *ret, \
@@ -96,10 +91,7 @@ int	inter_cyl_line(t_intersect_data *ret, t_line line, void *figure)
 		ft_scale_vector(line_int, line.orientation, ret->distance));
 	int_height = ft_dot_product((double *)cyl->orientation, \
 		ft_substraction(ret->tan_plane.point, line_int, (double *)cyl->point));
-	if (fabs(int_height) <= (cyl->height / 2.0))
+	if (fabs(int_height) <= cyl->half_height)
 		return (ft_give_inters(ret, line_int, cyl, int_height));
-	// if ((int_height * ft_dot_product(line.orientation, \
-	// 		(double *)cyl->orientation)) >= 0)
-	// 	return (0);
 	return (0);
 }

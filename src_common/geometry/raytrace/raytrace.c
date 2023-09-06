@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:47:34 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/05 16:04:41 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:04:09 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static t_rgba	get_sum_lights(t_intersect_data *best, \
 
 	color = (t_rgba){0, 0, 0, 0};
 	lights = minirt->lights;
-	data.best = best; 
+	data.best = best;
 	data.ray = ray;
 	data.minirt = minirt;
 	while (lights)
