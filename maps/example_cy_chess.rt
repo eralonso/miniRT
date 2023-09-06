@@ -9,6 +9,6 @@ cy -40,-40,-20           0.5,0.5,0     50.0  25.0      WHITE
 sp 0,0,-40 15 BLUE
 
 mt CHESS WHITE                                   255,255,255     0             0       128,0,128    5,5 0,0 0
-mt HOMOG RED                                     255,200,200         0.9           3000
+mt HOMOG RED                                     255,0,0     1           300
 mt HOMOG GREEN                                   0,255,0         0             0
 mt HOMOG BLUE                                    0,0,255         0             0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:50:55 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/23 16:58:20 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:32:09 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ t_line	gen_reflect_ray(t_line ray, t_intersect_data *hit)
 	ft_substraction(reflect.orientation, ray.orientation, \
 		ft_scale_vector(trash, hit->tan_plane.orientation, \
 			ft_dot_product(ray.orientation, hit->tan_plane.orientation) * 2));
+	ft_normalize(reflect.orientation, reflect.orientation);
 	return (reflect);
 }

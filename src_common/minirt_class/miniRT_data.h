@@ -6,9 +6,10 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 12:02:04 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:08:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINIRT_DATA_H
 # define MINIRT_DATA_H
@@ -257,6 +258,7 @@ typedef struct s_minirt_data
 	t_intersect		intersect[4];
 	t_precomputer	precomputer[4];
 	t_rgba			background_color;
+	t_line			eye_ray;
 }	t_minirt_data;
 
 typedef int		(*t_object_parser)(t_list *, char **);
