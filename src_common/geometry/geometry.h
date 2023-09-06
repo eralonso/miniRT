@@ -6,13 +6,27 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 14:37:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:41:00 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GEOMETRY_H
 # define GEOMETRY_H
 # include "../common.h"
+
+typedef struct s_shader_data
+{
+	t_line				sr;
+	t_intersect_data	hit;
+	double				diffuse;
+	double				specular;
+	double				dis;
+	t_light				*light;
+	t_intersect_data	*best;
+	t_minirt_data		*minirt;
+	t_line				ray;
+	t_ambient			ambient;
+}	t_shader_data;
 
 double				*ft_scale_vector(t_vector res, t_vector a, double s);
 double				*ft_substraction(t_vector res, t_vector a, t_vector b);
@@ -30,6 +44,11 @@ double				*ft_vector_dispose(t_vector v);
 double				*ft_copy_vector(t_vector dst, t_vector src);
 void				camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 						t_img *img, int size[2]);
+t_rgba				calc_diffuse_light(t_shader_data *data, \
+						t_rgba object_color, double diffuse_idx);
+t_rgba				calc_specular_light(t_shader_data *data, \
+						double specular_idx);
+t_rgba				shader(t_shader_data data, int depth);
 t_rgba				raytrace(t_minirt_data *minirt, t_line ray, int depth);
 t_intersect_data	get_best_intersect(t_minirt_data *minirt, t_line ray, \
 							int exclude);

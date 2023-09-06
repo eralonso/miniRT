@@ -6,10 +6,9 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 15:08:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:43:39 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINIRT_DATA_H
 # define MINIRT_DATA_H
