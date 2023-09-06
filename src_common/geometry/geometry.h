@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 15:41:00 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:23:36 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void				ft_rotate(t_vector2d uv, const t_vector2d xy, double angle);
 void				ft_spherical_map(double *uv, t_vector point);
 void				ft_planar_map(double *uv, t_vector point, t_vector origin, \
 									t_vector orientation);
-void				ft_cylindrical_map(double *uv, t_vector point, \
-									t_vector origin, t_vector orientation);
 void				ft_cyl_map(double *uv, t_vector point, \
 								const t_cylinder *cyl);
 void				ft_cone_map(double *uv, t_vector point, const t_cone *cone);
@@ -92,5 +90,6 @@ t_rgba				chess_cylin_pick_color(t_vector	point, \
 t_rgba				chess_cone_pick_color(t_vector point, const t_cone *cone);
 double				ft_limit_cyl_height(double height, const t_cylinder *cyl);
 double				ft_limit_cone_height(double height, const t_cone *cone);
+void				ft_get_base_ref(t_vector *base, double *orientation);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/06 15:38:43 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/06 16:24:59 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCC_R			:= ft_read_map.c\
 					geometry/ft_dot_product.c\
 					geometry/ft_cross_product.c\
 					geometry/ft_copy_vector.c\
+					geometry/ft_get_base_ref.c\
 					geometry/ft_tile.c\
 					geometry/skin_mapping.c\
 					geometry/ft_limit_height.c\

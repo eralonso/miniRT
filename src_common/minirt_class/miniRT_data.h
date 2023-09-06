@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 15:43:39 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:30:09 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ typedef struct s_cylinder
 	double			radius_sq;
 	double			half_height;
 	t_plane			caps[2];
+	t_vector		base[2];
 }	t_cylinder;
 
 typedef struct s_cone
@@ -207,6 +208,7 @@ typedef struct s_cone
 	double			cos_theta_sq;
 	double			tan_theta;
 	t_plane			caps[2];
+	t_vector		base[2];
 }	t_cone;
 
 typedef enum e_minirt_type

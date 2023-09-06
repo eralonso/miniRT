@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:37:37 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 13:12:21 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:30:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_cylinder_precomputer(void *figure)
 	ft_addition(cyl->caps[1].point, (double *)cyl->point, \
 		ft_scale_vector(cyl->caps[1].point, \
 			(double *)cyl->orientation, cyl->half_height));
+	ft_get_base_ref(cyl->base, (double *)cyl->orientation);
 }
 
 void	ft_cone_precomputer(void *figure)
@@ -71,6 +72,7 @@ void	ft_cone_precomputer(void *figure)
 	ft_addition(cone->caps[1].point, (double *)cone->point, \
 		ft_scale_vector(cone->caps[1].point, \
 			(double *)cone->orientation, cone->heights[1]));
+	ft_get_base_ref(cone->base, (double *)cone->orientation);
 }
 
 void	ft_precompute_figure(unsigned int ui, void *fig, void *arg)
