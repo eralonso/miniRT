@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_data.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 10:40:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:48:07 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,7 @@ typedef struct s_minirt_data
 	int				mat_link_nok;
 	t_intersect		intersect[4];
 	t_rgba			background_color;
+	t_line			eye_ray;
 }	t_minirt_data;
 
 typedef int		(*t_object_parser)(t_list *, char **);

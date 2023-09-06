@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_rays_v2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:10:10 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/23 13:12:53 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:48:45 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	camera_rays_v2(t_minirt_data *minirt, t_camera *cam, \
 		while (++iter[W] < size[W])
 		{
 			ft_make_ray(cam, origin, &ray, iter);
+			minirt->eye_ray = ray;
 			ft_pixel_put(img, iter[W], iter[H], \
 				raytrace(minirt, ray, minirt->camera.reflec_depth));
 		}
