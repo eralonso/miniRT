@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 16:23:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:40:08 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_rgba				calc_diffuse_light(t_shader_data *data, \
 						t_rgba object_color, double diffuse_idx);
 t_rgba				calc_specular_light(t_shader_data *data, \
 						double specular_idx);
-t_rgba				shader(t_shader_data data, int depth);
 t_rgba				raytrace(t_minirt_data *minirt, t_line ray, int depth);
 t_intersect_data	get_best_intersect(t_minirt_data *minirt, t_line ray, \
 							int exclude);

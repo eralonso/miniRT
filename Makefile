@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/06 16:24:59 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/06 16:40:31 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,6 @@ SRCC_R			:= ft_read_map.c\
 					geometry/skin_mapping.c\
 					geometry/ft_limit_height.c\
 					geometry/camera/camera_rays_v2.c\
-					geometry/raytrace/shader.c\
 					geometry/raytrace/diffuse.c\
 					geometry/raytrace/specular.c\
 					geometry/raytrace/raytrace.c\
