@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:36:28 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 15:37:06 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:20:55 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ t_rgba	calc_diffuse_light(t_shader_data *data, t_rgba object_color, \
 		return ((t_rgba){0, 0, 0, 0});
 	diffuse = ft_rgba_scale(object_color, \
 					light_dot_normal * data->light->brightness * diffuse_idx);
+	diffuse = ft_rgba_scale(diffuse, \
+				(1 - data->best->tan_plane.material->reflec_ratio));
 	return (diffuse);
 }

@@ -13,11 +13,11 @@ cy -40,-40,-40        0.5,0,1      20.0  10.0      BLUE
 sp -40,-30,-60                           10        WHITE_NR
 bb -40,-30,-60                           10        WHITE_NR
 
-mt HOMOG WHITE_NR                                255,255,255        0          0
-mt HOMOG WHITE_LR                                255,255,255        0.4        5
-mt HOMOG WHITE_MR                                255,255,255        0.5        5
-mt HOMOG WHITE_HR                                255,255,255        0.6        5
-mt HOMOG ORANGE                                  255,123,0       0             0
-mt HOMOG RED                                     255,0,0         0             0
-mt HOMOG GREEN                                   0,255,0         0             0
-mt HOMOG BLUE                                    0,0,255         0             0
+mt HOMOG WHITE_NR                                255,255,255        0          0    0.6   0.6
+mt HOMOG WHITE_LR                                255,255,255        0.4        5    0.6   0.6
+mt HOMOG WHITE_MR                                255,255,255        0.5        5    0.6   0.6
+mt HOMOG WHITE_HR                                255,255,255        0.6        5    0.6   0.6
+mt HOMOG ORANGE                                  255,123,0       0             0    0.6   0.6
+mt HOMOG RED                                     255,0,0         0             0    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0             0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0             0    0.6   0.6

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:48:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 10:52:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:36:02 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_minirt_type	ft_cast_line_object(t_list *node)
 	char			**str_arr;
 	t_minirt_type	mrtt;
 
-	if (((char *)node->content)[0] == 0)
+	if (((char *)node->content)[0] == 0 || ((char *)node->content)[0] == '#')
 		return (MRT_EMPTY);
 	str_arr = ft_split(node->content, ' ');
 	if (!str_arr)

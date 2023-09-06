@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:45:02 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 10:40:13 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:01:34 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static int	ft_parse_homog_material(t_material *mat, char **str_arr, int argc)
 		!ft_isname(str_arr[2], &mat->name)
 		|| !ft_isrgb(str_arr[3], &mat->color)
 		|| !ft_isratio(str_arr[4], &mat->reflec_ratio)
-		|| !ft_ispositivedouble(str_arr[5], &mat->n_sharpness))
+		|| !ft_ispositivedouble(str_arr[5], &mat->n_sharpness)
+		|| !ft_isratio(str_arr[6], &mat->diffuse_ratio)
+		|| !ft_isratio(str_arr[7], &mat->specular_ratio))
 	{
 		ft_free_material(mat);
 		return (0);
@@ -36,10 +38,10 @@ static int	ft_parse_chess_extension(t_material *mat, char **str_arr)
 	t_chess_ext	*chess_est;
 
 	chess_est = mat->ext_prop;
-	if (!ft_isrgb(str_arr[6], &chess_est->color)
-		|| !ft_isvector2d(str_arr[7], chess_est->scale)
-		|| !ft_isvector2d(str_arr[8], chess_est->offset)
-		|| !ft_isangle(str_arr[9], &chess_est->alpha))
+	if (!ft_isrgb(str_arr[8], &chess_est->color)
+		|| !ft_isvector2d(str_arr[9], chess_est->scale)
+		|| !ft_isvector2d(str_arr[10], chess_est->offset)
+		|| !ft_isangle(str_arr[11], &chess_est->alpha))
 		return (0);
 	return (1);
 }
@@ -59,7 +61,9 @@ static int	ft_parse_chess_material(t_material *mat, char **str_arr, int argc)
 		|| !ft_isrgb(str_arr[3], &mat->color)
 		|| !ft_isratio(str_arr[4], &mat->reflec_ratio)
 		|| !ft_ispositivedouble(str_arr[5], &mat->n_sharpness)
-		|| !ft_parse_chess_extension(mat, str_arr))
+		|| !ft_parse_chess_extension(mat, str_arr)
+		|| !ft_isratio(str_arr[6], &mat->diffuse_ratio)
+		|| !ft_isratio(str_arr[7], &mat->specular_ratio))
 	{
 		ft_free_material(mat);
 		return (0);

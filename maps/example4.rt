@@ -10,7 +10,7 @@ pl 0,0,0                 -1,-1,1                   WHITE
 sp -300,-300,-300                        20        WHITE
 sp -1500,-1500,-1500                   1350        WHITE
 
-mt HOMOG WHITE                                   255,255,255     0 0
-mt HOMOG RED                                     255,0,0         0 0
-mt HOMOG GREEN                                   0,255,0         0 0
-mt HOMOG BLUE                                    0,0,255         0 0
+mt HOMOG WHITE                                   255,255,255     0 0    0.6   0.6
+mt HOMOG RED                                     255,0,0         0 0    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0 0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0 0    0.6   0.6

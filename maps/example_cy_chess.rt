@@ -1,14 +1,21 @@
+# SCENE
 A                                      0.0        255,255,255
 C -1000,-1000,-850        1,1,0.9   10    2
 L -1000,-1000,-1000           0.7                       255,255,255
 
+# FIGURES
+#  POSITION              ORIENTATION
 pl 0,0,0                 0,0,1                     RED
 pl 0,0,0                 0,1,0                     GREEN
 pl 0,0,0                 1,0,0                     BLUE
+#  POSITION              ORIENTATION   DIAM  HEIGHT    MATERIAL
 cy -40,-40,-20           0.5,0.5,0     50.0  25.0      WHITE
-sp 0,0,-40 15 BLUE
+#  POSITION                            DIAM            MATERIAL
+sp 0,0,-40                             15              BLUE
 
-mt CHESS WHITE                                   255,255,255     0             0       128,0,128    5,5 0,0 0
-mt HOMOG RED                                     255,0,0     1           300
-mt HOMOG GREEN                                   0,255,0         0             0
-mt HOMOG BLUE                                    0,0,255         0             0
+# MATERIALS
+#  TYPE  NAME           PRIMARY COLOR   REFL_R  N_SHARP    DIF_R  SPEC_R  SEC_COLOR   CHESS_SCALE   CHESS_OFFSET   CHESS_SKEW
+mt CHESS WHITE          255,255,255     0             0    0.6    0.6      128,0,128    5,5         0,0            0
+mt HOMOG RED            255,0,0         1           300    0.6    0.6
+mt HOMOG GREEN          0,255,0         0             0    0.6    0.6
+mt HOMOG BLUE           0,0,255         0             0    1      1

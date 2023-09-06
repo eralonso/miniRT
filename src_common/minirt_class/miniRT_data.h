@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 16:30:09 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:51:23 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define AMBIENT_COMPONENTS_NUMBER 3
 # define CAMERA_COMPONENTS_NUMBER 5
 # define LIGHT_COMPONENTS_NUMBER 4
-# define MATERIAL_MIN_COMPONENTS_NUMBER 6
-# define MATERIAL_CHESS_COMPONENTS_NUMBER 10
+# define MATERIAL_MIN_COMPONENTS_NUMBER 8
+# define MATERIAL_CHESS_COMPONENTS_NUMBER 12
 # define SPHERE_COMPONENTS_NUMBER 4
 # define PLANE_COMPONENTS_NUMBER 4
 # define CYLINDER_COMPONENTS_NUMBER 6
@@ -158,6 +158,8 @@ typedef struct s_material
 	t_rgba			color;
 	double			reflec_ratio;
 	double			n_sharpness;
+	double			diffuse_ratio;
+	double			specular_ratio;
 	void			*ext_prop;
 }	t_material;
 

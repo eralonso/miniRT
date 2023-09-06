@@ -5,6 +5,6 @@ cy 0.0,0.0,0.0         0,1,0     10.0  100.0     GREEN
 cy 0.0,0.0,0.0         0,0,1     10.0  100.0     RED
 cy 0.0,0.0,0.0         1,0,0     10.0  100.0     BLUE
 
-mt HOMOG RED                                     255,0,0         0 0
-mt HOMOG GREEN                                   0,255,0         0 0
-mt HOMOG BLUE                                    0,0,255         0 0
+mt HOMOG RED                                     255,0,0         0 0    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0 0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0 0    0.6   0.6

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:37:42 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 15:39:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:22:42 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_rgba	calc_specular_light(t_shader_data *data, \
 	ray_dot_reflect = pow(ray_dot_reflect, exponent);
 	specular = ft_rgba_scale(data->light->color, ray_dot_reflect * \
 						data->light->brightness * specular_idx);
+	specular = ft_rgba_scale(specular, \
+				(1 - data->best->tan_plane.material->reflec_ratio));
 	return (specular);
 }

@@ -8,7 +8,7 @@ pl 0,0,0                 0,1,0                     GREEN
 pl 0,0,0                 1,0,0                     BLUE
 cn 0,0,0               -0.4,-0.4,-1   30.0  50.0 30.0   WHITE
 
-mt HOMOG WHITE                                   255,255,255     0             0
-mt HOMOG RED                                     255,0,0         0.7           5
-mt HOMOG GREEN                                   0,255,0         0             0
-mt HOMOG BLUE                                    0,0,255         0             0
+mt HOMOG WHITE                                   255,255,255     0             0    0.6   0.6
+mt HOMOG RED                                     255,0,0         0.7           5    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0             0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0             0    0.6   0.6

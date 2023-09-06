@@ -8,7 +8,7 @@ pl 0,0,0                 0,1,0                     GREEN
 pl 0,0,0                 1,0,0                     BLUE
 sp 0,0,-50                               50        WHITE
 
-mt CHESS WHITE                                   255,255,255     0             0       128,0,128    1,1 0,0 0
-mt HOMOG RED                                     255,0,0         0.5           5
-mt HOMOG GREEN                                   0,255,0         0             0
-mt HOMOG BLUE                                    0,0,255         0             0
+mt CHESS WHITE                                   255,255,255     0             0    0.6   0.6       128,0,128    1,1 0,0 0
+mt HOMOG RED                                     255,0,0         0.5           5    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0             0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0             0    0.6   0.6

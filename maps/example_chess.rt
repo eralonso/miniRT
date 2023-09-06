@@ -10,8 +10,8 @@ sp 50,50,-20                         20             GREEN_CHESS
 cy 50,50,-20        0.5,0,1      10.0  100.0        BLUE
 cn 50,50,-20        1,-1,1       20.0  50.0 100.0   PURPLE
 
-mt HOMOG PURPLE                                  128,75,128      0 0
-mt CHESS RED_CHESS                               255,0,0         0 0    255,255,255      50,50   25,25    0
-mt CHESS GREEN_CHESS                             0,255,0         0 0    255,255,255      1,1     0,0    0
-mt HOMOG GREEN                                   0,255,0         0 0
-mt HOMOG BLUE                                    0,0,255         0 0
+mt HOMOG PURPLE                                  128,75,128      0 0    0.6   0.6
+mt CHESS RED_CHESS                               255,0,0         0 0    0.6   0.6    255,255,255      50,50   25,25    0
+mt CHESS GREEN_CHESS                             0,255,0         0 0    0.6   0.6    255,255,255      1,1     0,0    0
+mt HOMOG GREEN                                   0,255,0         0 0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0 0    0.6   0.6

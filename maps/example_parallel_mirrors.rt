@@ -7,5 +7,5 @@ pl 0,0,0                 0,0,1                     MIRROR
 pl -110,-110,-110        0,0,-1                    MIRROR
 sp 0,0,-50                               50        WHITE
 
-mt CHESS WHITE                                   255,255,255     0             0       128,0,128    1,1 0,0 0
-mt HOMOG MIRROR                                  255,255,255         0.9           5
+mt CHESS WHITE                                   255,255,255     0             0    0.6   0.6       128,0,128    1,1 0,0 0
+mt HOMOG MIRROR                                  255,255,255         0.9           5    0.6   0.6

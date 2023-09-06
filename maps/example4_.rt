@@ -10,8 +10,8 @@ pl 0,0,0                 -1,-1,1                   WHITE_REFL
 sp -30,-30,-30                           20        WHITE_HREFL
 sp -1500,-1500,-1500                   1350        WHITE_HREFL
 
-mt HOMOG WHITE_REFL                              255,255,255     0.2 5
-mt HOMOG WHITE_HREFL                             255,255,255     0.6 5
-mt HOMOG RED                                     255,0,0         0   0
-mt HOMOG GREEN                                   0,255,0         0   0
-mt HOMOG BLUE                                    0,0,255         0   0
+mt HOMOG WHITE_REFL                              255,255,255     0.2 5    0.6   0.6
+mt HOMOG WHITE_HREFL                             255,255,255     0.6 5    0.6   0.6
+mt HOMOG RED                                     255,0,0         0   0    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0   0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0   0    0.6   0.6

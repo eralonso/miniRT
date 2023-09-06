@@ -6,6 +6,6 @@ pl 0,0,0                 0,0,1                      WHITE
 sp 25,-25,-75                               30        CYAN
 sp -25,25,-75                              30        YELLOW_HS
 
-mt HOMOG CYAN                                    0,255,255     0.7             3000
-mt HOMOG YELLOW_HS                               255,255,0     0.7             5
-mt HOMOG WHITE                                   255,255,255   0.5           5
+mt HOMOG CYAN                                    0,255,255     0.7             3000    0.6   0.6
+mt HOMOG YELLOW_HS                               255,255,0     0.7             5    0.6   0.6
+mt HOMOG WHITE                                   255,255,255   0.5           5    0.6   0.6
