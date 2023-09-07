@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph_ctx_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 17:09:47 by eralonso          #+#    #+#             */
-/*   Updated: 2023/08/19 14:31:28 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:17:53 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_valid_point(t_vector vec, t_img *img)
 {
-	return (!(vec[0] < 0 || vec[0] >= img->img_size[0] \
-		|| vec[1] < 0 || vec[1] >= img->img_size[1]));
+	return (!(vec[0] < 0 || vec[0] >= img->size[0] \
+		|| vec[1] < 0 || vec[1] >= img->size[1]));
 }
 
 void	ft_pixel_put(t_img *img, int x, int y, t_rgba color)

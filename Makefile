@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/06 16:40:31 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/07 14:09:19 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,9 @@ SRCC_R			:= ft_read_map.c\
 					minirt_class/ft_link_figure_material.c\
 					minirt_class/ft_link_materials.c\
 					minirt_class/ft_create_background.c\
+					minirt_class/parse_mat_image.c\
+					minirt_class/image_class.c\
+					minirt_class/ft_init_material_images.c\
 					graph_ctx/graph_ctx.c \
 					graph_ctx/graph_ctx_utils.c \
 					utils/ft_matrix_len.c\
@@ -46,6 +49,7 @@ SRCC_R			:= ft_read_map.c\
 					utils/ft_isratio.c\
 					utils/ft_isname.c\
 					utils/ft_ismattype.c\
+					utils/ft_isexistingfile.c\
 					utils/colors.c\
 					utils/ft_free_n_log_error.c\
 					geometry/vector_class.c\

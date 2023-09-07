@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:55:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 16:40:08 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:12:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_line				gen_shadow_ray(t_light *light, \
 t_line				gen_reflect_ray(t_line ray, t_intersect_data *hit);
 double				ft_residual(double num, double offset, double scale);
 int					ft_tile(t_vector2d uv, t_chess_ext *chess_ext);
+t_rgba				ft_tile_image(t_vector2d uv, t_image_ext *image_ext);
 void				ft_rotate(t_vector2d uv, const t_vector2d xy, double angle);
 void				ft_spherical_map(double *uv, t_vector point);
 void				ft_planar_map(double *uv, t_vector point, t_vector origin, \

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/31 14:57:49 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 10:25:07 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define ISANGLE_NIR "Angle is not in range: [-180 - 180]\n"
 # define ISPOSITIVEDOUBLE_NIR "Value is not positive\n"
 # define ISRATIO_NIR "Ratio is not in range: [0.0 - 1.0]\n"
+# define ISNOTEXISTINGFILE "Is not an existing file\n"
+# define ISNEF_STR_DUPERR "Failed to duplicate string when checking filename\n"
 
 int				ft_matrixlen(char **matrix);
 int				ft_free_n_log_error(void *to_free, char *msg);
@@ -52,6 +54,7 @@ int				ft_ispositivedouble(char *str, double *value);
 int				ft_isratio(char *str, double *light);
 int				ft_ismattype(char *str, t_material_type *ret);
 int				ft_isname(char *str, char **ret);
+int				ft_isexistingfile(char *str, char **filename);
 unsigned char	check_addition_rgba(unsigned char color1, unsigned char color2);
 t_rgba			ft_rgba_addition(t_rgba color1, t_rgba color2);
 t_rgba			ft_rgba_scale(t_rgba color, double scale);

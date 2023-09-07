@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:41:36 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 10:40:00 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:12:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,21 @@ int	ft_tile(t_vector2d uv, t_chess_ext *chess_ext)
 	residual[0] = ft_residual(rot_uv[0], offset[0], scale[0]);
 	residual[1] = ft_residual(rot_uv[1], offset[1], scale[1]);
 	return ((residual[0] < 0.5) ^ (residual[1] < 0.5));
+}
+
+t_rgba	ft_tile_image(t_vector2d uv, t_image_ext *image_ext)
+{
+	double			residual[2];
+	int				point[2];
+	t_vector2d		rot_uv;
+	const double	*offset = (const double *)image_ext->offset;
+	const double	*scale = (const double *)image_ext->scale;
+
+	ft_rotate(rot_uv, uv, image_ext->alpha);
+	residual[0] = ft_residual(rot_uv[0], offset[0], scale[0]);
+	residual[1] = ft_residual(rot_uv[1], offset[1], scale[1]);
+	point[0] = floor(residual[0] * image_ext->img->size[0]);
+	point[1] = floor(residual[1] * image_ext->img->size[1]);
+	return (ft_get_pixel(image_ext->img, \
+				point[0], point[1], (t_rgba){0, 0, 0, 0}));
 }

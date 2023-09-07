@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 12:40:59 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:59:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_minirt_data	*minirt_constructor(char *filename)
 		minirt = ft_init_minirt_data(minirt);
 		if (minirt)
 		{
-			if (!ft_link_materials(minirt))
+			if (!ft_link_materials(minirt) || !ft_init_material_images(minirt))
 				return (0);
 			minirt = ft_check_missing(minirt);
 			if (minirt)

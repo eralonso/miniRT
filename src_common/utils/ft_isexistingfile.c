@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isname.c                                        :+:      :+:    :+:   */
+/*   ft_isexistingfile.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 16:30:57 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 10:26:29 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/09/07 10:05:29 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/09/07 10:26:32 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stdio.h"
 #include "../../libft/libft.h"
 #include "../common.h"
 
-int	ft_isname(char *str, char **ret)
+int	ft_isexistingfile(char *str, char **filename)
 {
-	*ret = ft_strdup(str);
-	if (!*ret)
-		ft_log_error(ISSTRING_DUPERR);
+	int	fd;
+
+	fd = open(str, O_RDONLY);
+	if (fd < 0)
+		return (ft_log_error(ISNOTEXISTINGFILE));
+	close(fd);
+	*filename = ft_strdup(str);
+	if (!filename)
+		ft_log_error(ISNEF_STR_DUPERR);
 	return (1);
 }

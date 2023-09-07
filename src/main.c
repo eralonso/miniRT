@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/04 10:44:50 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:18:09 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char const *argv[])
 	{
 		camera_rays_v2(minirt, &minirt->camera, &minirt->gr_ctx->img, size);
 		mlx_put_image_to_window(minirt->gr_ctx->inst, minirt->gr_ctx->wnd, \
-			minirt->gr_ctx->img.image, 0, 0);
+			minirt->gr_ctx->img.ref, 0, 0);
 		mlx_loop(minirt->gr_ctx->inst);
 	}
 	return (0);

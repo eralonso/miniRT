@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph_decl.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:38:31 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/11 19:34:14 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:16:05 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,12 @@ enum e_keycodes
 
 typedef struct s_img
 {
-	void	*image;
+	void	*ref;
 	char	*addr;
 	int		bpp;
 	int		size_line;
 	int		endian;
-	int		img_size[2];
+	int		size[2];
 }	t_img;
 
 typedef struct s_graphics

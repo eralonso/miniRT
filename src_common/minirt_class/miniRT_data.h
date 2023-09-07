@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 16:51:23 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:00:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define LIGHT_COMPONENTS_NUMBER 4
 # define MATERIAL_MIN_COMPONENTS_NUMBER 8
 # define MATERIAL_CHESS_COMPONENTS_NUMBER 12
+# define MATERIAL_IMAGE_COMPONENTS_NUMBER 12
 # define SPHERE_COMPONENTS_NUMBER 4
 # define PLANE_COMPONENTS_NUMBER 4
 # define CYLINDER_COMPONENTS_NUMBER 6
@@ -56,6 +57,8 @@
 		"Invalid number of components for material\n"
 # define ERR_CHESS_MATERIAL_COMPONENTS_NUMBER \
 		"Invalid number of components for chess material\n"
+# define ERR_IMAGE_MATERIAL_COMPONENTS_NUMBER \
+		"Invalid number of components for image material\n"
 # define ERR_MATERIAL_MALLOC_FAILED \
 		"Malloc failed when allocating material\n"
 # define ERR_MATERIAL_TABLE_MALLOC_FAILED \
@@ -80,6 +83,12 @@
 		"Malloc failed when allocating cone\n"
 # define ERR_MISSED_ARGUMENTS_AT_PARSE \
 		"Missed arguments at parse\n"
+# define ERR_IMAGE_OPEN_FAIL \
+		"Image reference failed to load\n"
+# define ERR_FAIL_IMAGE_GETADDRESS \
+		"Image failed to get address\n"
+# define ERR_FAILED_MAT_LINK \
+		"Linking materials failed\n"
 
 typedef double	t_vector[3];
 
@@ -141,6 +150,7 @@ typedef enum e_material_type
 	MTT_INVALID,
 	MTT_HOMOG,
 	MTT_CHESS,
+	MTT_IMAGE
 }	t_material_type;
 
 typedef struct s_chess_ext
@@ -150,6 +160,15 @@ typedef struct s_chess_ext
 	t_vector2d		offset;
 	double			alpha;
 }	t_chess_ext;
+
+typedef struct s_image_ext
+{
+	char			*filename;
+	t_vector2d		scale;
+	t_vector2d		offset;
+	double			alpha;
+	t_img			*img;
+}	t_image_ext;
 
 typedef struct s_material
 {
@@ -280,6 +299,13 @@ int			ft_parse_material(t_list *node, char **str_arr);
 t_material	*ft_find_material(t_list *mats, char *id);
 int			ft_link_figure_material(void *figure, t_list *mats);
 int			ft_link_materials(t_minirt_data *minirt);
+int			ft_init_material_images(t_minirt_data *minirt);
 int			ft_create_background(t_minirt_data *minirt);
+int			ft_parse_homog_material(t_material *mat, char **str_arr, int argc);
+int			ft_parse_chess_material(t_material *mat, char **str_arr, int argc);
+int			ft_parse_image_material(t_material *mat, char **str_arr, int argc);
+t_img		*image_constructor(t_minirt_data *minirt, char *filename);
+int			image_dispose(t_img **img, t_minirt_data *minirt);
+t_rgba		ft_get_pixel(t_img *img, int x, int y, t_rgba def);
 
 #endif
