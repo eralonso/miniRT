@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/07 14:09:19 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/07 14:20:32 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCC_R			:= ft_read_map.c\
 					minirt_class/parse_mat_image.c\
 					minirt_class/image_class.c\
 					minirt_class/ft_init_material_images.c\
+					minirt_class/ft_destroy_mat_images.c\
 					graph_ctx/graph_ctx.c \
 					graph_ctx/graph_ctx_utils.c \
 					utils/ft_matrix_len.c\

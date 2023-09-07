@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_material_images.c                          :+:      :+:    :+:   */
+/*   ft_destroy_mat_images.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 13:34:56 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 14:22:59 by omoreno-         ###   ########.fr       */
+/*   Created: 2023/09/07 14:14:06 by omoreno-          #+#    #+#             */
+/*   Updated: 2023/09/07 14:20:55 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../common.h"
 
-static void	ft_mount_image(unsigned int ui, void *vmat, void *data)
+static void	ft_dismount_image(unsigned int ui, void *vmat, void *data)
 {
 	t_minirt_data	*minirt;
 	t_material		*mat;
@@ -24,18 +24,12 @@ static void	ft_mount_image(unsigned int ui, void *vmat, void *data)
 	if (mat->type != MTT_IMAGE)
 		return ;
 	image_ext = mat->ext_prop;
-	image_ext->img = image_constructor(minirt, image_ext->filename);
-	if (image_ext->filename)
-	{
-		free(image_ext->filename);
-		image_ext->filename = NULL;
-	}
-	if (!image_ext->img)
-		minirt->mat_link_nok = 1;
+	if (image_ext->img)
+		image_dispose(&image_ext->img, minirt);
 }
 
-int	ft_init_material_images(t_minirt_data *minirt)
+int	ft_destroy_mat_images(t_minirt_data *minirt)
 {
-	ft_lstreduce(minirt->materials_list, ft_mount_image, minirt);
-	return (!minirt->mat_link_nok);
+	ft_lstreduce(minirt->materials_list, ft_dismount_image, minirt);
+	return (1);
 }

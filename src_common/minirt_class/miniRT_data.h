@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 14:00:33 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:18:02 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,6 +300,7 @@ t_material	*ft_find_material(t_list *mats, char *id);
 int			ft_link_figure_material(void *figure, t_list *mats);
 int			ft_link_materials(t_minirt_data *minirt);
 int			ft_init_material_images(t_minirt_data *minirt);
+int			ft_destroy_mat_images(t_minirt_data *minirt);
 int			ft_create_background(t_minirt_data *minirt);
 int			ft_parse_homog_material(t_material *mat, char **str_arr, int argc);
 int			ft_parse_chess_material(t_material *mat, char **str_arr, int argc);

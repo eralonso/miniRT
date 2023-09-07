@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 13:59:43 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:19:40 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_minirt_data	*minirt_dispose(t_minirt_data **minirt)
 	if (! minirt || ! *minirt)
 		return (*minirt);
 	g = *minirt;
+	ft_destroy_mat_images(*minirt);
 	ft_lstclear(&g->list, &free);
 	ft_lstclear(&g->figures, &ft_free_figure);
 	ft_lstclear(&g->lights, &free);
