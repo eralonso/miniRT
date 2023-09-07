@@ -1,0 +1,20 @@
+#scene
+A                                      0.0         255,255,255
+C -1000,-1000,-1000        1,1,1   10    2
+L -1000,-1000,-1000           1                       255,255,255
+
+#figures
+#planes
+#pl 0,0,0                 1,1,1                     TEXTURE
+#pl 0,0,0                 0,0,1                     RED
+#pl 0,0,0                 0,1,0                     GREEN
+#pl 0,0,0                 1,0,0                     BLUE
+#cylinder
+#cy 0,0,-40               -1,-1,0   30.0  50.0      TEXTURE
+#sphere
+sp 0,0,-50                               50        TEXTURE
+
+mt IMAGE TEXTURE                                 255,255,255     0             0    0.6   0.6    IMAGES/PINE.XPM    10,10 0,0 0
+mt HOMOG RED                                     255,0,0         1           5    0.6   0.6
+mt HOMOG GREEN                                   0,255,0         0             0    0.6   0.6
+mt HOMOG BLUE                                    0,0,255         0             0    0.6   0.6

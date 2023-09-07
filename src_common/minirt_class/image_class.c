@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 11:48:27 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 13:04:58 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:53:23 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@ t_img	*image_constructor(t_minirt_data *minirt, char *filename)
 	{
 		ft_log_error(ERR_IMAGE_OPEN_FAIL);
 		image_dispose(&img, minirt);
+		return (img);
 	}
 	img->addr = mlx_get_data_addr(img->ref, \
 					&img->bpp, &img->size_line, &img->endian);
+	img->bpp /= 8;
 	if (! img->addr)
 	{
 		ft_log_error(ERR_IMAGE_OPEN_FAIL);
 		image_dispose(&img, minirt);
 	}
-	img->bpp /= 8;
 	return (img);
 }
 
