@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:45:02 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 12:51:32 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:28:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,18 @@ int	ft_parse_material(t_list *node, char **str_arr)
 
 	if (!str_arr || !node)
 		return (ft_log_error(ERR_MISSED_ARGUMENTS_AT_PARSE));
+	argc = ft_matrixlen(str_arr);
+	if (argc < MATERIAL_MIN_COMPONENTS_NUMBER)
+		return (ft_log_error(ERR_MATERIAL_COMPONENTS_NUMBER));
 	mat = ft_calloc(1, sizeof(t_material));
 	if (!mat)
 		return (ft_log_error(ERR_MATERIAL_MALLOC_FAILED));
-	argc = ft_matrixlen(str_arr);
-	if (argc < MATERIAL_MIN_COMPONENTS_NUMBER)
+	if (!ft_ismattype(str_arr[1], &mat->type))
 	{
 		free(mat);
-		return (ft_log_error(ERR_MATERIAL_COMPONENTS_NUMBER));
+		return (0);
 	}
-	if (!ft_ismattype(str_arr[1], &mat->type) \
-		|| !mp[mat->type](mat, str_arr, argc))
+	if (!mp[mat->type](mat, str_arr, argc))
 		return (0);
 	free_x((void **)&node->content);
 	node->content = mat;

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:30:53 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 12:52:56 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:17:02 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	ft_ismattype(char *str, t_material_type *ret)
 	const t_material_type	type_id[3] = {MTT_HOMOG, MTT_CHESS, MTT_IMAGE};
 	int						i;
 
-	if (len < 5)
+	if (len != 5)
+	{
 		ft_log_error(ISMATTYPE_INVALID);
+		return (0);
+	}
 	i = 0;
 	while (i < 3)
 	{

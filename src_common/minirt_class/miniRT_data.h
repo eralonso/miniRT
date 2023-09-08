@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 14:18:02 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:13:08 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@
 		"Malloc failed when allocating material\n"
 # define ERR_MATERIAL_TABLE_MALLOC_FAILED \
 		"Malloc failed when allocating table for materials\n"
+# define ERR_CASTLINE_MALLOC_FAILED \
+		"Malloc failed while casting line\n"
+# define ERR_CASTLINE_INVALID_OBJECT_TYPE \
+		"Invalid type of object\n"
 # define ERR_MATERIAL_TABLE_OVERFLOW \
 		"Too many materials instantiated for the table\n"
 # define ERR_SPHERE_COMPONENTS_NUMBER \

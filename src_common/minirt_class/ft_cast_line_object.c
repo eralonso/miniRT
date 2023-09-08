@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:48:01 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 17:36:02 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:13:18 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_minirt_type	ft_cast_line_object(t_list *node)
 		return (MRT_EMPTY);
 	str_arr = ft_split(node->content, ' ');
 	if (!str_arr)
-		return (ft_log_error("Malloc failed while casting line\n"));
+		return (ft_log_error(ERR_CASTLINE_MALLOC_FAILED));
 	if (!str_arr[0])
 	{
 		free(str_arr);
@@ -81,7 +81,7 @@ t_minirt_type	ft_cast_line_object(t_list *node)
 	if (mrtt == MRT_INVALID)
 	{
 		ft_delete_str_arr(str_arr);
-		return (ft_log_error("Invalid type of object\n"));
+		return (ft_log_error(ERR_CASTLINE_INVALID_OBJECT_TYPE));
 	}
 	mrtt = ft_parse_object(node, str_arr, mrtt);
 	ft_delete_str_arr(str_arr);

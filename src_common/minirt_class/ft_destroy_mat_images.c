@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 14:14:06 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 14:20:55 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:39:25 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	ft_dismount_image(unsigned int ui, void *vmat, void *data)
 	if (mat->type != MTT_IMAGE)
 		return ;
 	image_ext = mat->ext_prop;
+	if (image_ext->filename)
+		free(image_ext->filename);
 	if (image_ext->img)
 		image_dispose(&image_ext->img, minirt);
 }

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:38:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 10:25:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:14:51 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define ISVECTOR_MISS_STR "Miss string argument\n"
 # define ISVECTOR_SIZE "Invalid number of vector components\n"
 # define ISVECTOR2D_SIZE "Invalid number of vector2d components\n"
-# define ISSTRING_DUPERR "Failed to duplicate string"
-# define ISMATTYPE_INVALID "Material type is invalid"
+# define ISSTRING_DUPERR "Failed to duplicate string\n"
+# define ISMATTYPE_INVALID "Material type is invalid\n"
 # define ISDOUBLE_MISS_STR "Miss string argument\n"
 # define ISDOUBLE_NAN "Is not a double\n"
 # define ISDOUBLE_NIR "Is not in range\n"
