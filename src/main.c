@@ -6,11 +6,10 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:36:40 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 12:18:09 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:39:49 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "miniRT.h"
 
 int	main(int argc, char const *argv[])
