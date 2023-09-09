@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:37:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 14:44:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:35:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,11 @@ static int	ft_cap_inters(t_intersect_data *ret, \
 }
 
 static int	ft_give_inters(t_intersect_data *ret, \
-	t_vector line_int, const t_cone *cone, double int_height)
+	t_vector line_int, const t_cone *cone)
 {
 	t_vector	trash;
-	double		int_radius;
 
 	ret->color = (t_rgba){0, 0, 0, 0};
-	int_radius = int_height * cone->tan_theta;
 	ft_copy_vector(ret->tan_plane.point, line_int);
 	ft_cross_product(ret->tan_plane.orientation, \
 		(double *)cone->orientation, ft_substraction(trash, \
@@ -102,6 +100,6 @@ int	inter_cone_line(t_intersect_data *ret, t_line line, void *figure)
 	int_height = ft_dot_product((double *)cone->orientation, \
 		ft_substraction(ret->tan_plane.point, line_int, (double *)cone->point));
 	if (int_height >= cone->heights[0] && int_height <= cone->heights[1])
-		return (ft_give_inters(ret, line_int, cone, int_height));
+		return (ft_give_inters(ret, line_int, cone));
 	return (0);
 }

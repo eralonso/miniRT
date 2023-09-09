@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:37:37 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/06 16:30:57 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:30:48 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	ft_sphere_precomputer(void *figure)
 
 void	ft_plane_precomputer(void *figure)
 {
-	t_plane	*plane;
-
-	plane = (t_plane *)figure;
+	(void)figure;
 }
 
 void	ft_cylinder_precomputer(void *figure)

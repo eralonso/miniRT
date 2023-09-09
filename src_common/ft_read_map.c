@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:28:05 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/08/02 18:10:28 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:24:19 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ t_list	*ft_read_map(char *filename)
 	}
 	list = ft_read_map_lines(fd);
 	cr = close(fd);
+	if (cr)
+		ft_log_error("File close failed\n");
 	return (list);
 }
