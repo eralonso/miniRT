@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/07 14:20:32 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/09 13:16:01 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,8 @@ SRC_PATH		:= src/
 SRCB_PATH		:= src_bonus/
 LIBFT_PATH		:= libft/
 MLX_PATH		:= mlx/
+MLX_MC_PATH		:= mlx_mc/
+MLX_LX_PATH		:= mlx_lx/
 BUILD_PATH		:= .build/
 SRCC			:= ${addprefix $(SRCC_PATH), $(SRCC_R)}
 SRC				:= ${addprefix $(SRC_PATH), $(SRC_R)}
@@ -103,6 +105,7 @@ DEPSC			:= $(addprefix $(BUILD_PATH), $(SRCC:.c=.d))
 DEPS			:= $(addprefix $(BUILD_PATH), $(SRC:.c=.d))
 DEPSB			:= $(addprefix $(BUILD_PATH), $(SRCB:.c=.d))
 
+OS				:= $(shell uname -s | tr '[:upper:]' '[:lower:]')
 CC				:= 	@gcc
 OPTIM_FLAG		:= -O3
 CFLAGS			:= -Wall -Werror -Wextra -g -O3
@@ -118,16 +121,20 @@ LIBFT_A 		:= ${addprefix $(LIBFT_PATH), libft.a}
 LIBFT_D 		:= ${addprefix $(LIBFT_PATH), libft.d}
 MLX_A 			:= ${addprefix $(MLX_PATH), libmlx.a}
 MLX_H 			:= ${addprefix $(MLX_PATH), libmlx.h}
-LIBS_FLAGS		:= -lm -Lmlx -lmlx -framework OpenGL -framework AppKit -I ${LIBFT_H} -I ${MLX_H}
+LIBS_MC_FLAGS  := -lm -Lmlx -lmlx -framework OpenGL -framework AppKit -I ${LIBFT_H} -I ${MLX_H}
+LIBS_LX_FLAGS   := -I/usr/include -Imlx_linux -O1
+LIBS_LX_FLAGS_LK:= -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz3
+LIBS_FLAGS		:= ${LIBS_LX_FLAGS}
+LIBS_FLAGS_LK	:= ${LIBS_LX_FLAGS_LK}
 LIBFT_D_CONT	:= $(shell cat ${LIBFT_D} 2> /dev/null)
 
 folder_create 	= $(shell mkdir -p $(1))
 
 .SECONDEXPANSION:
 
-$(BUILD_PATH)%.o: %.c ${HEADER} Makefile | $$(call folder_create,$$(dir $$@))
+$(BUILD_PATH)%.o: %.c $(MLX_PATH) ${HEADER} Makefile | $$(call folder_create,$$(dir $$@))
 	@echo "Compiling " $@ " ..."
-	${CC} ${CFLAGS} ${CFD} -I ${LIBFT_PATH} -I ${MLX_PATH} -c $< -o $@
+	${CC} ${CFLAGS} ${CFD} -I ${LIBFT_PATH} -I ${MLX_PATH} ${LIBS_FLAGS} -c $< -o $@
 
 all : $(NAME)
 bonus : $(NAMEB)
@@ -137,28 +144,33 @@ bonus : $(NAMEB)
 $(NAME) : ${OBJC} ${OBJ} ${LIBFT_A} ${MLX_A} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
-		${OBJ} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS} -o $@
+		${OBJ} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS_LK} -o $@
 
 -include $(DEPSB)
 $(NAMEB): ${OBJC} ${OBJB} ${LIBFT_A} ${MLX_A} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
-		${OBJB} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS} -o $@
+		${OBJB} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS_LK} -o $@
 
 ${LIBFT_A} : ${LIBFT_D_CONT} libft/Makefile
 	@echo "Making " $@ " if necessary.."
 	@make -C libft
 
-${MLX_A} :
+${MLX_A} : $(MLX_PATH)
 	@echo "Making " $@ " if nececessary..."
+	@echo "Host Operative System: " ${OS}
 	@make -C mlx 2> /dev/null 1> /dev/null
+
+$(MLX_PATH) :
+	cp -R $(MLX_LX_PATH) $(MLX_PATH)
 
 clean :
 	@echo "Cleaning ..."
 	@echo "Cleaning $(BUILD_PATH) ..."
 	$(RM) -Rf $(BUILD_PATH)
 	@echo "Cleaning MLX ..."
-	@make clean -C mlx 2> /dev/null 1> /dev/null
+	$(RM) -Rf $(MLX_PATH)
+#@make clean -C mlx 2> /dev/null 1> /dev/null
 	@echo "Cleaning LIBFT ..."
 	@make clean -C libft
 
