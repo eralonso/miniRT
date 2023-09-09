@@ -2,3 +2,8 @@ mlx/
 miniRT_bonus
 miniRT
 a.out
+.build/
+libft/.build/
+*.a
+*.d
+*.o

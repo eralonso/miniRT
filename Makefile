@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/09 13:16:01 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/09 13:33:44 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,8 +124,15 @@ MLX_H 			:= ${addprefix $(MLX_PATH), libmlx.h}
 LIBS_MC_FLAGS  := -lm -Lmlx -lmlx -framework OpenGL -framework AppKit -I ${LIBFT_H} -I ${MLX_H}
 LIBS_LX_FLAGS   := -I/usr/include -Imlx_linux -O1
 LIBS_LX_FLAGS_LK:= -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz3
-LIBS_FLAGS		:= ${LIBS_LX_FLAGS}
-LIBS_FLAGS_LK	:= ${LIBS_LX_FLAGS_LK}
+ifeq ($(OS),linux)
+	LIBS_FLAGS		:= ${LIBS_LX_FLAGS}
+	LIBS_FLAGS_LK	:= ${LIBS_LX_FLAGS_LK}
+	MLX_OS_PATH		:= ${MLX_LX_PATH}
+else
+	LIBS_FLAGS		:= ${LIBS_MC_FLAGS}
+	LIBS_FLAGS_LK	:= ${LIBS_MC_FLAGS}
+	MLX_OS_PATH		:= ${MLX_MC_PATH}
+endif
 LIBFT_D_CONT	:= $(shell cat ${LIBFT_D} 2> /dev/null)
 
 folder_create 	= $(shell mkdir -p $(1))
@@ -162,7 +169,7 @@ ${MLX_A} : $(MLX_PATH)
 	@make -C mlx 2> /dev/null 1> /dev/null
 
 $(MLX_PATH) :
-	cp -R $(MLX_LX_PATH) $(MLX_PATH)
+	cp -R $(MLX_OS_PATH) $(MLX_PATH)
 
 clean :
 	@echo "Cleaning ..."
