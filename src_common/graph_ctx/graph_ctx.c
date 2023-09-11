@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:35:33 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 12:26:57 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:53:19 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,6 @@ int	ft_create_graph_ctx(t_minirt_data *minirt)
 		return (0);
 	return (1);
 }
-	// gr_ctx->wnd_size[0] = minirt->t->size[0] * minirt->block_size[0];
-	// gr_ctx->wnd_size[1] = minirt->t->size[1] * minirt->block_size[0];
-	// gr_ctx->gos = gr_ob_list_constructor(gr_ctx);
-	// if (! gr_ctx->gos)
-	// 	return (0);
 
 int	ft_dispose_graph_ctx(t_minirt_data *minirt)
 {
@@ -98,4 +93,3 @@ int	ft_dispose_graph_ctx(t_minirt_data *minirt)
 	free_x((void **)&minirt->gr_ctx);
 	return (0);
 }
-		// gr_ob_list_dispose(&minirt->gr_ctx->gos);
