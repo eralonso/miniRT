@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/11 12:25:20 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/11 12:54:28 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ OPTIM_FLAG		:= -O3
 CFLAGS			:= -Wall -Werror -Wextra -g -O3
 SANIT_FLAG		:=  -fsanitize=address
 CFD				:= -MMD
-RM				:= 	@rm -f
+RM				:= 	@rm -Rf
 LIBC 			:= 	@ar -rcs
 HEADERC 		:= ${addprefix $(SRCC_PATH), common.h}
 HEADER 			:= ${addprefix $(SRC_PATH), ${addprefix $(NAME), .h}}
@@ -174,9 +174,9 @@ $(MLX_PATH) :
 clean :
 	@echo "Cleaning ..."
 	@echo "Cleaning $(BUILD_PATH) ..."
-	$(RM) -Rf $(BUILD_PATH)
+	$(RM) $(BUILD_PATH)
 	@echo "Cleaning MLX ..."
-	$(RM) -Rf $(MLX_PATH)
+	$(RM) $(MLX_PATH)
 	@echo "Cleaning LIBFT ..."
 	@make clean -C libft
 
