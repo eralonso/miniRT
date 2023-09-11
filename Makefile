@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/11 11:46:39 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/11 12:25:20 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,7 +139,7 @@ folder_create 	= $(shell mkdir -p $(1))
 
 .SECONDEXPANSION:
 
-$(BUILD_PATH)%.o: %.c $(MLX_PATH) ${HEADER} Makefile | $$(call folder_create,$$(dir $$@))
+$(BUILD_PATH)%.o: %.c ${HEADER} Makefile | $$(call folder_create,$$(dir $$@))
 	@echo "Compiling " $@ " ..."
 	${CC} ${CFLAGS} ${CFD} -I ${LIBFT_PATH} -I ${MLX_PATH} ${LIBS_FLAGS} -c $< -o $@
 
@@ -148,13 +148,13 @@ bonus : $(NAMEB)
 
 -include $(DEPS)
 -include $(DEPSC)
-$(NAME) : ${OBJC} ${OBJ} ${LIBFT_A} ${MLX_A} Makefile
+$(NAME) : ${LIBFT_A} ${MLX_A} ${OBJC} ${OBJ} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
 		${OBJ} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS_LK} -o $@
 
 -include $(DEPSB)
-$(NAMEB): ${OBJC} ${OBJB} ${LIBFT_A} ${MLX_A} Makefile
+$(NAMEB): ${LIBFT_A} ${MLX_A} ${OBJC} ${OBJB} Makefile
 	@echo "Linking " $@ " ..."
 	${CC} ${CFLAGS} \
 		${OBJB} ${OBJC} ${LIBFT_A} ${MLX_A} ${LIBS_FLAGS_LK} -o $@
@@ -177,7 +177,6 @@ clean :
 	$(RM) -Rf $(BUILD_PATH)
 	@echo "Cleaning MLX ..."
 	$(RM) -Rf $(MLX_PATH)
-#@make clean -C mlx 2> /dev/null 1> /dev/null
 	@echo "Cleaning LIBFT ..."
 	@make clean -C libft
 
