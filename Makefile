@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 10:34:11 by omoreno-          #+#    #+#              #
-#    Updated: 2023/09/09 13:33:44 by omoreno-         ###   ########.fr        #
+#    Updated: 2023/09/11 11:46:39 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,7 +129,7 @@ ifeq ($(OS),linux)
 	LIBS_FLAGS_LK	:= ${LIBS_LX_FLAGS_LK}
 	MLX_OS_PATH		:= ${MLX_LX_PATH}
 else
-	LIBS_FLAGS		:= ${LIBS_MC_FLAGS}
+	LIBS_FLAGS		:=
 	LIBS_FLAGS_LK	:= ${LIBS_MC_FLAGS}
 	MLX_OS_PATH		:= ${MLX_MC_PATH}
 endif
