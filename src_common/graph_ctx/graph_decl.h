@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 13:38:31 by omoreno-          #+#    #+#             */
-/*   Updated: 2023/09/07 12:16:05 by omoreno-         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:41:21 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,31 @@ enum e_masks
 	OwnerGrabButtonMask = 0x1000000
 };
 
+# ifdef __linux__
+
+enum e_keycodes
+{
+	KC_ESC = 65307,
+	KC_Q = 113,
+	KC_W = 119,
+	KC_E = 101,
+	KC_R = 114,
+	KC_T = 116,
+	KC_A = 97,
+	KC_S = 115,
+	KC_D = 100,
+	KC_F = 102,
+	KC_G = 103,
+	KC_LEFT = 65361,
+	KC_RIGHT = 65363,
+	KC_DOWN = 65364,
+	KC_UP = 65362,
+	KC_RETURN = 65293
+};
+
+# else
+#  ifdef __APPLE__
+
 enum e_keycodes
 {
 	KC_ESC = 0x35,
@@ -112,16 +137,15 @@ enum e_keycodes
 	KC_D = 0x2,
 	KC_F = 0x3,
 	KC_G = 0x5,
-	KC_Z = 0x6,
-	KC_X = 0x7,
-	KC_C = 0x8,
-	KC_V = 0x9,
 	KC_LEFT = 0x7b,
 	KC_RIGHT = 0x7c,
 	KC_DOWN = 0x7d,
 	KC_UP = 0x7e,
 	KC_RETURN = 0x24
 };
+
+#  endif
+# endif
 
 typedef struct s_img
 {
